@@ -2,7 +2,7 @@
 
 Knowledge-based early warning of entrepreneurial failure during digital transformation. A short communication for *Knowledge-Based Systems*, plus the one program that produces its figures and tables.
 
-The decision time is a digital venture’s first priced funding round. The issued score is a depth-3 gradient booster. Four certainty-factor rules are attached as an audit trail. Three other rules were withdrawn because they pointed the wrong way on the 2006–2010 training years. On 737 ventures first funded in 2012–2013, the top 30% of scores had a closure precision of 0.760 against a base rate of 0.510 (ROC-AUC 0.740). Stacking the rule score onto the booster did not improve ranking. The full argument, Table 1, Table 2, and the figure captions are in `MANUSCRIPT.md`.
+The decision time is a digital venture’s first priced funding round. The pre-specified score is a depth-3 gradient booster. Four certainty-factor rules are attached as an audit trail; three other rules were withdrawn because they pointed the wrong way on the 2006–2010 training years. On 737 ventures first funded in 2012–2013, the top 30% of booster scores had closure precision 0.760 against a base rate of 0.510 (ROC-AUC 0.740). Paired tests do not separate that score from logistic regression. Stacking the rules into the probability lowers the ROC area by 0.004. The argument, both tables, and both figures are in `MANUSCRIPT.md`.
 
 ## Run
 

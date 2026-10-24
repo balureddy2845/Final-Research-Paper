@@ -244,6 +244,43 @@
         "feature": "round_type_other",
         "standardized_coef": -0.00047285705758095035
       }
+    ],
+    "retention_margin_sensitivity": [
+      {
+        "margin": 0.0,
+        "n_rules": 4,
+        "rules": [
+          "R1",
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "roc_auc": 0.6180048034419756,
+        "precision_at_30": 0.6334841628959276
+      },
+      {
+        "margin": 0.02,
+        "n_rules": 4,
+        "rules": [
+          "R1",
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "roc_auc": 0.6180048034419756,
+        "precision_at_30": 0.6334841628959276
+      },
+      {
+        "margin": 0.05,
+        "n_rules": 3,
+        "rules": [
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "roc_auc": 0.608302145340956,
+        "precision_at_30": 0.6380090497737556
+      }
     ]
   },
   "rules": [
@@ -418,5 +455,278 @@
       "recall_at_30": 0.4521276595744681,
       "alerts_at_30": 221
     }
-  ]
+  ],
+  "paired_tests": [
+    {
+      "comparison": "Gradient boosting vs Knowledge base",
+      "metric": "roc_auc",
+      "difference": 0.1220531030824541,
+      "ci_low": 0.07848042546275917,
+      "ci_high": 0.16611107745385975,
+      "p_value": 0.0,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Knowledge base",
+      "metric": "precision_at_30",
+      "difference": 0.12669683257918551,
+      "ci_low": 0.06334841628959276,
+      "ci_high": 0.1945701357466063,
+      "p_value": 0.0,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Logistic regression",
+      "metric": "roc_auc",
+      "difference": 0.004814492839040341,
+      "ci_low": -0.012239700528105668,
+      "ci_high": 0.02168654748648378,
+      "p_value": 0.61,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Logistic regression",
+      "metric": "precision_at_30",
+      "difference": 0.009049773755656076,
+      "ci_low": -0.02714932126696834,
+      "ci_high": 0.05882352941176461,
+      "p_value": 0.551,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Decision tree",
+      "metric": "roc_auc",
+      "difference": 0.011411858313196022,
+      "ci_low": -0.008774916165942986,
+      "ci_high": 0.0311182842697073,
+      "p_value": 0.277,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Decision tree",
+      "metric": "precision_at_30",
+      "difference": 0.009049773755656076,
+      "ci_low": -0.03167420814479638,
+      "ci_high": 0.06334841628959276,
+      "p_value": 0.614,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Stacked fusion",
+      "metric": "roc_auc",
+      "difference": 0.00424353156126589,
+      "ci_low": 0.00013999917268796294,
+      "ci_high": 0.008201138958665,
+      "p_value": 0.045,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Stacked fusion",
+      "metric": "precision_at_30",
+      "difference": -0.009049773755656187,
+      "ci_low": -0.022624434389140302,
+      "ci_high": 0.013574660633484115,
+      "p_value": 0.763,
+      "draws": 2000
+    }
+  ],
+  "budget_profiles": {
+    "base_rate": 0.5101763907734057,
+    "rates": [
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "systems": {
+      "Knowledge base": [
+        {
+          "rate": 0.1,
+          "precision": 0.6351351351351351,
+          "recall": 0.125
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.6486486486486487,
+          "recall": 0.19148936170212766
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.6462585034013606,
+          "recall": 0.2526595744680851
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.6304347826086957,
+          "recall": 0.30851063829787234
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.6334841628959276,
+          "recall": 0.3723404255319149
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.6033898305084746,
+          "recall": 0.4734042553191489
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.592391304347826,
+          "recall": 0.5797872340425532
+        }
+      ],
+      "Logistic regression": [
+        {
+          "rate": 0.1,
+          "precision": 0.8918918918918919,
+          "recall": 0.17553191489361702
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.8558558558558559,
+          "recall": 0.2526595744680851
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.8163265306122449,
+          "recall": 0.3191489361702128
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7880434782608695,
+          "recall": 0.38563829787234044
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.751131221719457,
+          "recall": 0.44148936170212766
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.711864406779661,
+          "recall": 0.5585106382978723
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.6956521739130435,
+          "recall": 0.6808510638297872
+        }
+      ],
+      "Decision tree": [
+        {
+          "rate": 0.1,
+          "precision": 0.7972972972972973,
+          "recall": 0.15691489361702127
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.7837837837837838,
+          "recall": 0.23138297872340424
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.7687074829931972,
+          "recall": 0.300531914893617
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7663043478260869,
+          "recall": 0.375
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.751131221719457,
+          "recall": 0.44148936170212766
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.7288135593220338,
+          "recall": 0.5718085106382979
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.7038043478260869,
+          "recall": 0.6888297872340425
+        }
+      ],
+      "Gradient boosting": [
+        {
+          "rate": 0.1,
+          "precision": 0.8648648648648649,
+          "recall": 0.1702127659574468
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.8198198198198198,
+          "recall": 0.24202127659574468
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.8095238095238095,
+          "recall": 0.31648936170212766
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7989130434782609,
+          "recall": 0.39095744680851063
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.7601809954751131,
+          "recall": 0.44680851063829785
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.7389830508474576,
+          "recall": 0.5797872340425532
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.6875,
+          "recall": 0.6728723404255319
+        }
+      ],
+      "Stacked fusion": [
+        {
+          "rate": 0.1,
+          "precision": 0.8648648648648649,
+          "recall": 0.1702127659574468
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.8288288288288288,
+          "recall": 0.24468085106382978
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.7891156462585034,
+          "recall": 0.30851063829787234
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7989130434782609,
+          "recall": 0.39095744680851063
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.7692307692307693,
+          "recall": 0.4521276595744681
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.7322033898305085,
+          "recall": 0.574468085106383
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.6875,
+          "recall": 0.6728723404255319
+        }
+      ]
+    }
+  }
 }

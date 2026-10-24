@@ -516,6 +516,95 @@ def bootstrap_auc(labels: np.ndarray, scores: np.ndarray, draws: int = 1000) -> 
     }
 
 
+def paired_contrast(
+    labels: np.ndarray,
+    left: np.ndarray,
+    right: np.ndarray,
+    metric: str,
+    draws: int = 2000,
+    rate: float = 0.30,
+) -> dict[str, float]:
+    """Two-sided paired bootstrap test of left minus right on the same ventures."""
+    if metric == "roc_auc":
+        point = safe_auc(labels, left) - safe_auc(labels, right)
+    elif metric == "precision_at_30":
+        point = topk_capture(labels, left, rate)["precision"] - topk_capture(labels, right, rate)["precision"]
+    else:
+        raise ValueError(metric)
+    rng = np.random.default_rng(SEED + 11 + (0 if metric == "roc_auc" else 17))
+    diffs = []
+    n = len(labels)
+    for _ in range(draws):
+        idx = rng.integers(0, n, n)
+        if len(np.unique(labels[idx])) < 2:
+            continue
+        if metric == "roc_auc":
+            diffs.append(roc_auc_score(labels[idx], left[idx]) - roc_auc_score(labels[idx], right[idx]))
+        else:
+            diffs.append(
+                topk_capture(labels[idx], left[idx], rate)["precision"]
+                - topk_capture(labels[idx], right[idx], rate)["precision"]
+            )
+    arr = np.asarray(diffs, dtype=float)
+    # Two-sided p from the share of resamples on each side of zero.
+    share_low = float(np.mean(arr <= 0))
+    share_high = float(np.mean(arr >= 0))
+    p_value = min(1.0, 2.0 * min(share_low, share_high))
+    return {
+        "difference": float(point),
+        "ci_low": float(np.percentile(arr, 2.5)),
+        "ci_high": float(np.percentile(arr, 97.5)),
+        "p_value": p_value,
+        "draws": int(len(arr)),
+    }
+
+
+def paired_table(fitted: dict) -> list[dict]:
+    y = fitted["y"]["test"]
+    issued = fitted["calibrated"]["Gradient boosting"]["test"]
+    rows = []
+    for other in ("Knowledge base", "Logistic regression", "Decision tree", "Stacked fusion"):
+        rival = fitted["calibrated"][other]["test"]
+        for metric in ("roc_auc", "precision_at_30"):
+            contrast = paired_contrast(y, issued, rival, metric)
+            rows.append({"comparison": f"Gradient boosting vs {other}", "metric": metric, **contrast})
+    return rows
+
+
+def budget_profiles(fitted: dict, rates: tuple[float, ...] = (0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50)) -> dict:
+    y = fitted["y"]["test"]
+    profiles = {"base_rate": float(y.mean()), "rates": list(rates), "systems": {}}
+    for name, probs in fitted["calibrated"].items():
+        profiles["systems"][name] = [
+            {"rate": rate, "precision": topk_capture(y, probs["test"], rate)["precision"], "recall": topk_capture(y, probs["test"], rate)["recall"]}
+            for rate in rates
+        ]
+    return profiles
+
+
+def margin_sensitivity(parts: dict[str, pd.DataFrame], cuts: dict) -> list[dict]:
+    """Knowledge-base sensitivity to the retention margin. The booster is not refit."""
+    y_val = parts["val"]["failure"].to_numpy()
+    y_test = parts["test"]["failure"].to_numpy()
+    rows = []
+    for margin in (0.0, 0.02, 0.05):
+        kept, _audit = revise_knowledge_base(parts["train"], cuts, margin=margin)
+        cf_val, _ = infer(parts["val"], cuts, kept)
+        cf_test, _ = infer(parts["test"], cuts, kept)
+        mapper = fit_platt(cf_val, y_val)
+        probs = platt_predict(mapper, cf_test)
+        rows.append(
+            {
+                "margin": margin,
+                "n_rules": len(kept),
+                "rules": [rule.code for rule in kept],
+                "roc_auc": safe_auc(y_test, probs),
+                "precision_at_30": topk_capture(y_test, probs, 0.30)["precision"],
+            }
+        )
+    return rows
+
+
 def bootstrap_difference(labels: np.ndarray, left: np.ndarray, right: np.ndarray, draws: int = 1000) -> dict[str, float]:
     rng = np.random.default_rng(SEED + 1)
     diffs = []
@@ -704,102 +793,125 @@ def style_axes(ax: plt.Axes) -> None:
 
 
 def draw_architecture(path: Path) -> None:
-    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8.5, "text.color": "#1c1c1c"})
-    fig, ax = plt.subplots(figsize=(7.6, 3.45))
+    plt.rcParams.update(
+        {
+            "font.family": "DejaVu Serif",
+            "font.size": 8.5,
+            "text.color": "#1c2430",
+            "mathtext.fontset": "dejavuserif",
+        }
+    )
+    fig, ax = plt.subplots(figsize=(10.6, 4.15))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
-    boxes = [
-        (0.03, 0.34, 0.17, 0.32, "#E8EEF4", "#1F4E79", "Decision-time\nrecords\nFirst priced round"),
-        (0.26, 0.34, 0.17, 0.32, "#E8EEF4", "#1F4E79", "Early signals\nCapital, timing,\nscope, ecosystem"),
-        (0.50, 0.56, 0.20, 0.28, "#E8EEF4", "#1F4E79", "Gradient boosting\nDepth-3 trees\nScore from 2006–2010"),
-        (0.50, 0.14, 0.20, 0.28, "#F3E9F8", "#6B4C9A", "Retained rules\nCertainty factors\nTrain-consistent only"),
-        (0.77, 0.34, 0.18, 0.32, "#E8EEF4", "#1F4E79", "Warning card\nFailure probability\n+ rules that fired"),
-    ]
-    for x, y, w, h, face, edge, text in boxes:
+    fig.patch.set_facecolor("white")
+
+    def box(x, y, w, h, face, edge, title, body):
         ax.add_patch(
             FancyBboxPatch(
                 (x, y),
                 w,
                 h,
-                boxstyle="round,pad=0.012,rounding_size=0.015",
+                boxstyle="round,pad=0.008,rounding_size=0.012",
                 facecolor=face,
                 edgecolor=edge,
-                linewidth=1.1,
+                linewidth=1.25,
             )
         )
-        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=7.4, linespacing=1.25)
+        ax.text(x + 0.012, y + h - 0.045, title, ha="left", va="top", fontsize=8.4, color=edge)
+        ax.text(x + w / 2, y + h / 2 - 0.03, body, ha="center", va="center", fontsize=7.5, linespacing=1.28, color="#1c2430")
 
     def arrow(x1, y1, x2, y2):
         ax.add_patch(
-            FancyArrowPatch(
-                (x1, y1),
-                (x2, y2),
-                arrowstyle="-|>",
-                mutation_scale=9,
-                linewidth=0.9,
-                color="#334155",
-            )
+            FancyArrowPatch((x1, y1), (x2, y2), arrowstyle="-|>", mutation_scale=11, linewidth=1.0, color="#243044")
         )
 
-    arrow(0.20, 0.50, 0.26, 0.50)
-    arrow(0.43, 0.58, 0.50, 0.68)
-    arrow(0.43, 0.42, 0.50, 0.30)
-    arrow(0.70, 0.68, 0.77, 0.56)
-    arrow(0.70, 0.30, 0.77, 0.44)
+    box(0.025, 0.30, 0.18, 0.46, "#F4F7FB", "#12344D", "1  Decision time", "First priced round\nonly\n\nBanned: total capital,\nlater rounds, last-round date")
+    box(0.255, 0.30, 0.20, 0.46, "#F4F7FB", "#12344D", "2  Early signals", "log capital, log days,\nscope, digital depth,\n3-year ecosystem,\nround type, country")
+    box(0.51, 0.55, 0.22, 0.32, "#E7F0FA", "#12344D", "3a  Issued score", "Depth-3 gradient boosting\nFit on 2006–2010\nPlatt map fit on 2011")
+    box(0.51, 0.16, 0.22, 0.32, "#F6F1FA", "#5C4B8A", "3b  Audit trail", "Seven certainty-factor rules\nKeep a rule only if its\n2006–2010 direction agrees")
+    box(0.785, 0.30, 0.19, 0.46, "#F4F7FB", "#12344D", "4  Warning card", "Closure probability\n+\nrules whose strength\nreached 0.5")
+
+    arrow(0.205, 0.53, 0.255, 0.53)
+    arrow(0.455, 0.62, 0.51, 0.71)
+    arrow(0.455, 0.44, 0.51, 0.32)
+    arrow(0.73, 0.71, 0.785, 0.60)
+    arrow(0.73, 0.32, 0.785, 0.44)
+
+    ax.add_patch(FancyBboxPatch((0.025, 0.03), 0.95, 0.09, boxstyle="round,pad=0.004,rounding_size=0.008", facecolor="#F7F4EC", edgecolor="#C4A46B", linewidth=0.9))
     ax.text(
-        0.03,
-        0.05,
-        "The issued score is the booster. The rules are the audit trail. Stacking the two into one probability is tested, not assumed.",
-        fontsize=7,
-        color="#334155",
+        0.50,
+        0.075,
+        "Held-out card, first rounds in 2012–2013:  n = 737,  base rate 0.510.   Top 30% of booster scores: precision 0.760, recall 0.447.",
+        ha="center",
+        va="center",
+        fontsize=8.0,
+        color="#3d3422",
     )
-    fig.tight_layout(pad=0.3)
-    fig.savefig(path, dpi=300)
+    fig.tight_layout(pad=0.25)
+    fig.savefig(path, dpi=400, facecolor="white")
     plt.close(fig)
 
 
-def draw_performance(path: Path, fitted: dict, rows: list[dict], firing: list[dict]) -> None:
-    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8.5})
-    fig, axes = plt.subplots(1, 2, figsize=(7.6, 3.55))
+def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict) -> None:
+    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8.5, "axes.linewidth": 0.8})
+    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.15))
     y = fitted["y"]["test"]
+    order = ["Knowledge base", "Decision tree", "Logistic regression", "Stacked fusion", "Gradient boosting"]
+    by_name = {row["system"]: row for row in rows}
+
     ax = axes[0]
-    for row in rows:
-        name = row["system"]
+    for name in order:
         scores = fitted["calibrated"][name]["test"]
         fpr, tpr, _ = roc_curve(y, scores)
-        width = 2.1 if name == "Gradient boosting" else 1.15
-        style = "--" if name == "Stacked fusion" else "-"
-        ax.plot(fpr, tpr, color=COLORS[name], lw=width, ls=style, label=f"{name}  {row['roc_auc']:.3f}")
-    ax.plot([0, 1], [0, 1], color="#94A3B8", lw=0.8, ls="--")
+        issued = name == "Gradient boosting"
+        ax.plot(
+            fpr,
+            tpr,
+            color=COLORS[name],
+            lw=2.3 if issued else 1.25,
+            ls="--" if name == "Stacked fusion" else "-",
+            label=f"{name}  {by_name[name]['roc_auc']:.3f}",
+            zorder=3 if issued else 2,
+        )
+    ax.plot([0, 1], [0, 1], color="#94A3B8", lw=0.8, ls=":")
     style_axes(ax)
     ax.set_xlabel("False-alarm rate")
-    ax.set_ylabel("Failure recall")
+    ax.set_ylabel("Closure recall")
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.legend(frameon=False, loc="lower right", fontsize=6.6)
-    ax.set_title("(a) Held-out ROC, 2012–2013", loc="left", fontsize=9)
+    ax.set_aspect("equal", adjustable="box")
+    ax.legend(frameon=False, loc="lower right", fontsize=7.0)
+    ax.set_title("(a)  Held-out ROC, first rounds in 2012–2013", loc="left", fontsize=9.5, pad=8)
 
     ax = axes[1]
-    labels = [
-        f"{item['code']}  {item['name']}" + ("" if item["retained"] else " (withdrawn)")
-        for item in firing
-    ]
-    ypos = np.arange(len(firing))
-    fail_rates = [item["fire_rate_failure"] for item in firing]
-    exit_rates = [item["fire_rate_exit"] for item in firing]
-    ax.barh(ypos + 0.16, fail_rates, height=0.32, color="#1F4E79", label="Later closed")
-    ax.barh(ypos - 0.16, exit_rates, height=0.32, color="#C4A46B", label="Later acquired or IPO")
-    ax.set_yticks(ypos)
-    ax.set_yticklabels(labels, fontsize=7)
-    ax.set_xlim(0, 1)
-    ax.set_xlabel("Share of test ventures where the rule fired")
+    for name in order:
+        series = profiles["systems"][name]
+        xs = [100 * item["rate"] for item in series]
+        ys = [item["precision"] for item in series]
+        issued = name == "Gradient boosting"
+        ax.plot(
+            xs,
+            ys,
+            color=COLORS[name],
+            lw=2.3 if issued else 1.25,
+            ls="--" if name == "Stacked fusion" else "-",
+            marker="o",
+            markersize=3.4 if issued else 2.6,
+            label=name,
+            zorder=3 if issued else 2,
+        )
+    ax.axhline(profiles["base_rate"], color="#64748B", lw=0.9, ls=":", label=f"Base rate  {profiles['base_rate']:.3f}")
     style_axes(ax)
-    ax.legend(frameon=False, fontsize=7, loc="upper right")
-    ax.set_title("(b) Knowledge-rule firing on the test set", loc="left", fontsize=9)
-    ax.invert_yaxis()
-    fig.tight_layout(pad=0.45)
-    fig.savefig(path, dpi=300)
+    ax.set_xlabel("Review budget (% of test ventures)")
+    ax.set_ylabel("Precision among reviewed ventures")
+    ax.set_xlim(8, 52)
+    ax.set_ylim(0.45, 0.95)
+    ax.legend(frameon=False, fontsize=7.0, loc="upper right")
+    ax.set_title("(b)  Precision at a fixed review budget", loc="left", fontsize=9.5, pad=8)
+    fig.tight_layout(pad=0.6)
+    fig.savefig(path, dpi=400, facecolor="white")
     plt.close(fig)
 
 
@@ -826,6 +938,9 @@ def main() -> None:
     fitted = fit_models(parts, matrices, cuts, retained, columns)
     rows = evaluate(fitted)
     firing = rule_firing(fitted["y"]["test"], fitted["strength_test"], fitted["retained_codes"])
+    contrasts = paired_table(fitted)
+    profiles = budget_profiles(fitted)
+    sensitivity = margin_sensitivity(parts, cuts)
     contrast = bootstrap_difference(
         fitted["y"]["test"],
         fitted["calibrated"]["Stacked fusion"]["test"],
@@ -833,7 +948,7 @@ def main() -> None:
     )
     OUT.mkdir(parents=True, exist_ok=True)
     draw_architecture(OUT / "fig1_architecture.png")
-    draw_performance(OUT / "fig2_performance.png", fitted, rows, firing)
+    draw_performance(OUT / "fig2_performance.png", fitted, rows, profiles)
     payload = {
         "data": {
             "source": "Crunchbase Data Export, 4 December 2015",
@@ -858,12 +973,15 @@ def main() -> None:
             "fusion_coef_cf": fitted["fusion_coef_cf"],
             "kbews_minus_boosting_auc": contrast,
             "logistic_coefficients": fitted["logistic_coefficients"],
+            "retention_margin_sensitivity": sensitivity,
         },
         "rules": firing,
         "performance": rows,
+        "paired_tests": contrasts,
+        "budget_profiles": profiles,
     }
     (OUT / "metrics.json").write_text(json.dumps(json_ready(payload), indent=2))
-    print(json.dumps(json_ready({"flow": flow, "sample": payload["data"]["sample"], "performance": rows, "contrast": contrast, "fusion": payload["model"]}), indent=2))
+    print(json.dumps(json_ready({"performance": rows, "paired_tests": contrasts, "sensitivity": sensitivity}), indent=2))
 
 
 if __name__ == "__main__":

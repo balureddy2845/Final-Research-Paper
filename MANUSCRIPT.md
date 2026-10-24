@@ -1,77 +1,93 @@
 # A knowledge-based early-warning system for entrepreneurial failure during digital transformation
 
+Short Communication
+
 Hemasri Babburu  
 Doctor of Business Administration candidate
 
-**Article type.** Short communication, prepared for *Knowledge-Based Systems*.
-
 ## Abstract
 
-A warning that uses total capital raised, later rounds, or the date of the last round is partly a post-mortem: those fields keep moving until a firm closes. This communication specifies KB-EWS, which scores closure risk from the first priced funding round of a digitally oriented venture and lists the certainty-factor rules that fired. Seven rules were written before estimation. Three were withdrawn because, on ventures first funded in 2006–2010, they pointed against their own mechanism. On 737 ventures first funded in 2012–2013, a depth-3 gradient booster reached a ROC area of 0.740 (95% bootstrap interval 0.704–0.776). Reviewing the 221 highest scores, 30% of that cohort, gave precision 0.760 (0.706–0.824) against a base rate of 0.510 and recovered 44.7% of later closures. The retained rules alone reached 0.618. Stacking them onto the booster lowered the ROC area by 0.004. The issued warning is the booster’s probability, with the fired rules kept as the audit trail.
+Screening a digital venture at its first priced round is a different problem from explaining, after the fact, how much capital it raised. Totals, later rounds, and the date of the last round keep moving until the firm closes, so a model that uses them partly rediscovers the outcome. This Short Communication presents KB-EWS, a knowledge-based early-warning system that scores closure from signals available at that first round and attaches the certainty-factor rules that fired. Seven rules were written before estimation. A rule is kept only when, on ventures first funded in 2006–2010, its mean strength is at least 0.02 higher in the class it was written to support. Four rules survive. On 737 digitally oriented ventures first funded in 2012–2013, the pre-specified depth-3 gradient booster reached a ROC area of 0.740 (95% bootstrap interval 0.704–0.776). Reviewing the highest-scoring 30% gave precision 0.760 (0.706–0.824) against a base rate of 0.510 and recovered 44.7% of later closures. Paired tests do not separate the booster from logistic regression (ROC-area difference 0.005, p = 0.61). The retained rules alone reached 0.618. Stacking their certainty factor onto the booster lowered the ROC area by 0.004 (p = 0.045). The claim is limited to a leakage-safe decision time, an auditable rule trail, and a calibrated score. No causal effect of a digital-transformation program is claimed.
 
-**Keywords:** artificial intelligence; data-driven prediction; knowledge-based systems; digital transformation; innovation; entrepreneurship; early warning; certainty factors
-
-**Highlights**
-
-- Closure risk is scored at the first priced round, without later funding totals.
-- Four certainty-factor rules survive a training-period direction check; three are withdrawn.
-- The top 30% of booster scores contain later closures at precision 0.760, against a base rate of 0.510.
+Keywords: knowledge-based systems; artificial intelligence; data-driven prediction; digital transformation; innovation; entrepreneurship; early warning; certainty factors
 
 ## 1. Introduction
 
-Closure, a change of ownership, and insolvency are different events, and survival studies often mix them [1]. For a digital venture the practical question is earlier: at the first priced financing, should a reviewer look more closely? Digital ventures build the offer, the channel, and the operating system together [2], and digital transformation is a renewal of the business model rather than a single installation [3,4]. Credit scoring has a long early-warning tradition [5]. Venture models often leave that tradition by using total capital, the number of rounds, or the recency of the last round. Crunchbase-style extracts are common in management research, with known limits of coverage and outcome coding [6].
+Closure, a change of ownership, and insolvency are different events, and survival studies often mix them [1]. For a digital venture the screening decision arrives at the first priced financing, not at the post-mortem. Digital entrepreneurship builds the offer, the channel, and the operating system together [2], and digital transformation renews the business model over time rather than in a single installation [3,4]. A warning that uses the last round cannot serve that decision.
 
-Certainty factors were built so a rule base could accumulate graded evidence and remain readable [7]. KB-EWS uses that idea for one decision time. The score is a gradient booster [8] trained on first-round signals. The explanation is a short rule base. Rules that point the wrong way on the training years are withdrawn before any test venture is scored. A logistic stack of the two outputs is fit on a validation year and is not used as the issued score when it fails to improve held-out ranking.
+Credit scoring has a long early-warning tradition that uses only what is known when the decision is made [5]. Venture classifiers often leave it. Cumulative capital, the round count, and the recency of the last round are larger because the firm lived long enough to raise again, and they stop when it dies. Crunchbase-style extracts are common in management research and carry known limits of coverage and outcome coding [6]. Without a fixed decision time they reward hindsight.
 
-## 2. Method
+Reviewers also speak in rules. A thin first round together with a broad category list is a different statement from a one-unit change in log capital. Certainty factors were built so a short rule base could accumulate graded evidence and stay readable [7]. KB-EWS places that rule base beside a statistical score and then tests, on a later year, whether merging the two improves ranking.
+
+The contribution is threefold: (i) a decision-time formulation that admits only first-round signals and refuses lifetime funding fields in code; (ii) a seven-rule certainty-factor layer whose retention test withdraws any rule that points against its own mechanism on the training years; and (iii) a year-split benchmark with baselines, a fixed review budget, paired bootstrap tests, and a stacking test that is allowed to fail. The last item is part of the result. A knowledge-based warning system has to show when the rules should stay on the card and out of the probability.
+
+## 2. Proposed KB-EWS framework
 
 ### 2.1 Decision time, cohort, and label
 
-The source is the Crunchbase export of 4 December 2015, converted to CSV by Tripp (`notpeter/crunchbase-data`, commit `be8711fd`) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase license. The program downloads the files at runtime and does not redistribute them.
+The decision time is the earliest funding round with a positive disclosed amount. A venture enters if one of its categories is in a fixed digital lexicon (software, mobile, e-commerce, analytics, cloud, and the related labels in the program), both dates parse, and the first priced round falls within ten years of founding.
 
-The decision time is the earliest round with a positive disclosed amount. Allowed features are that amount, round type (venture, seed, angel, other), days from founding, category count, the share of categories in a fixed digital lexicon, country, and a trailing ecosystem count: other digital ventures in the same region first funded in the previous three calendar years, excluding the focal year. Total capital, lifetime round count, last-round date, and status are banned. The code stops if any banned field enters the design matrix.
+The signal vector holds the log first-round amount, the log of one plus days from founding, the category count, digital depth (the share of categories in the lexicon), the log of one plus a trailing ecosystem count, round type, and country. The ecosystem count is the number of other digital ventures in the same region first funded in the previous three calendar years, excluding the focal year. Country uses the eight most common training countries, with the United States as the reference. Round type uses a venture round as the reference. Total capital, lifetime round count, last-round date, and status are banned. The program stops if any of them enters the design matrix.
 
-A venture is included if a category is in the digital lexicon (software, mobile, e-commerce, analytics, cloud, and the related labels in `kbews.py`), dates parse, and the first priced round is within ten years of founding. The label is 1 for status closed and 0 for acquired or IPO. Ventures still operating in December 2015 are omitted. An acquisition can be a distress sale; the export does not say which [1]. The label is closure versus a recorded exit, among ventures that had reached one of those states.
+The label is 1 when the recorded status is closed and 0 when it is acquired or an initial public offering. Ventures still operating on the export date are dropped. Some acquisitions are distress sales; the file does not say which [1]. The label is closure versus a recorded exit among ventures that had reached one of those states.
 
-Training years are 2006–2010. Platt scaling and stacking use 2011. The test years are 2012–2013, scored once.
+### 2.2 Knowledge-rule layer
 
-### 2.2 Knowledge base
+Conditions are memberships on [0, 1]. For a low concept with cuts ℓ < h,
 
-Conditions are memberships in [0, 1], ramping linearly between two cuts. Antecedents combine by the minimum. Cuts come from the training years only. Thin capital ramps from the 25th to the 60th percentile of log first-round amount, about $475,000 to $2.8 million. Slow funding ramps from the 40th to the 75th percentile of log days since founding, about 314 to 1,088 days. Broad scope ramps from 2 to 4 categories. Thin ecosystem ramps from about 11 to about 98 prior regional peers. Shallow digital depth uses the fixed band 0.40–0.80, and deep digital depth uses 0.50–0.90. Complements supply the “adequate,” “timely,” “narrow,” and “dense” conditions.
+μ_low(x) = clip((h − x) / (h − ℓ), 0, 1). (1)
 
-Table 1 lists the rules. Positive certainty factors support later closure. Evidence is combined with the Shortliffe–Buchanan rule [7], in order R1–R7, with inputs clipped to [−0.99, 0.99]. The code checks the textbook cases: 0.50 combined with 0.40 returns 0.70, and −0.20 combined with −0.30 returns −0.44.
+A high concept ramps the other way. Rule strength is the fuzzy conjunction
 
-A rule is kept only if its mean training strength is at least 0.02 higher in the class it was written to support. That comparison uses 2006–2010 only. R4, R5, and R7 fail it. The retained base is R1, R2, R3, and R6.
+s_r = min_j μ_j. (2)
 
-**Table 1.** Rules specified before estimation.
+Training-year cuts, fixed before the test years are read, are as follows. Thin capital ramps from the 25th to the 60th percentile of log first-round amount, about $475,000 to $2.8 million. Slow funding ramps from the 40th to the 75th percentile of log days since founding, about 314 to 1,088 days. Broad scope ramps from 2 to 4 categories. Thin ecosystem ramps from about 11 to about 98 earlier peers in the region. Shallow digital depth uses the band 0.40–0.80, and deep digital depth uses 0.50–0.90. The complementary memberships define adequate capital, timely funding, narrow scope, and a dense ecosystem.
 
-| Rule | Antecedents (fuzzy AND) | CF | Training decision | Mechanism |
-|---|---|---:|---|---|
-| R1 Resource strain | Thin capital AND slow first funding | +0.55 | Retained | Scaling without slack |
-| R2 Unfunded scope | Thin capital AND broad category scope | +0.45 | Retained | Scope ahead of the first round |
-| R3 Shallow digital base | Thin capital AND shallow digital depth | +0.35 | Retained | Thin capital, peripheral digital position |
-| R4 Isolated entry | Thin ecosystem AND slow first funding | +0.30 | Withdrawn | Stronger among exits in training |
-| R5 Unfocused entry | Broad scope AND shallow digital depth | +0.25 | Withdrawn | Stronger among exits in training |
-| R6 Resourced focus | Adequate capital AND narrow scope AND deep digital depth | −0.50 | Retained | Capital, focus, and depth aligned |
-| R7 Embedded start | Dense ecosystem AND timely funding | −0.30 | Withdrawn | Training gap below 0.02 |
+Seven rules were specified with fixed certainty factors c_r. Evidence e_r = c_r s_r is pooled by the Shortliffe–Buchanan rule [7], inputs clipped to [−0.99, 0.99], in the order R1 to R7:
 
-### 2.3 Scores and the stacking test
+CF(a, b) = a + b(1 − a) if both are non-negative, a + b(1 + a) if both are non-positive, and (a + b) / (1 − min(|a|, |b|)) otherwise. (3)
 
-Logistic regression uses a scaler fit on the training years. The eight most common training countries are kept, with the United States as the reference and other countries pooled. Venture rounds are the reference round type. The same columns are applied to 2011 and to the test years.
+The implementation checks CF(0.50, 0.40) = 0.70 and CF(−0.20, −0.30) = −0.44.
 
-On 2006–2010 the program fits a class-balanced logistic regression, a class-balanced tree of depth at most 4 with at least 40 ventures per leaf, and a histogram gradient booster of depth 3, learning rate 0.06, L2 penalty 0.1, at least 40 ventures per leaf, and balanced class weights [8]. Early stopping on an internal 15% of the training years stopped at 84 trees. The 2011 year does not grow those trees.
+The rules are: R1 resource strain (c = +0.55), thin capital and slow funding; R2 unfunded scope (+0.45), thin capital and broad scope; R3 shallow digital base (+0.35), thin capital and shallow digital depth; R4 isolated entry (+0.30), thin ecosystem and slow funding; R5 unfocused entry (+0.25), broad scope and shallow digital depth; R6 resourced focus (−0.50), adequate capital, narrow scope, and deep digital depth; R7 embedded start (−0.30), dense ecosystem and timely funding. A positive factor is evidence for later closure.
 
-Each of the four scores is mapped to a probability by a one-variable logistic fit on 2011 [9]. Stacked fusion is a logistic regression of closure on the booster logit and the raw certainty factor, also fit on 2011, with a free coefficient so the stack can ignore or reverse the rule base.
+Retention uses 2006–2010 only. A rule is kept when its mean strength is at least 0.02 higher in the class named by its sign. R1, R2, R3, and R6 meet that bar (training means 0.132 versus 0.096, 0.282 versus 0.158, 0.322 versus 0.168, and, for the protective rule R6, higher among exits). R4 and R5 are stronger among exits, which is the wrong direction for a closure rule, and are withdrawn. R7 differs by less than 0.02 and is withdrawn. The retained base is therefore R1–R3 and R6.
 
-### 2.4 Test report
+### 2.3 Score, calibration, and stacking
 
-The test report is the ROC area, the precision-recall area, and the Brier score. The operating point is a review budget: the highest-scoring 20% and 30% of test ventures (147 and 221 alerts). The budget does not use test labels to pick a threshold. Precision is the closure share inside the reviewed set. Recall is the share of all test closures that the set contains. Intervals are 2.5 and 97.5 percentiles from 1,000 bootstrap draws. The seed is 7.
+Logistic regression, a tree of depth at most 4 with at least 40 ventures per leaf, and a histogram gradient booster are fit on 2006–2010 [8]. The booster uses depth 3, learning rate 0.06, an L2 penalty of 0.1, balanced class weights, and early stopping on an internal 15% of the training years, which selected 84 trees. The 2011 year does not grow the trees. Logistic regression and the tree also use balanced class weights. Logistic regression is scaled with a scaler fit on the training years.
 
-## 3. Results
+Each score, including the retained certainty factor, is mapped to a probability by a one-variable logistic fit on 2011 [9]. Stacked fusion is a further logistic regression on that same year,
 
-The export has 66,368 companies and 114,949 rounds. Priced first rounds cover 53,583 companies, and 28,482 of those match the lexicon. Usable dates and the ten-year window leave 21,407 ventures, of which 4,290 had a resolved status by December 2015. The model uses the 3,150 resolved ventures first funded in 2006–2013: 1,901 for training (closure share 0.426), 512 in 2011 (0.525), and 737 for test (0.510; 376 closures). These shares are not failure rates for all digital startups. They are closure shares among resolved outcomes. The median first round is $1.65 million in training and $750,000 in the test years.
+η = β0 + β1 logit(p_boost) + β2 CF, (4)
 
-**Table 2.** Held-out results for 737 ventures first funded in 2012–2013. Intervals are 95% bootstrap percentiles. The 30% budget is the 221 highest scores.
+with the booster probability clipped away from 0 and 1. The coefficient on CF is free. The pre-specified issued probability is the calibrated booster. Equation (4) asks whether the audit trail should also move the probability.
+
+Algorithm 1. KB-EWS
+
+Input: company file, round file, digital lexicon, year split 2006–2010 / 2011 / 2012–2013
+Output: for each test venture, a closure probability and the retained rules that fired
+
+1: Form the first priced round. Exclude total capital, lifetime round count, last-round date, and status.
+2: Keep digital ventures funded within ten years of founding. Compute the trailing ecosystem from earlier years only.
+3: Label closure against acquisition or IPO. Drop ventures still operating.
+4: Fit the membership cuts on 2006–2010. Retain R1–R7 only when the training direction agrees by at least 0.02.
+5: Fit logistic regression, the tree, and the depth-3 booster on 2006–2010.
+6: Fit a Platt map for each score on 2011, and fit Eq. (4) on 2011.
+7: On 2012–2013, issue the calibrated booster probability and every retained rule with strength at least 0.5.
+8: Evaluate precision and recall inside pre-set review budgets of 20% and 30%. Do not choose the budget on the test labels.
+
+## 3. Experimental design
+
+The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository.
+
+Of 66,368 companies and 114,949 rounds, 53,583 have a priced first round and 28,482 also match the lexicon. Dates and the ten-year window leave 21,407 ventures; 4,290 of them had a resolved status. The analysis sample is the 3,150 resolved ventures first funded in 2006–2013: 1,901 for training (closure share 0.426), 512 for 2011 (0.525), and 737 for test (0.510, of which 376 closed). Median first-round size is $1.65 million in training and $750,000 on the test years.
+
+The five systems in Table 1 share those test ventures. Uncertainty for a single system is a 1,000-draw bootstrap interval. Paired differences use 2,000 matched draws. The two-sided p-value is twice the smaller tail around zero. If no draw changes sign, p is reported as <0.001. The seed is 7. Figure 1 is the decision path. Figure 2 is the held-out ranking and the precision of a review budget from 10% to 50%.
+
+## 4. Results and discussion
+
+**Table 1.** Held-out comparison on 737 ventures first funded in 2012–2013. Intervals are 95% bootstrap percentiles. The 30% budget reviews the 221 highest scores. Lower Brier is better.
 
 | System | ROC-AUC | PR-AUC | Brier | Precision at 30% | Recall at 30% |
 |---|---:|---:|---:|---:|---:|
@@ -81,21 +97,60 @@ The export has 66,368 companies and 114,949 rounds. Priced first rounds cover 53
 | Gradient boosting | 0.740 (0.704–0.776) | 0.745 | 0.207 | 0.760 (0.706–0.824) | 0.447 |
 | Stacked fusion | 0.736 (0.699–0.771) | 0.743 | 0.208 | 0.769 (0.715–0.828) | 0.452 |
 
-Figure 1 is the issued system: the booster’s probability plus the rules that fired. At a 20% budget the booster’s precision is 0.810 (0.735–0.871) and its recall is 0.316. At 30%, precision 0.760 is 1.49 times the test base rate, and the review set holds 168 of 376 closures. Logistic regression is close. Most of the rank signal is linear.
+**Table 2.** Paired bootstrap tests of the depth-3 booster minus the named alternative, on the same 737 ventures. Positive values favour the booster.
 
-In the class-balanced training regression, one standard deviation more log first-round amount lowers closure log-odds by 0.511, and one standard deviation more log ecosystem size lowers them by 0.328. Angel and seed rounds, relative to venture, raise log-odds by 0.333 and 0.163. Two linear signs disagree with a casual reading of the rules. A longer wait for the first round lowers closure log-odds by 0.276 per standard deviation, and a longer category list lowers them by 0.154, while digital depth raises them by 0.132. The retained rules are conjunctions. R1 survives only because a small round together with a long wait was slightly more common among training closures (mean strength 0.132 versus 0.096). R2 and R3, which both require thin capital, separated more clearly (0.282 versus 0.158, and 0.322 versus 0.168).
+| Comparison | Metric | Difference | 95% interval | p |
+|---|---|---:|---:|---:|
+| Booster vs knowledge base | ROC-AUC | +0.122 | 0.078 to 0.166 | <0.001 |
+| Booster vs knowledge base | Precision at 30% | +0.127 | 0.063 to 0.195 | <0.001 |
+| Booster vs logistic regression | ROC-AUC | +0.005 | −0.012 to 0.022 | 0.61 |
+| Booster vs logistic regression | Precision at 30% | +0.009 | −0.027 to 0.059 | 0.55 |
+| Booster vs decision tree | ROC-AUC | +0.011 | −0.009 to 0.031 | 0.28 |
+| Booster vs decision tree | Precision at 30% | +0.009 | −0.032 to 0.063 | 0.61 |
+| Booster vs stacked fusion | ROC-AUC | +0.004 | 0.0001 to 0.008 | 0.045 |
+| Booster vs stacked fusion | Precision at 30% | −0.009 | −0.023 to 0.014 | 0.76 |
 
-Figure 2 shows the test years, which were not used to keep or drop rules. R2 fired for 47.9% of later closures and 29.9% of exits. R3 fired for 46.5% and 25.8%. R6 fired for 8.5% of closures and 18.8% of exits. R1 fired for 15.7% and 9.7%. The withdrawn rules do not separate the test outcomes in the direction originally written.
+The booster’s top 30% contains 168 of 376 closures. Precision 0.760 is 1.49 times the test base rate of 0.510. That is a usable screen. It is not evidence that the booster beats a linear model. Table 2 puts the ROC gap against logistic regression at 0.005 (p = 0.61) and the precision gap at 0.009 (p = 0.55). The tree is likewise inside the noise (p = 0.28 and p = 0.61). Most of the separable signal is linear in the early signals. The depth-3 booster remains the pre-specified score because that choice was made before the test year was read. Figure 2 shows why a single operating point is not the whole story: at a 10% budget, logistic precision is 0.892 and the booster’s is 0.865; by 30% the curves have met; by 50% all four statistical scores sit near 0.69–0.70, still above the base rate and above the rule base.
 
-Stacked fusion puts weight 1.034 on the booster logit and −0.233 on the certainty factor. Once the booster is known, a higher failure certainty factor slightly lowers the stacked probability. ROC area falls by 0.004 (interval −0.008 to −0.0004). Precision at 30% is 0.769 rather than 0.760, and the intervals overlap. The stack is not the issued score.
+The knowledge base is the part a reviewer can read, and it is not the ranker. Its ROC area of 0.618 is above chance, and the paired gap to the booster is 0.122 (p < 0.001). On the test years, which were not used to keep or drop rules, R2 fired for 47.9% of later closures and 29.9% of exits. R3 fired for 46.5% and 25.8%. R6, the protective rule, fired for 8.5% of closures and 18.8% of exits. R1 fired for 15.7% and 9.7%. The withdrawn rules do not separate the test outcomes in the direction originally written. Raising the retention margin from 0.02 to 0.05 drops R1 and moves the rule-base ROC area from 0.618 to 0.608. A margin of 0.00 retains the same four rules as 0.02. The primary rule set is not an artefact of a knife-edge threshold.
 
-## 4. Conclusion
+The class-balanced training regression shows why conjunctions and main effects are not the same statement. One standard deviation more log first-round amount lowers closure log-odds by 0.511, and one standard deviation more log ecosystem size lowers them by 0.328. Angel and seed rounds, relative to a venture round, raise log-odds by 0.333 and 0.163. A longer wait for the first round lowers closure log-odds by 0.276 per standard deviation, and a longer category list lowers them by 0.154, while digital depth raises them by 0.132. R1 survives only as the conjunction of a small round and a long wait. R2 and R3 survive because thin capital, not breadth or depth alone, is doing the work. Round type, which the rules do not encode, is one reason the rule base lags the regression.
 
-At the first priced round, KB-EWS returns a closure probability from a depth-3 booster and the retained rules that fired. On digital ventures first funded in 2012–2013, the top 30% of scores raise closure precision from 0.510 to 0.760. The rules are the auditable part. Alone they rank weakly, and stacking them into the probability does not help.
+Stacked fusion estimates β1 = 1.034 on the booster logit and β2 = −0.233 on the certainty factor (intercept −0.128). Once the booster is known, a higher failure certainty factor slightly lowers the stacked probability. The ROC area falls by 0.004 (p = 0.045). Precision at 30% moves from 0.760 to 0.769, and that difference is compatible with noise (p = 0.76). The rules stay on the warning card. They do not enter the issued probability.
 
-The association is not an effect of a digital-transformation program; the export does not record one. Operating ventures are omitted, so the base rate is not a population failure rate. Some acquisitions are failures under another name. Categories can be edited after founding. Later cohorts sit in denser ecosystems than the training years. A later warning could be sharper and would answer a different question.
+The result belongs in a knowledge-based system because the route from a rule to a decision is inspectable, and because the experiment says where that route stops. Explainability here is the fired rule and its certainty factor, not a post-hoc importance score. The statistical layer chooses the rank. The knowledge layer says which of the four retained mechanisms crossed 0.5.
 
-Reproduce the tables and figures with `python kbews.py`. The numbers in Table 2 are taken from `outputs/metrics.json`.
+## 5. Limitations
+
+The association is not an effect of a digital-transformation program. The export records categories, a first round, and a later status. It does not record a transformation project inside the firm. Operating ventures are omitted, so 0.510 is not a population failure rate. Some acquisitions are failures under another name. Categories can be edited after founding. Ecosystem counts rise across the decade, and the test years sit in denser regions than the training years (median peers 59, then 124, then 156). The score uses only the first round. A later warning could be sharper and would answer a different question.
+
+The booster was chosen as the primary score before the paired tests were read. Those tests then showed that logistic regression matches it. Reporting the booster as if it had won a significant comparison would overstate Table 2. The benchmark is one public extract with a December 2015 horizon. A second geography, a later extract, or a round-level file that supports a true survival time would be a different study. The retention margin of 0.02 was set as a small practical gap, and the sensitivity above is the check on that choice.
+
+## 6. Conclusion
+
+KB-EWS screens a digital venture at the first priced round. It returns a calibrated closure probability and the retained certainty-factor rules that fired. On ventures first funded in 2012–2013, the top 30% of booster scores concentrate later closures from a base rate of 0.510 to a precision of 0.760. A logistic regression reaches the same standard. The rule base documents four mechanisms and does not match that rank. Stacking the rules into the probability does not improve it.
+
+The system is a decision-time layer for a reviewer, not a causal model of digital transformation and not a substitute for information that arrives after the first round.
+
+## Data availability
+
+Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, Table 1, Table 2, and both figures from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
+
+## Declaration of competing interest
+
+The author declares that there are no known competing financial interests or personal relationships that could have appeared to influence the work reported in this manuscript.
+
+## Declaration of generative AI and AI-assisted technologies
+
+During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data, tables, and figures were generated from executable code.
+
+## Funding
+
+This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.
+
+## CRediT authorship contribution statement
+
+Hemasri Babburu: Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Data curation, Writing – original draft, Writing – review and editing, Visualization.
 
 ## References
 
@@ -119,10 +174,10 @@ Reproduce the tables and figures with `python kbews.py`. The numbers in Table 2 
 
 ## Figures
 
-**Figure 1.** KB-EWS at the first priced round. The issued score is the gradient booster. Retained rules are attached to the warning. Stacking the two into one probability was tested on 2011 and did not improve the 2012–2013 ranking.
+**Figure 1.** KB-EWS at the first priced round. The issued probability is the depth-3 booster calibrated on 2011. Retained certainty-factor rules are attached when their strength reaches 0.5. Stacking the two into one probability is estimated and then tested; Section 4 shows that it does not improve the held-out rank.
 
-![Figure 1. Architecture of the early-warning card](outputs/fig1_architecture.png)
+![Figure 1. Decision path of the early-warning card](outputs/fig1_architecture.png)
 
-**Figure 2.** Test years 2012–2013. (a) ROC curves. The solid navy curve is the issued score. The dashed curve stacks the certainty factor onto that score. (b) Share of ventures whose rule strength reached 0.5. Withdrawn rules failed the 2006–2010 direction check and are not in the knowledge-base score.
+**Figure 2.** Test ventures first funded in 2012–2013 (n = 737). (a) ROC curves. The solid navy curve is the pre-specified score. (b) Precision when a fixed share of ventures is reviewed. The dotted line is the test base rate, 0.510. At a 10% budget the logistic regression is the sharpest screen; at 30% it meets the booster.
 
-![Figure 2. Held-out ranking and rule firing](outputs/fig2_performance.png)
+![Figure 2. Held-out ranking and review-budget precision](outputs/fig2_performance.png)
