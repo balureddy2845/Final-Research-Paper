@@ -2,7 +2,7 @@
 
 Short Communication
 
-Hemasri Babburu
+Balavaraprasad Reddy Yenugula
 
 Doctor of Business Administration candidate
 
@@ -179,7 +179,7 @@ This research received no specific grant from any funding agency in the public, 
 
 ## CRediT Authorship Contribution Statement
 
-Hemasri Babburu: Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Data curation, Writing - original draft, Writing - review and editing, Visualization.
+Balavaraprasad Reddy Yenugula: Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Data curation, Writing - original draft, Writing - review and editing, Visualization.
 
 ## References
 
