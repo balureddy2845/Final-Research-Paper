@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>body{font-family:'Times New Roman',Times,serif;font-size:12pt;line-height:1.7;margin:1in;}h1{font-size:16pt;text-align:center;} h2{font-size:14pt;}</style></head><body><h1>KB-EWS supplementary material</h1>
+<p>This file accompanies the short communication KB-EWS. It records the checks that are summarised in the main text and the files needed to rebuild them.</p>
+<h2>S1. Reproducibility</h2>
+<p>The program kbews.py, included in this supplement, downloads the public Crunchbase CSV conversion, rebuilds the cohort, revises the rule base, fits the five scores, and writes Table 1, Table 2, Figures 1–3, metrics.json, and warning_cards.csv. The random seed is 7. Raw Crunchbase files are not redistributed. Source: Crunchbase Data Export of 4 December 2015, CSV conversion by Peter Tripp, github.com/notpeter/crunchbase-data, commit be8711fd, licence CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence.</p>
+<h2>S2. Retention-margin sensitivity</h2>
+<p>The margin is applied to training-year mean rule strength only. The booster is not refit.</p>
+<p>Margin 0.00: 4 rules retained (R1, R2, R3, R6); knowledge-base ROC-AUC 0.618; precision at 30% 0.633.</p>
+<p>Margin 0.02: 4 rules retained (R1, R2, R3, R6); knowledge-base ROC-AUC 0.618; precision at 30% 0.633.</p>
+<p>Margin 0.05: 3 rules retained (R2, R3, R6); knowledge-base ROC-AUC 0.608; precision at 30% 0.638.</p>
+<h2>S3. Standardized logistic coefficients on the training years</h2>
+<p>Positive coefficients raise the log-odds of later closure. Predictors are standardized on 2006–2010. Reference levels are a venture round and the United States.</p>
+<p>log_first_usd: -0.511</p>
+<p>round_type_angel: 0.333</p>
+<p>log1p_ecosystem: -0.328</p>
+<p>log1p_days: -0.276</p>
+<p>country_missing: 0.208</p>
+<p>round_type_seed: 0.163</p>
+<p>n_categories: -0.154</p>
+<p>digital_depth: 0.132</p>
+<p>country_CHN: -0.099</p>
+<p>country_CAN: -0.086</p>
+<p>country_FRA: 0.073</p>
+<p>country_DEU: 0.067</p>
+<p>country_OTHER: -0.048</p>
+<p>country_GBR: 0.028</p>
+<p>country_ISR: 0.011</p>
+<p>round_type_other: -0.000</p>
+<h2>S4. Precision across review budgets</h2>
+<p>These are the point estimates drawn in Figure 2. The budget was not chosen on the test labels.</p>
+<p>Knowledge base: 10%=0.635, 15%=0.649, 20%=0.646, 25%=0.630, 30%=0.633, 40%=0.603, 50%=0.592</p>
+<p>Logistic regression: 10%=0.892, 15%=0.856, 20%=0.816, 25%=0.788, 30%=0.751, 40%=0.712, 50%=0.696</p>
+<p>Decision tree: 10%=0.797, 15%=0.784, 20%=0.769, 25%=0.766, 30%=0.751, 40%=0.729, 50%=0.704</p>
+<p>Gradient boosting: 10%=0.865, 15%=0.820, 20%=0.810, 25%=0.799, 30%=0.760, 40%=0.739, 50%=0.688</p>
+<p>Stacked fusion: 10%=0.865, 15%=0.829, 20%=0.789, 25%=0.799, 30%=0.769, 40%=0.732, 50%=0.688</p>
+<h2>S5. Held-out rule firing</h2>
+<p>R1 Resource strain (retained, CF +0.55): strength at least 0.5 for 0.157 of later closures and 0.097 of recorded exits.</p>
+<p>R2 Unfunded scope (retained, CF +0.45): strength at least 0.5 for 0.479 of later closures and 0.299 of recorded exits.</p>
+<p>R3 Shallow digital base (retained, CF +0.35): strength at least 0.5 for 0.465 of later closures and 0.258 of recorded exits.</p>
+<p>R4 Isolated entry (withdrawn, CF +0.30): strength at least 0.5 for 0.098 of later closures and 0.102 of recorded exits.</p>
+<p>R5 Unfocused entry (withdrawn, CF +0.25): strength at least 0.5 for 0.463 of later closures and 0.482 of recorded exits.</p>
+<p>R6 Resourced focus (retained, CF -0.50): strength at least 0.5 for 0.085 of later closures and 0.188 of recorded exits.</p>
+<p>R7 Embedded start (withdrawn, CF -0.30): strength at least 0.5 for 0.479 of later closures and 0.504 of recorded exits.</p></body></html>

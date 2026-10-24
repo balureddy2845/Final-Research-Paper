@@ -1,0 +1,14 @@
+Knowledge-Based Systems submission files
+Portal step: submission-files-upload
+
+Manuscript: 01_manuscript/KB-EWS_manuscript.docx
+PDF copy of the same manuscript: 01_manuscript/KB-EWS_manuscript.pdf
+Figures: 02_figures/Figure1_ROC.tiff, Figure2_precision_budget.tiff, Figure3_rule_firing.tiff
+Tables: 03_tables/Table1_heldout_comparison.csv, Table2_paired_tests.csv
+Supporting data: 04_supporting_data/metrics.json, warning_cards.csv, DATA_STATEMENT.txt
+Graphical abstract: 05_graphical_abstract/graphical_abstract.tiff
+Supplementary material: 06_supplementary/Supplementary_material.pdf and kbews.py
+Cover letter: 07_cover_letter_and_highlights/Cover_letter.docx
+Highlights to paste into the form: 07_cover_letter_and_highlights/Highlights.txt
+
+The raw Crunchbase CSV files are not included. See DATA_STATEMENT.txt.

@@ -1,0 +1,739 @@
+{
+  "data": {
+    "source": "Crunchbase Data Export, 4 December 2015",
+    "redistribution": "notpeter/crunchbase-data@be8711fd4ee6b81110d243eb887ccc6bc8513601",
+    "license": "CC-BY-NC-4.0",
+    "decision_time": "first funding round with a positive disclosed amount",
+    "label": "closed=1; acquired or ipo=0; operating excluded",
+    "cohort": "digital-category ventures funded within 10 years of founding",
+    "years": {
+      "train": "2006-2010",
+      "validation": "2011",
+      "test": "2012-2013"
+    },
+    "features": [
+      "log_first_usd",
+      "log1p_days",
+      "n_categories",
+      "digital_depth",
+      "log1p_ecosystem",
+      "round_type_angel",
+      "round_type_other",
+      "round_type_seed",
+      "country_CAN",
+      "country_CHN",
+      "country_DEU",
+      "country_FRA",
+      "country_GBR",
+      "country_ISR",
+      "country_OTHER",
+      "country_missing"
+    ],
+    "excluded_because_they_leak_outcome": [
+      "funding_total_usd",
+      "funding_rounds",
+      "last_funding_at",
+      "status"
+    ],
+    "flow": {
+      "companies": 66368,
+      "rounds": 114949,
+      "with_priced_first_round": 53583,
+      "digital": 28482,
+      "dated_new_ventures": 21407,
+      "resolved": 4290,
+      "analysis_sample": 3150,
+      "failure_rate": 0.46190476190476193
+    },
+    "sample": {
+      "train": {
+        "n": 1901,
+        "failures": 810,
+        "failure_rate": 0.4260915307732772,
+        "year_min": 2006,
+        "year_max": 2010,
+        "median_first_round_usd": 1650000.0,
+        "median_days_to_funding": 440.0,
+        "median_categories": 2.0,
+        "median_digital_depth": 0.6,
+        "median_ecosystem": 59.0
+      },
+      "val": {
+        "n": 512,
+        "failures": 269,
+        "failure_rate": 0.525390625,
+        "year_min": 2011,
+        "year_max": 2011,
+        "median_first_round_usd": 592494.0,
+        "median_days_to_funding": 301.0,
+        "median_categories": 3.0,
+        "median_digital_depth": 0.5,
+        "median_ecosystem": 124.0
+      },
+      "test": {
+        "n": 737,
+        "failures": 376,
+        "failure_rate": 0.5101763907734057,
+        "year_min": 2012,
+        "year_max": 2013,
+        "median_first_round_usd": 750000.0,
+        "median_days_to_funding": 377.0,
+        "median_categories": 3.0,
+        "median_digital_depth": 0.5,
+        "median_ecosystem": 156.0
+      }
+    },
+    "cuts": {
+      "log_first_usd": {
+        "lo": 13.071070083016778,
+        "hi": 14.845129975145433
+      },
+      "log1p_days": {
+        "lo": 5.752572638825633,
+        "hi": 6.9930151229329605
+      },
+      "n_categories": {
+        "lo": 2.0,
+        "hi": 4.0
+      },
+      "log1p_ecosystem": {
+        "lo": 2.4849066497880004,
+        "hi": 4.59511985013459
+      },
+      "shallow_digital": {
+        "lo": 0.4,
+        "hi": 0.8
+      },
+      "deep_digital": {
+        "lo": 0.5,
+        "hi": 0.9
+      }
+    },
+    "knowledge_revision": [
+      {
+        "code": "R1",
+        "name": "Resource strain",
+        "cf": 0.55,
+        "train_mean_failure": 0.13174229479735633,
+        "train_mean_exit": 0.09553979713148804,
+        "retained": 1
+      },
+      {
+        "code": "R2",
+        "name": "Unfunded scope",
+        "cf": 0.45,
+        "train_mean_failure": 0.2820267197148229,
+        "train_mean_exit": 0.15782995828738305,
+        "retained": 1
+      },
+      {
+        "code": "R3",
+        "name": "Shallow digital base",
+        "cf": 0.35,
+        "train_mean_failure": 0.32190744585244857,
+        "train_mean_exit": 0.16753078131058727,
+        "retained": 1
+      },
+      {
+        "code": "R4",
+        "name": "Isolated entry",
+        "cf": 0.3,
+        "train_mean_failure": 0.1634437595592593,
+        "train_mean_exit": 0.21603809004868185,
+        "retained": 0
+      },
+      {
+        "code": "R5",
+        "name": "Unfocused entry",
+        "cf": 0.25,
+        "train_mean_failure": 0.3195313088831607,
+        "train_mean_exit": 0.3532078345323075,
+        "retained": 0
+      },
+      {
+        "code": "R6",
+        "name": "Resourced focus",
+        "cf": -0.5,
+        "train_mean_failure": 0.207783730004409,
+        "train_mean_exit": 0.3118940862523305,
+        "retained": 1
+      },
+      {
+        "code": "R7",
+        "name": "Embedded start",
+        "cf": -0.3,
+        "train_mean_failure": 0.3596994927986014,
+        "train_mean_exit": 0.35595836112810736,
+        "retained": 0
+      }
+    ]
+  },
+  "model": {
+    "boosting_iterations": 84,
+    "tree_depth": 4,
+    "fusion_intercept": -0.1277158567241072,
+    "fusion_coef_logit_hgb": 1.0338704138733679,
+    "fusion_coef_cf": -0.23266929530491606,
+    "kbews_minus_boosting_auc": {
+      "difference": -0.00424353156126589,
+      "ci_low": -0.008298302636375843,
+      "ci_high": -0.0003900890769177353
+    },
+    "logistic_coefficients": [
+      {
+        "feature": "log_first_usd",
+        "standardized_coef": -0.5112176348310632
+      },
+      {
+        "feature": "round_type_angel",
+        "standardized_coef": 0.33276382028978346
+      },
+      {
+        "feature": "log1p_ecosystem",
+        "standardized_coef": -0.3280592614026252
+      },
+      {
+        "feature": "log1p_days",
+        "standardized_coef": -0.2764499760166187
+      },
+      {
+        "feature": "country_missing",
+        "standardized_coef": 0.2077365792612045
+      },
+      {
+        "feature": "round_type_seed",
+        "standardized_coef": 0.16313149271223973
+      },
+      {
+        "feature": "n_categories",
+        "standardized_coef": -0.15372715631839778
+      },
+      {
+        "feature": "digital_depth",
+        "standardized_coef": 0.1316657576593518
+      },
+      {
+        "feature": "country_CHN",
+        "standardized_coef": -0.09881997802803945
+      },
+      {
+        "feature": "country_CAN",
+        "standardized_coef": -0.08562431413705943
+      },
+      {
+        "feature": "country_FRA",
+        "standardized_coef": 0.07297679278971145
+      },
+      {
+        "feature": "country_DEU",
+        "standardized_coef": 0.0666366667151875
+      },
+      {
+        "feature": "country_OTHER",
+        "standardized_coef": -0.048279019668292546
+      },
+      {
+        "feature": "country_GBR",
+        "standardized_coef": 0.028348362185624143
+      },
+      {
+        "feature": "country_ISR",
+        "standardized_coef": 0.010818776795555261
+      },
+      {
+        "feature": "round_type_other",
+        "standardized_coef": -0.00047285705758095035
+      }
+    ],
+    "retention_margin_sensitivity": [
+      {
+        "margin": 0.0,
+        "n_rules": 4,
+        "rules": [
+          "R1",
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "roc_auc": 0.6180048034419756,
+        "precision_at_30": 0.6334841628959276
+      },
+      {
+        "margin": 0.02,
+        "n_rules": 4,
+        "rules": [
+          "R1",
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "roc_auc": 0.6180048034419756,
+        "precision_at_30": 0.6334841628959276
+      },
+      {
+        "margin": 0.05,
+        "n_rules": 3,
+        "rules": [
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "roc_auc": 0.608302145340956,
+        "precision_at_30": 0.6380090497737556
+      }
+    ]
+  },
+  "rules": [
+    {
+      "code": "R1",
+      "name": "Resource strain",
+      "cf": 0.55,
+      "antecedents": "thin_seed AND slow_funding",
+      "mechanism": "Scaling a digital model without slack",
+      "retained": 1,
+      "fire_rate_failure": 0.15691489361702127,
+      "fire_rate_exit": 0.09695290858725762,
+      "mean_strength_failure": 0.19498320067839373,
+      "mean_strength_exit": 0.14681851061137435
+    },
+    {
+      "code": "R2",
+      "name": "Unfunded scope",
+      "cf": 0.45,
+      "antecedents": "thin_seed AND broad_scope",
+      "mechanism": "Category scope ahead of first-round capital",
+      "retained": 1,
+      "fire_rate_failure": 0.4787234042553192,
+      "fire_rate_exit": 0.29916897506925205,
+      "mean_strength_failure": 0.40466954384212817,
+      "mean_strength_exit": 0.30068469782594187
+    },
+    {
+      "code": "R3",
+      "name": "Shallow digital base",
+      "cf": 0.35,
+      "antecedents": "thin_seed AND shallow_digital",
+      "mechanism": "Thin capital and a peripheral digital position",
+      "retained": 1,
+      "fire_rate_failure": 0.4654255319148936,
+      "fire_rate_exit": 0.25761772853185594,
+      "mean_strength_failure": 0.44264731354905007,
+      "mean_strength_exit": 0.2794922968287202
+    },
+    {
+      "code": "R4",
+      "name": "Isolated entry",
+      "cf": 0.3,
+      "antecedents": "thin_ecosystem AND slow_funding",
+      "mechanism": "Slow funding in a thin regional pipeline",
+      "retained": 0,
+      "fire_rate_failure": 0.09840425531914894,
+      "fire_rate_exit": 0.10249307479224377,
+      "mean_strength_failure": 0.11811865882381092,
+      "mean_strength_exit": 0.11461937952049384
+    },
+    {
+      "code": "R5",
+      "name": "Unfocused entry",
+      "cf": 0.25,
+      "antecedents": "broad_scope AND shallow_digital",
+      "mechanism": "Broad scope without a digital core",
+      "retained": 0,
+      "fire_rate_failure": 0.4627659574468085,
+      "fire_rate_exit": 0.481994459833795,
+      "mean_strength_failure": 0.39334262073623777,
+      "mean_strength_exit": 0.43713450292397665
+    },
+    {
+      "code": "R6",
+      "name": "Resourced focus",
+      "cf": -0.5,
+      "antecedents": "adequate_seed AND narrow_scope AND deep_digital",
+      "mechanism": "Capital, focus, and digital depth aligned",
+      "retained": 1,
+      "fire_rate_failure": 0.0851063829787234,
+      "fire_rate_exit": 0.1883656509695291,
+      "mean_strength_failure": 0.10128355695778593,
+      "mean_strength_exit": 0.20359638463710114
+    },
+    {
+      "code": "R7",
+      "name": "Embedded start",
+      "cf": -0.3,
+      "antecedents": "dense_ecosystem AND timely_funding",
+      "mechanism": "Timely funding inside an active ecosystem",
+      "retained": 0,
+      "fire_rate_failure": 0.4787234042553192,
+      "fire_rate_exit": 0.5041551246537396,
+      "mean_strength_failure": 0.47469843203494516,
+      "mean_strength_exit": 0.4980375353501345
+    }
+  ],
+  "warning_cards": {
+    "file": "outputs/warning_cards.csv",
+    "n_cards": 737,
+    "n_review": 221,
+    "queue_precision": 0.7601809954751131,
+    "cards_with_a_fired_rule": 460
+  },
+  "performance": [
+    {
+      "system": "Knowledge base",
+      "roc_auc": 0.6180048034419756,
+      "roc_auc_ci_low": 0.5757504788432904,
+      "roc_auc_ci_high": 0.6567560001227829,
+      "pr_auc": 0.6010421849781503,
+      "brier": 0.24155510124533056,
+      "precision_at_20": 0.6462585034013606,
+      "precision_at_20_ci_low": 0.5714285714285714,
+      "precision_at_20_ci_high": 0.7278911564625851,
+      "recall_at_20": 0.2526595744680851,
+      "precision_at_30": 0.6334841628959276,
+      "precision_at_30_ci_low": 0.5746606334841629,
+      "precision_at_30_ci_high": 0.7013574660633484,
+      "recall_at_30": 0.3723404255319149,
+      "alerts_at_30": 221
+    },
+    {
+      "system": "Logistic regression",
+      "roc_auc": 0.7352434136853894,
+      "roc_auc_ci_low": 0.6984443119911751,
+      "roc_auc_ci_high": 0.7707253858990405,
+      "pr_auc": 0.74308204340324,
+      "brier": 0.20872200117544681,
+      "precision_at_20": 0.8163265306122449,
+      "precision_at_20_ci_low": 0.7482993197278912,
+      "precision_at_20_ci_high": 0.8775510204081632,
+      "recall_at_20": 0.3191489361702128,
+      "precision_at_30": 0.751131221719457,
+      "precision_at_30_ci_low": 0.6923076923076923,
+      "precision_at_30_ci_high": 0.8099547511312217,
+      "recall_at_30": 0.44148936170212766,
+      "alerts_at_30": 221
+    },
+    {
+      "system": "Decision tree",
+      "roc_auc": 0.7286460482112337,
+      "roc_auc_ci_low": 0.6906830566618478,
+      "roc_auc_ci_high": 0.7636973400729157,
+      "pr_auc": 0.7023032887287707,
+      "brier": 0.2118120860452098,
+      "precision_at_20": 0.7687074829931972,
+      "precision_at_20_ci_low": 0.7074829931972789,
+      "precision_at_20_ci_high": 0.8435374149659864,
+      "recall_at_20": 0.300531914893617,
+      "precision_at_30": 0.751131221719457,
+      "precision_at_30_ci_low": 0.6967194570135746,
+      "precision_at_30_ci_high": 0.8099547511312217,
+      "recall_at_30": 0.44148936170212766,
+      "alerts_at_30": 221
+    },
+    {
+      "system": "Gradient boosting",
+      "roc_auc": 0.7400579065244297,
+      "roc_auc_ci_low": 0.7040850873871302,
+      "roc_auc_ci_high": 0.7762038524089007,
+      "pr_auc": 0.744683952616876,
+      "brier": 0.20742926801233394,
+      "precision_at_20": 0.8095238095238095,
+      "precision_at_20_ci_low": 0.7346938775510204,
+      "precision_at_20_ci_high": 0.8707482993197279,
+      "recall_at_20": 0.31648936170212766,
+      "precision_at_30": 0.7601809954751131,
+      "precision_at_30_ci_low": 0.7058823529411765,
+      "precision_at_30_ci_high": 0.8235294117647058,
+      "recall_at_30": 0.44680851063829785,
+      "alerts_at_30": 221
+    },
+    {
+      "system": "Stacked fusion",
+      "roc_auc": 0.7358143749631638,
+      "roc_auc_ci_low": 0.6987263913756858,
+      "roc_auc_ci_high": 0.7713727457507515,
+      "pr_auc": 0.7428389237278914,
+      "brier": 0.2080048782289766,
+      "precision_at_20": 0.7891156462585034,
+      "precision_at_20_ci_low": 0.7278911564625851,
+      "precision_at_20_ci_high": 0.8571428571428571,
+      "recall_at_20": 0.30851063829787234,
+      "precision_at_30": 0.7692307692307693,
+      "precision_at_30_ci_low": 0.7149321266968326,
+      "precision_at_30_ci_high": 0.8280542986425339,
+      "recall_at_30": 0.4521276595744681,
+      "alerts_at_30": 221
+    }
+  ],
+  "paired_tests": [
+    {
+      "comparison": "Gradient boosting vs Knowledge base",
+      "metric": "roc_auc",
+      "difference": 0.1220531030824541,
+      "ci_low": 0.07848042546275917,
+      "ci_high": 0.16611107745385975,
+      "p_value": 0.0,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Knowledge base",
+      "metric": "precision_at_30",
+      "difference": 0.12669683257918551,
+      "ci_low": 0.06334841628959276,
+      "ci_high": 0.1945701357466063,
+      "p_value": 0.0,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Logistic regression",
+      "metric": "roc_auc",
+      "difference": 0.004814492839040341,
+      "ci_low": -0.012239700528105668,
+      "ci_high": 0.02168654748648378,
+      "p_value": 0.61,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Logistic regression",
+      "metric": "precision_at_30",
+      "difference": 0.009049773755656076,
+      "ci_low": -0.02714932126696834,
+      "ci_high": 0.05882352941176461,
+      "p_value": 0.551,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Decision tree",
+      "metric": "roc_auc",
+      "difference": 0.011411858313196022,
+      "ci_low": -0.008774916165942986,
+      "ci_high": 0.0311182842697073,
+      "p_value": 0.277,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Decision tree",
+      "metric": "precision_at_30",
+      "difference": 0.009049773755656076,
+      "ci_low": -0.03167420814479638,
+      "ci_high": 0.06334841628959276,
+      "p_value": 0.614,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Stacked fusion",
+      "metric": "roc_auc",
+      "difference": 0.00424353156126589,
+      "ci_low": 0.00013999917268796294,
+      "ci_high": 0.008201138958665,
+      "p_value": 0.045,
+      "draws": 2000
+    },
+    {
+      "comparison": "Gradient boosting vs Stacked fusion",
+      "metric": "precision_at_30",
+      "difference": -0.009049773755656187,
+      "ci_low": -0.022624434389140302,
+      "ci_high": 0.013574660633484115,
+      "p_value": 0.763,
+      "draws": 2000
+    }
+  ],
+  "budget_profiles": {
+    "base_rate": 0.5101763907734057,
+    "rates": [
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "systems": {
+      "Knowledge base": [
+        {
+          "rate": 0.1,
+          "precision": 0.6351351351351351,
+          "recall": 0.125
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.6486486486486487,
+          "recall": 0.19148936170212766
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.6462585034013606,
+          "recall": 0.2526595744680851
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.6304347826086957,
+          "recall": 0.30851063829787234
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.6334841628959276,
+          "recall": 0.3723404255319149
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.6033898305084746,
+          "recall": 0.4734042553191489
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.592391304347826,
+          "recall": 0.5797872340425532
+        }
+      ],
+      "Logistic regression": [
+        {
+          "rate": 0.1,
+          "precision": 0.8918918918918919,
+          "recall": 0.17553191489361702
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.8558558558558559,
+          "recall": 0.2526595744680851
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.8163265306122449,
+          "recall": 0.3191489361702128
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7880434782608695,
+          "recall": 0.38563829787234044
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.751131221719457,
+          "recall": 0.44148936170212766
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.711864406779661,
+          "recall": 0.5585106382978723
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.6956521739130435,
+          "recall": 0.6808510638297872
+        }
+      ],
+      "Decision tree": [
+        {
+          "rate": 0.1,
+          "precision": 0.7972972972972973,
+          "recall": 0.15691489361702127
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.7837837837837838,
+          "recall": 0.23138297872340424
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.7687074829931972,
+          "recall": 0.300531914893617
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7663043478260869,
+          "recall": 0.375
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.751131221719457,
+          "recall": 0.44148936170212766
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.7288135593220338,
+          "recall": 0.5718085106382979
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.7038043478260869,
+          "recall": 0.6888297872340425
+        }
+      ],
+      "Gradient boosting": [
+        {
+          "rate": 0.1,
+          "precision": 0.8648648648648649,
+          "recall": 0.1702127659574468
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.8198198198198198,
+          "recall": 0.24202127659574468
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.8095238095238095,
+          "recall": 0.31648936170212766
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7989130434782609,
+          "recall": 0.39095744680851063
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.7601809954751131,
+          "recall": 0.44680851063829785
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.7389830508474576,
+          "recall": 0.5797872340425532
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.6875,
+          "recall": 0.6728723404255319
+        }
+      ],
+      "Stacked fusion": [
+        {
+          "rate": 0.1,
+          "precision": 0.8648648648648649,
+          "recall": 0.1702127659574468
+        },
+        {
+          "rate": 0.15,
+          "precision": 0.8288288288288288,
+          "recall": 0.24468085106382978
+        },
+        {
+          "rate": 0.2,
+          "precision": 0.7891156462585034,
+          "recall": 0.30851063829787234
+        },
+        {
+          "rate": 0.25,
+          "precision": 0.7989130434782609,
+          "recall": 0.39095744680851063
+        },
+        {
+          "rate": 0.3,
+          "precision": 0.7692307692307693,
+          "recall": 0.4521276595744681
+        },
+        {
+          "rate": 0.4,
+          "precision": 0.7322033898305085,
+          "recall": 0.574468085106383
+        },
+        {
+          "rate": 0.5,
+          "precision": 0.6875,
+          "recall": 0.6728723404255319
+        }
+      ]
+    }
+  }
+}

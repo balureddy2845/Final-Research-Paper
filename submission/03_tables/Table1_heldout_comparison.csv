@@ -1,0 +1,6 @@
+System,ROC-AUC,ROC-AUC 95% interval,PR-AUC,Brier,Precision at 30%,Precision at 30% 95% interval,Recall at 30%,Alerts at 30%
+Knowledge base,0.618,0.576–0.657,0.601,0.242,0.633,0.575–0.701,0.372,221
+Logistic regression,0.735,0.698–0.771,0.743,0.209,0.751,0.692–0.810,0.441,221
+Decision tree,0.729,0.691–0.764,0.702,0.212,0.751,0.697–0.810,0.441,221
+Gradient boosting,0.740,0.704–0.776,0.745,0.207,0.760,0.706–0.824,0.447,221
+Stacked fusion,0.736,0.699–0.771,0.743,0.208,0.769,0.715–0.828,0.452,221

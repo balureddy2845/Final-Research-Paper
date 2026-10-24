@@ -1,0 +1,12 @@
+KB-EWS supporting data
+
+metrics.json is the numeric source for Table 1, Table 2, the sensitivity check, the logistic coefficients, and the rule-firing rates.
+warning_cards.csv has one row for each of the 737 ventures first funded in 2012–2013.
+The reviewer fields are closure_probability, queue_rank, in_review_queue, and fired_rules.
+later_closed is the held-out outcome used to audit the queue. It is not a model input.
+
+The raw source is the Crunchbase Data Export of 4 December 2015, redistributed as CSV by Peter Tripp
+(github.com/notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0.
+Attribute Crunchbase. The raw company and round files are not included in this package.
+Commercial use of that extract requires a separate Crunchbase licence.
+Running python kbews.py with seed 7 rebuilds these files from that public export.

@@ -1,0 +1,7 @@
+Paste these five highlights into the Elsevier highlights boxes. Each is within the 85-character limit.
+
+1. Scores closure from the first priced round and blocks lifetime funding fields.  (78 characters)
+2. Four of seven certainty-factor rules survive a pre-test retention check.  (72 characters)
+3. Top 30% of booster scores: precision 0.760 against a base rate of 0.510.  (72 characters)
+4. Logistic regression matches the booster; stacking does not lift the queue.  (74 characters)
+5. Fired rules stay on the warning card and do not enter the probability.  (70 characters)

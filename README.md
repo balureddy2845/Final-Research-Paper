@@ -21,6 +21,10 @@ The script downloads two Crunchbase CSV files into `.cache/` (about 30 MB), fits
 
 Every number in Table 2 of the manuscript is copied from `metrics.json`. The random seed is 7. A full run takes about half a minute after the download.
 
+## Submission package
+
+`submission/` holds the files for the Knowledge-Based Systems upload page: the manuscript in Word and PDF, the three figures, both tables, `metrics.json` and `warning_cards.csv`, the graphical abstract, the supplement, the cover letter, and the highlights. `submission/UPLOAD_LIST.txt` maps each file to that page. Rebuild it with `python submission/build_package.py`. The raw Crunchbase files are not included.
+
 ## Data license
 
 The December 4, 2015 Crunchbase export is used under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). The CSV conversion is from [notpeter/crunchbase-data](https://github.com/notpeter/crunchbase-data) at commit `be8711fd`. Attribute Crunchbase. Non-commercial research use is allowed; commercial use needs a separate license from Crunchbase. This repository does not contain the raw files.
