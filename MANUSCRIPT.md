@@ -14,11 +14,11 @@ Keywords: knowledge-based systems; intelligent decision support; prediction and 
 
 ## 1. Introduction
 
-Closure, a change of ownership, and insolvency are different events, and survival studies often mix them [1]. For a digital venture the screening decision arrives at the first priced financing, not at the post-mortem. Digital entrepreneurship builds the offer, the channel, and the operating system together [2], and digital transformation renews the business model over time rather than in a single installation [3,4]. A warning that uses the last round cannot serve that decision.
+Closure, a change of ownership, and insolvency are different events, and survival studies often mix them [1]. Failure also leaves a process for the founder that a status field does not record [2,3]. For a digital venture the screening decision arrives at the first priced financing, not at the post-mortem. Digital entrepreneurship builds the offer, the channel, and the operating system together [4], and digitization is changing where entrepreneurial opportunity is formed [5]. Digital transformation renews the business model over time rather than in a single installation [6,7]. Innovativeness is not, by itself, a survival advantage at the start [8]. Conditions present at founding can still be visible in exit rates years later [9]. A warning that uses the last round cannot serve the first-round decision.
 
-Credit scoring has a long early-warning tradition that uses only what is known when the decision is made [5]. Venture classifiers often leave it. Cumulative capital, the round count, and the recency of the last round are larger because the firm lived long enough to raise again, and they stop when it dies. Crunchbase-style extracts are common in management research and carry known limits of coverage and outcome coding [6]. Without a fixed decision time they reward hindsight.
+Credit scoring has a long early-warning tradition that uses only what is known when the decision is made [10–13]. For a young firm, early financial indicators are one buffer against the liability of newness [14]. Venture classifiers often leave that discipline. Cumulative capital, the round count, and the recency of the last round are larger because the firm lived long enough to raise again, and they stop when it dies. Using those fields is leakage: the target has already entered the predictors [15]. Crunchbase-style extracts are common in management research and carry known limits of coverage and outcome coding [16]. The first priced round is still a real financing event, and venture capital is associated with later growth [17]. The count of nearby digital ventures is an ecosystem signal, not a substitute for the firm’s own first round [18]. Without a fixed decision time the extract rewards hindsight.
 
-Reviewers also speak in rules. A thin first round together with a broad category list is a different statement from a one-unit change in log capital. Certainty factors were built so a short rule base could accumulate graded evidence and stay readable [7]. KB-EWS places that rule base beside a statistical score and then tests, on a later year, whether merging the two improves ranking.
+Reviewers also speak in rules. A thin first round together with a broad category list is a different statement from a one-unit change in log capital. Certainty factors were built so a short rule base could accumulate graded evidence and stay readable [19]. The memberships that feed those rules are fuzzy degrees, not crisp thresholds [20]. A certainty factor is not itself a probability [21]. Building the rule base, and then withdrawing rules that contradict their own mechanism, is knowledge engineering rather than a post-hoc explanation [22]. The screen is a decision-support tool for a person who still chooses which ventures to review [23]. KB-EWS places that rule base beside a statistical score and then tests, on a later year, whether merging the two improves ranking.
 
 The contribution is threefold: (i) a decision-time formulation that admits only first-round signals and refuses lifetime funding fields in code; (ii) a seven-rule certainty-factor layer whose retention test withdraws any rule that points against its own mechanism on the training years; and (iii) a year-split benchmark with baselines, a fixed review budget, paired bootstrap tests, and a stacking test that is allowed to fail. The last item is part of the result. A warning system has to show when the rules should stay on the card and out of the probability.
 
@@ -30,7 +30,7 @@ The human decision is which first-round ventures to review. KB-EWS supports that
 
 The decision time is the earliest funding round with a positive disclosed amount. A venture enters if one of its categories is in a fixed digital lexicon (software, mobile, e-commerce, analytics, cloud, and the related labels in the program), both dates parse, and the first priced round falls within ten years of founding.
 
-The signal vector holds the log first-round amount, the log of one plus days from founding, the category count, digital depth (the share of categories in the lexicon), the log of one plus a trailing ecosystem count, round type, and country. The ecosystem count is the number of other digital ventures in the same region first funded in the previous three calendar years, excluding the focal year. Country uses the eight most common training countries, with the United States as the reference. Round type uses a venture round as the reference. Total capital, lifetime round count, last-round date, and status are banned. The program stops if any of them enters the design matrix.
+The signal vector holds the log first-round amount, the log of one plus days from founding, the category count, digital depth (the share of categories in the lexicon), the log of one plus a trailing ecosystem count, round type, and country. The ecosystem count is the number of other digital ventures in the same region first funded in the previous three calendar years, excluding the focal year [18]. Country uses the eight most common training countries, with the United States as the reference. Round type uses a venture round as the reference. Total capital, lifetime round count, last-round date, and status are banned [15]. The program stops if any of them enters the design matrix.
 
 The label is 1 when the recorded status is closed and 0 when it is acquired or an initial public offering. Ventures still operating on the export date are dropped. Some acquisitions are distress sales; the file does not say which [1]. The label is closure versus a recorded exit among ventures that had reached one of those states.
 
@@ -46,7 +46,7 @@ s_r = min_j μ_j (2)
 
 Training-year cuts, fixed before the test years are read, are as follows. Thin capital ramps from the 25th to the 60th percentile of log first-round amount, about $475,000 to $2.8 million. Slow funding ramps from the 40th to the 75th percentile of log days since founding, about 314 to 1,088 days. Broad scope ramps from 2 to 4 categories. Thin ecosystem ramps from about 11 to about 98 earlier peers in the region. Shallow digital depth uses the band 0.40–0.80, and deep digital depth uses 0.50–0.90. The complementary memberships define adequate capital, timely funding, narrow scope, and a dense ecosystem.
 
-Seven rules were specified with fixed certainty factors c_r. Evidence e_r = c_r s_r is pooled by the Shortliffe–Buchanan rule [7], inputs clipped to [−0.99, 0.99], in the order R1 to R7. The combination is given by Eq. (3):
+Seven rules were specified with fixed certainty factors c_r. Evidence e_r = c_r s_r is pooled by the Shortliffe–Buchanan rule [19], inputs clipped to [−0.99, 0.99], in the order R1 to R7. The combination is given by Eq. (3):
 
 CF(a, b) = a + b(1 − a) if a ≥ 0 and b ≥ 0; a + b(1 + a) if a ≤ 0 and b ≤ 0; (a + b) / (1 − min(|a|, |b|)) otherwise (3)
 
@@ -58,9 +58,9 @@ Retention uses 2006–2010 only. A rule is kept when its mean strength is at lea
 
 ### 2.3 Score, calibration, and stacking
 
-Logistic regression, a tree of depth at most 4 with at least 40 ventures per leaf, and a histogram gradient booster are fit on 2006–2010 [8]. The booster uses depth 3, learning rate 0.06, an L2 penalty of 0.1, balanced class weights, and early stopping on an internal 15% of the training years, which selected 84 trees. The 2011 year does not grow the trees. Logistic regression and the tree also use balanced class weights. Logistic regression is scaled with a scaler fit on the training years.
+Logistic regression, a tree of depth at most 4 with at least 40 ventures per leaf [24], and a histogram gradient booster are fit on 2006–2010 [25,26]. The booster uses depth 3, learning rate 0.06, an L2 penalty of 0.1, balanced class weights, and early stopping on an internal 15% of the training years, which selected 84 trees. The 2011 year does not grow the trees. Logistic regression and the tree also use balanced class weights. Logistic regression is scaled with a scaler fit on the training years.
 
-Each score, including the retained certainty factor, is mapped to a probability by a one-variable logistic fit on 2011 [9]. Stacked fusion is a further logistic regression on that same year, given by Eq. (4):
+Each score, including the retained certainty factor, is mapped to a probability by a one-variable logistic fit on 2011 [27,28]. Stacked fusion is a further logistic regression on that same year, given by Eq. (4):
 
 η = β0 + β1 logit(p_boost) + β2 CF (4)
 
@@ -92,11 +92,11 @@ Algorithm 1 summarizes this procedure. An initial knowledge base is revised on t
 
 ## 3. Experimental Design
 
-The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository. Fixed seeds ensure that the cohort, the retention decision, the five scores, both tables, and Figure 1 can be regenerated from the provided code.
+The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository. Fixed seeds ensure that the cohort, the retention decision, the five scores, both tables, and Figures 1–3 can be regenerated from the provided code.
 
 Of 66,368 companies and 114,949 rounds, 53,583 have a priced first round and 28,482 also match the lexicon. Dates and the ten-year window leave 21,407 ventures; 4,290 of them had a resolved status. The analysis sample is the 3,150 resolved ventures first funded in 2006–2013: 1,901 for training (closure share 0.426), 512 for 2011 (0.525), and 737 for test (0.510, of which 376 closed). Median first-round size is $1.65 million in training and $750,000 on the test years.
 
-Five systems were evaluated on those same 737 test ventures: the retained knowledge base, logistic regression, a depth-limited decision tree, the pre-specified depth-3 gradient booster, and the stacked fusion of booster and certainty factor. Uncertainty for a single system is a 1,000-draw bootstrap interval. Paired differences use 2,000 matched draws. The two-sided p-value is twice the smaller tail around zero. If no draw changes sign, p is reported as <0.001. The seed is 7. The 30% budget reviews the 221 highest scores.
+Five systems were evaluated on those same 737 test ventures: the retained knowledge base, logistic regression, a depth-limited decision tree, the pre-specified depth-3 gradient booster, and the stacked fusion of booster and certainty factor. Ranking is reported as the ROC area [29] and the precision-recall area [30]. Probability error is reported as the Brier score [31]. Uncertainty for a single system is a 1,000-draw bootstrap interval [32]. Paired differences use 2,000 matched draws. The two-sided p-value is twice the smaller tail around zero. If no draw changes sign, p is reported as <0.001. The seed is 7. The 30% budget reviews the 221 highest scores.
 
 Table 1. Held-out comparison on 737 ventures first funded in 2012–2013.
 
@@ -112,11 +112,17 @@ Intervals are 95% bootstrap percentiles. Lower Brier is better. Higher ROC-AUC, 
 
 Table 1 shows that the pre-specified depth-3 booster reached a ROC area of 0.740 (0.704–0.776) and precision 0.760 (0.706–0.824) when the highest-scoring 30% were reviewed. The booster’s top 30% contains 168 of 376 closures. Precision 0.760 is 1.49 times the test base rate of 0.510. Logistic regression reached 0.735 and precision 0.751. The tree reached 0.729 and the same precision, 0.751. The retained rules alone reached 0.618 and precision 0.633. Stacked fusion reached 0.736 and precision 0.769.
 
-That concentration is a usable screen. It is not evidence that the booster beats a linear model. Table 2 puts the ROC gap against logistic regression at 0.005 (p = 0.61) and the precision gap at 0.009 (p = 0.55). The tree is likewise inside the noise (p = 0.28 and p = 0.61). Most of the separable signal is linear in the early signals. The depth-3 booster remains the pre-specified score because that choice was made before the test year was read. At a 10% review budget, logistic precision is 0.892 and the booster’s is 0.865. At 30% the two have met. At 50% the four statistical scores sit near 0.69–0.70, still above the base rate of 0.510 and above the rule base.
+That concentration is a usable screen. It is not evidence that the booster beats a linear model. Table 2 puts the ROC gap against logistic regression at 0.005 (p = 0.61) and the precision gap at 0.009 (p = 0.55). The tree is likewise inside the noise (p = 0.28 and p = 0.61). Most of the separable signal is linear in the early signals. The depth-3 booster remains the pre-specified score because that choice was made before the test year was read.
 
-![Figure 1. Held-out ranking and review-budget precision](outputs/fig1_performance.png)
+![Figure 1. Held-out ROC curves](outputs/fig1_roc.png)
 
-Figure 1. Test ventures first funded in 2012–2013 (n = 737). (a) ROC curves. The solid navy curve is the pre-specified score. (b) Precision when a fixed share of ventures is reviewed. The dotted line is the test base rate, 0.510. At a 10% budget the logistic regression is the sharpest screen; at 30% it meets the booster.
+Figure 1. ROC curves for the 737 ventures first funded in 2012–2013. The solid navy curve is the pre-specified depth-3 booster. The diagonal is chance. The legend reports the ROC area of each score.
+
+At a 10% review budget, logistic precision is 0.892 and the booster’s is 0.865. At 30% the two have met. At 50% the four statistical scores sit near 0.69–0.70, still above the base rate of 0.510 and above the rule base.
+
+![Figure 2. Precision at a fixed review budget](outputs/fig2_budget.png)
+
+Figure 2. Precision when a fixed share of the 737 test ventures is reviewed. The dotted line is the test base rate, 0.510. At a 10% budget the logistic regression is the sharpest screen; at 30% it meets the booster.
 
 Table 2. Paired significance tests for the depth-3 booster versus the named alternative, on the same 737 ventures.
 
@@ -133,7 +139,11 @@ Table 2. Paired significance tests for the depth-3 booster versus the named alte
 
 Paired tests use 2,000 matched bootstrap draws of the same 737 ventures. The difference is booster minus alternative. Positive values favour the booster. ROC-AUC and precision at the 30% review budget are the decision-relevant metrics.
 
-The knowledge base is the part a reviewer can read, and it is not the ranker. Its ROC area of 0.618 is above chance, and the paired gap to the booster is 0.122 (p < 0.001). On the test years, which were not used to keep or drop rules, R2 fired for 47.9% of later closures and 29.9% of exits. R3 fired for 46.5% and 25.8%. R6, the protective rule, fired for 8.5% of closures and 18.8% of exits. R1 fired for 15.7% and 9.7%. The withdrawn rules do not separate the test outcomes in the direction originally written. Raising the retention margin from 0.02 to 0.05 drops R1 and moves the rule-base ROC area from 0.618 to 0.608. A margin of 0.00 retains the same four rules as 0.02. The primary rule set is not an artefact of a knife-edge threshold.
+The knowledge base is the part a reviewer can read, and it is not the ranker. Its ROC area of 0.618 is above chance, and the paired gap to the booster is 0.122 (p < 0.001). On the test years, which were not used to keep or drop rules, R2 fired for 47.9% of later closures and 29.9% of exits. R3 fired for 46.5% and 25.8%. R6, the protective rule, fired for 8.5% of closures and 18.8% of exits. R1 fired for 15.7% and 9.7%. The withdrawn rules do not separate the test outcomes in the direction originally written. Figure 3 shows that comparison for all seven rules. Raising the retention margin from 0.02 to 0.05 drops R1 and moves the rule-base ROC area from 0.618 to 0.608. A margin of 0.00 retains the same four rules as 0.02. The primary rule set is not an artefact of a knife-edge threshold.
+
+![Figure 3. Held-out firing of the seven certainty-factor rules](outputs/fig3_rules.png)
+
+Figure 3. Share of 2012–2013 ventures on which each rule reached strength 0.5. Navy bars are later closures (n = 376). Green bars are recorded exits (n = 361). Retention was fixed on 2006–2010 and was not revised on these years. R6 is protective, so a higher exit bar is the direction written into that rule. R4, R5, and R7 were withdrawn before the test years were scored.
 
 The class-balanced training regression shows why conjunctions and main effects are not the same statement. One standard deviation more log first-round amount lowers closure log-odds by 0.511, and one standard deviation more log ecosystem size lowers them by 0.328. Angel and seed rounds, relative to a venture round, raise log-odds by 0.333 and 0.163. A longer wait for the first round lowers closure log-odds by 0.276 per standard deviation, and a longer category list lowers them by 0.154, while digital depth raises them by 0.132. R1 survives only as the conjunction of a small round and a long wait. R2 and R3 survive because thin capital, not breadth or depth alone, is doing the work. Round type, which the rules do not encode, is one reason the rule base lags the regression.
 
@@ -157,7 +167,7 @@ The system supports a human screening decision with an inspectable rule layer an
 
 ## Data Availability
 
-Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, Table 2, and Figure 1 from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
+Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, Table 2, and Figures 1–3 from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
 
 ## Declaration of Competing Interest
 
@@ -165,7 +175,7 @@ The author declares that there are no known competing financial interests or per
 
 ## Declaration of Generative AI and AI-Assisted Technologies
 
-During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and manuscript formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data, tables, and figure were generated from executable code.
+During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and manuscript formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data, tables, and figures were generated from executable code.
 
 ## Funding
 
@@ -179,18 +189,64 @@ Balavaraprasad Reddy Yenugula: Conceptualization, Methodology, Software, Validat
 
 [1] Josefy, M. A., Harrison, J. S., Sirmon, D. G., & Matz Carnes, C. (2017). Living and dying: synthesizing the literature on firm survival and failure across stages of development. Academy of Management Annals, 11(2), 770–799. https://doi.org/10.5465/annals.2015.0148
 
-[2] Nambisan, S. (2017). Digital entrepreneurship: toward a digital technology perspective of entrepreneurship. Entrepreneurship Theory and Practice, 41(6), 1029–1055. https://doi.org/10.1111/etap.12254
+[2] Ucbasaran, D., Shepherd, D. A., Lockett, A., & Lyon, S. J. (2013). Life after business failure: The process and consequences of business failure for entrepreneurs. Journal of Management, 39(1), 163–202. https://doi.org/10.1177/0149206312457823
 
-[3] Vial, G. (2019). Understanding digital transformation: a review and a research agenda. Journal of Strategic Information Systems, 28(2), 118–144. https://doi.org/10.1016/j.jsis.2019.01.003
+[3] Shepherd, D. A. (2003). Learning from business failure: Propositions of grief recovery for the self-employed. Academy of Management Review, 28(2), 318–328. https://doi.org/10.5465/amr.2003.9416377
 
-[4] Warner, K. S. R., & Wäger, M. (2019). Building dynamic capabilities for digital transformation: an ongoing process of strategic renewal. Long Range Planning, 52(3), 326–349. https://doi.org/10.1016/j.lrp.2018.12.001
+[4] Nambisan, S. (2017). Digital entrepreneurship: toward a digital technology perspective of entrepreneurship. Entrepreneurship Theory and Practice, 41(6), 1029–1055. https://doi.org/10.1111/etap.12254
 
-[5] Altman, E. I. (1968). Financial ratios, discriminant analysis and the prediction of corporate bankruptcy. Journal of Finance, 23(4), 589–609. https://doi.org/10.1111/j.1540-6261.1968.tb00843.x
+[5] Nambisan, S., Wright, M., & Feldman, M. (2019). The digital transformation of innovation and entrepreneurship: Progress, challenges and key themes. Research Policy, 48(8), 103773. https://doi.org/10.1016/j.respol.2019.03.018
 
-[6] Dalle, J.-M., den Besten, M., & Menon, C. (2017). Using Crunchbase for economic and managerial research. OECD Science, Technology and Industry Working Papers, 2017/08. https://doi.org/10.1787/6c418d60-en
+[6] Vial, G. (2019). Understanding digital transformation: a review and a research agenda. Journal of Strategic Information Systems, 28(2), 118–144. https://doi.org/10.1016/j.jsis.2019.01.003
 
-[7] Shortliffe, E. H., & Buchanan, B. G. (1975). A model of inexact reasoning in medicine. Mathematical Biosciences, 23(3–4), 351–379. https://doi.org/10.1016/0025-5564(75)90047-4
+[7] Warner, K. S. R., & Wäger, M. (2019). Building dynamic capabilities for digital transformation: an ongoing process of strategic renewal. Long Range Planning, 52(3), 326–349. https://doi.org/10.1016/j.lrp.2018.12.001
 
-[8] Friedman, J. H. (2001). Greedy function approximation: a gradient boosting machine. Annals of Statistics, 29(5), 1189–1232. https://doi.org/10.1214/aos/1013203451
+[8] Hyytinen, A., Pajarinen, M., & Rouvinen, P. (2015). Does innovativeness reduce startup survival rates? Journal of Business Venturing, 30(4), 564–581. https://doi.org/10.1016/j.jbusvent.2014.10.001
 
-[9] Platt, J. C. (1999). Probabilistic outputs for support vector machines and comparisons to regularized likelihood methods. In A. J. Smola, P. Bartlett, B. Schölkopf, & D. Schuurmans (Eds.), Advances in Large Margin Classifiers (pp. 61–74). MIT Press.
+[9] Geroski, P. A., Mata, J., & Portugal, P. (2010). Founding conditions and the survival of new firms. Strategic Management Journal, 31(5), 510–529. https://doi.org/10.1002/smj.823
+
+[10] Altman, E. I. (1968). Financial ratios, discriminant analysis and the prediction of corporate bankruptcy. Journal of Finance, 23(4), 589–609. https://doi.org/10.1111/j.1540-6261.1968.tb00843.x
+
+[11] Beaver, W. H. (1966). Financial ratios as predictors of failure. Journal of Accounting Research, 4, 71–111. https://doi.org/10.2307/2490171
+
+[12] Ohlson, J. A. (1980). Financial ratios and the probabilistic prediction of bankruptcy. Journal of Accounting Research, 18(1), 109–131. https://doi.org/10.2307/2490395
+
+[13] Shumway, T. (2001). Forecasting bankruptcy more accurately: A simple hazard model. Journal of Business, 74(1), 101–124. https://doi.org/10.1086/209665
+
+[14] Wiklund, J., Baker, T., & Shepherd, D. (2010). The age-effect of financial indicators as buffers against the liability of newness. Journal of Business Venturing, 25(4), 423–437. https://doi.org/10.1016/j.jbusvent.2008.10.011
+
+[15] Kaufman, S., Rosset, S., Perlich, C., & Stitelman, O. (2012). Leakage in data mining: Formulation, detection, and avoidance. ACM Transactions on Knowledge Discovery from Data, 6(4), Article 15. https://doi.org/10.1145/2382577.2382579
+
+[16] Dalle, J.-M., den Besten, M., & Menon, C. (2017). Using Crunchbase for economic and managerial research. OECD Science, Technology and Industry Working Papers, 2017/08. https://doi.org/10.1787/6c418d60-en
+
+[17] Davila, A., Foster, G., & Gupta, M. (2003). Venture capital financing and the growth of startup firms. Journal of Business Venturing, 18(6), 689–708. https://doi.org/10.1016/S0883-9026(02)00127-1
+
+[18] Autio, E., Nambisan, S., Thomas, L. D. W., & Wright, M. (2018). Digital affordances, spatial affordances, and the genesis of entrepreneurial ecosystems. Strategic Entrepreneurship Journal, 12(1), 72–95. https://doi.org/10.1002/sej.1266
+
+[19] Shortliffe, E. H., & Buchanan, B. G. (1975). A model of inexact reasoning in medicine. Mathematical Biosciences, 23(3–4), 351–379. https://doi.org/10.1016/0025-5564(75)90047-4
+
+[20] Zadeh, L. A. (1965). Fuzzy sets. Information and Control, 8(3), 338–353. https://doi.org/10.1016/S0019-9958(65)90241-X
+
+[21] Heckerman, D. (1986). Probabilistic interpretations for MYCIN’s certainty factors. In L. N. Kanal & J. F. Lemmer (Eds.), Uncertainty in Artificial Intelligence (pp. 167–196). North-Holland. https://doi.org/10.1016/B978-0-444-70058-2.50017-6
+
+[22] Studer, R., Benjamins, V. R., & Fensel, D. (1998). Knowledge engineering: Principles and methods. Data & Knowledge Engineering, 25(1–2), 161–197. https://doi.org/10.1016/S0169-023X(97)00056-6
+
+[23] Shim, J. P., Warkentin, M., Courtney, J. F., Power, D. J., Sharda, R., & Carlsson, C. (2002). Past, present, and future of decision support technology. Decision Support Systems, 33(2), 111–126. https://doi.org/10.1016/S0167-9236(01)00139-7
+
+[24] Breiman, L., Friedman, J. H., Olshen, R. A., & Stone, C. J. (1984). Classification and Regression Trees. Wadsworth.
+
+[25] Friedman, J. H. (2001). Greedy function approximation: a gradient boosting machine. Annals of Statistics, 29(5), 1189–1232. https://doi.org/10.1214/aos/1013203451
+
+[26] Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. Advances in Neural Information Processing Systems, 30, 3146–3154.
+
+[27] Platt, J. C. (1999). Probabilistic outputs for support vector machines and comparisons to regularized likelihood methods. In A. J. Smola, P. Bartlett, B. Schölkopf, & D. Schuurmans (Eds.), Advances in Large Margin Classifiers (pp. 61–74). MIT Press.
+
+[28] Niculescu-Mizil, A., & Caruana, R. (2005). Predicting good probabilities with supervised learning. In Proceedings of the 22nd International Conference on Machine Learning (pp. 625–632). https://doi.org/10.1145/1102351.1102430
+
+[29] Fawcett, T. (2006). An introduction to ROC analysis. Pattern Recognition Letters, 27(8), 861–874. https://doi.org/10.1016/j.patrec.2005.10.010
+
+[30] Saito, T., & Rehmsmeier, M. (2015). The precision-recall plot is more informative than the ROC plot when evaluating binary classifiers on imbalanced datasets. PLOS ONE, 10(3), e0118432. https://doi.org/10.1371/journal.pone.0118432
+
+[31] Brier, G. W. (1950). Verification of forecasts expressed in terms of probability. Monthly Weather Review, 78(1), 1–3. https://doi.org/10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2
+
+[32] Efron, B. (1979). Bootstrap methods: Another look at the jackknife. Annals of Statistics, 7(1), 1–26. https://doi.org/10.1214/aos/1176344552

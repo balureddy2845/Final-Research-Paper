@@ -847,15 +847,16 @@ def style_axes(ax: plt.Axes) -> None:
     ax.tick_params(labelsize=8)
 
 
-def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict) -> None:
-    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8.5, "axes.linewidth": 0.8})
-    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.15))
-    y = fitted["y"]["test"]
-    order = ["Knowledge base", "Decision tree", "Logistic regression", "Stacked fusion", "Gradient boosting"]
-    by_name = {row["system"]: row for row in rows}
+def _curve_order() -> list[str]:
+    return ["Knowledge base", "Decision tree", "Logistic regression", "Stacked fusion", "Gradient boosting"]
 
-    ax = axes[0]
-    for name in order:
+
+def draw_roc(path: Path, fitted: dict, rows: list[dict]) -> None:
+    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 9, "axes.linewidth": 0.8})
+    fig, ax = plt.subplots(figsize=(6.4, 5.3))
+    y = fitted["y"]["test"]
+    by_name = {row["system"]: row for row in rows}
+    for name in _curve_order():
         scores = fitted["calibrated"][name]["test"]
         fpr, tpr, _ = roc_curve(y, scores)
         issued = name == "Gradient boosting"
@@ -863,7 +864,7 @@ def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict)
             fpr,
             tpr,
             color=COLORS[name],
-            lw=2.3 if issued else 1.25,
+            lw=2.4 if issued else 1.35,
             ls="--" if name == "Stacked fusion" else "-",
             label=f"{name}  {by_name[name]['roc_auc']:.3f}",
             zorder=3 if issued else 2,
@@ -875,11 +876,17 @@ def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.set_aspect("equal", adjustable="box")
-    ax.legend(frameon=False, loc="lower right", fontsize=7.0)
-    ax.set_title("(a)  Held-out ROC, first rounds in 2012–2013", loc="left", fontsize=9.5, pad=8)
+    ax.legend(frameon=False, loc="lower right", fontsize=8)
+    ax.set_title("Held-out ROC, first rounds in 2012–2013", loc="left", fontsize=11, pad=8)
+    fig.tight_layout(pad=0.5)
+    fig.savefig(path, dpi=400, facecolor="white")
+    plt.close(fig)
 
-    ax = axes[1]
-    for name in order:
+
+def draw_budget(path: Path, profiles: dict) -> None:
+    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 9, "axes.linewidth": 0.8})
+    fig, ax = plt.subplots(figsize=(6.6, 4.8))
+    for name in _curve_order():
         series = profiles["systems"][name]
         xs = [100 * item["rate"] for item in series]
         ys = [item["precision"] for item in series]
@@ -888,10 +895,10 @@ def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict)
             xs,
             ys,
             color=COLORS[name],
-            lw=2.3 if issued else 1.25,
+            lw=2.4 if issued else 1.35,
             ls="--" if name == "Stacked fusion" else "-",
             marker="o",
-            markersize=3.4 if issued else 2.6,
+            markersize=4.2 if issued else 3.2,
             label=name,
             zorder=3 if issued else 2,
         )
@@ -901,9 +908,41 @@ def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict)
     ax.set_ylabel("Precision among reviewed ventures")
     ax.set_xlim(8, 52)
     ax.set_ylim(0.45, 0.95)
-    ax.legend(frameon=False, fontsize=7.0, loc="upper right")
-    ax.set_title("(b)  Precision at a fixed review budget", loc="left", fontsize=9.5, pad=8)
-    fig.tight_layout(pad=0.6)
+    ax.legend(frameon=False, fontsize=8, loc="upper right")
+    ax.set_title("Precision at a fixed review budget", loc="left", fontsize=11, pad=8)
+    fig.tight_layout(pad=0.5)
+    fig.savefig(path, dpi=400, facecolor="white")
+    plt.close(fig)
+
+
+def draw_rules(path: Path, firing: list[dict]) -> None:
+    """Held-out firing rates. Retention was fixed before these years were scored."""
+    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 9, "axes.linewidth": 0.8})
+    order = ["R7", "R5", "R4", "R6", "R3", "R2", "R1"]
+    by_code = {row["code"]: row for row in firing}
+    rows = [by_code[code] for code in order]
+    fig, ax = plt.subplots(figsize=(7.4, 5.2))
+    y = np.arange(len(rows))
+    height = 0.36
+    closure = [row["fire_rate_failure"] for row in rows]
+    exit_rate = [row["fire_rate_exit"] for row in rows]
+    ax.barh(y + height / 2, closure, height=height, color="#1F4E79", label="Later closure", zorder=2)
+    ax.barh(y - height / 2, exit_rate, height=height, color="#1B9E77", label="Recorded exit", zorder=2)
+    ax.axhline(2.5, color="#94A3B8", lw=0.7, ls="--")
+    labels = []
+    for row in rows:
+        status = "retained" if row["retained"] else "withdrawn"
+        labels.append(f"{row['code']}  {row['name']}  ({status})")
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels)
+    ax.set_xlim(0, 0.62)
+    ax.set_xlabel("Share of ventures with rule strength at least 0.5")
+    style_axes(ax)
+    ax.tick_params(axis="y", length=0)
+    ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.55, -0.16), ncol=2, fontsize=8)
+    ax.set_title("Held-out rule firing, first rounds in 2012–2013", loc="left", fontsize=11, pad=8)
+    fig.tight_layout(pad=0.45)
+    fig.subplots_adjust(bottom=0.18)
     fig.savefig(path, dpi=400, facecolor="white")
     plt.close(fig)
 
@@ -941,7 +980,9 @@ def main() -> None:
     )
     OUT.mkdir(parents=True, exist_ok=True)
     cards = write_warning_cards(parts["test"], fitted, OUT / "warning_cards.csv")
-    draw_performance(OUT / "fig1_performance.png", fitted, rows, profiles)
+    draw_roc(OUT / "fig1_roc.png", fitted, rows)
+    draw_budget(OUT / "fig2_budget.png", profiles)
+    draw_rules(OUT / "fig3_rules.png", firing)
     payload = {
         "data": {
             "source": "Crunchbase Data Export, 4 December 2015",
