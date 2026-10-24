@@ -17,20 +17,14 @@ import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     average_precision_score,
     brier_score_loss,
     roc_auc_score,
-    roc_curve,
 )
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
@@ -122,15 +116,6 @@ RULES = (
     Rule("R6", "Resourced focus", ("adequate_seed", "narrow_scope", "deep_digital"), -0.50, "Capital, focus, and digital depth aligned"),
     Rule("R7", "Embedded start", ("dense_ecosystem", "timely_funding"), -0.30, "Timely funding inside an active ecosystem"),
 )
-
-COLORS = {
-    "Knowledge base": "#6B4C9A",
-    "Logistic regression": "#1B9E77",
-    "Decision tree": "#7570B3",
-    "Gradient boosting": "#1F4E79",
-    "Stacked fusion": "#B45309",
-}
-
 
 def combine_cf(left: float, right: float) -> float:
     """Shortliffe-Buchanan certainty-factor combination."""
@@ -843,135 +828,6 @@ def rule_firing(labels: np.ndarray, strength: pd.DataFrame, retained: list[str])
     return rows
 
 
-def style_axes(ax: plt.Axes) -> None:
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.tick_params(labelsize=8)
-
-
-def draw_architecture(path: Path) -> None:
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Serif",
-            "font.size": 8.5,
-            "text.color": "#1c2430",
-            "mathtext.fontset": "dejavuserif",
-        }
-    )
-    fig, ax = plt.subplots(figsize=(10.6, 4.15))
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.axis("off")
-    fig.patch.set_facecolor("white")
-
-    def box(x, y, w, h, face, edge, title, body):
-        ax.add_patch(
-            FancyBboxPatch(
-                (x, y),
-                w,
-                h,
-                boxstyle="round,pad=0.008,rounding_size=0.012",
-                facecolor=face,
-                edgecolor=edge,
-                linewidth=1.25,
-            )
-        )
-        ax.text(x + 0.012, y + h - 0.045, title, ha="left", va="top", fontsize=8.4, color=edge)
-        ax.text(x + w / 2, y + h / 2 - 0.03, body, ha="center", va="center", fontsize=7.5, linespacing=1.28, color="#1c2430")
-
-    def arrow(x1, y1, x2, y2):
-        ax.add_patch(
-            FancyArrowPatch((x1, y1), (x2, y2), arrowstyle="-|>", mutation_scale=11, linewidth=1.0, color="#243044")
-        )
-
-    box(0.025, 0.30, 0.18, 0.46, "#F4F7FB", "#12344D", "1  Decision time", "First priced round\nonly\n\nBanned: total capital,\nlater rounds, last-round date")
-    box(0.255, 0.30, 0.20, 0.46, "#F4F7FB", "#12344D", "2  Early signals", "log capital, log days,\nscope, digital depth,\n3-year ecosystem,\nround type, country")
-    box(0.51, 0.55, 0.22, 0.32, "#E7F0FA", "#12344D", "3a  Issued score", "Depth-3 gradient boosting\nFit on 2006–2010\nPlatt map fit on 2011")
-    box(0.51, 0.16, 0.22, 0.32, "#F6F1FA", "#5C4B8A", "3b  Audit trail", "Seven certainty-factor rules\nKeep a rule only if its\n2006–2010 direction agrees")
-    box(0.785, 0.30, 0.19, 0.46, "#F4F7FB", "#12344D", "4  Warning card", "Closure probability\n+\nrules whose strength\nreached 0.5")
-
-    arrow(0.205, 0.53, 0.255, 0.53)
-    arrow(0.455, 0.62, 0.51, 0.71)
-    arrow(0.455, 0.44, 0.51, 0.32)
-    arrow(0.73, 0.71, 0.785, 0.60)
-    arrow(0.73, 0.32, 0.785, 0.44)
-
-    ax.add_patch(FancyBboxPatch((0.025, 0.03), 0.95, 0.09, boxstyle="round,pad=0.004,rounding_size=0.008", facecolor="#F7F4EC", edgecolor="#C4A46B", linewidth=0.9))
-    ax.text(
-        0.50,
-        0.075,
-        "Held-out card, first rounds in 2012–2013:  n = 737,  base rate 0.510.   Top 30% of booster scores: precision 0.760, recall 0.447.",
-        ha="center",
-        va="center",
-        fontsize=8.0,
-        color="#3d3422",
-    )
-    fig.tight_layout(pad=0.25)
-    fig.savefig(path, dpi=400, facecolor="white")
-    plt.close(fig)
-
-
-def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict) -> None:
-    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8.5, "axes.linewidth": 0.8})
-    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.15))
-    y = fitted["y"]["test"]
-    order = ["Knowledge base", "Decision tree", "Logistic regression", "Stacked fusion", "Gradient boosting"]
-    by_name = {row["system"]: row for row in rows}
-
-    ax = axes[0]
-    for name in order:
-        scores = fitted["calibrated"][name]["test"]
-        fpr, tpr, _ = roc_curve(y, scores)
-        issued = name == "Gradient boosting"
-        ax.plot(
-            fpr,
-            tpr,
-            color=COLORS[name],
-            lw=2.3 if issued else 1.25,
-            ls="--" if name == "Stacked fusion" else "-",
-            label=f"{name}  {by_name[name]['roc_auc']:.3f}",
-            zorder=3 if issued else 2,
-        )
-    ax.plot([0, 1], [0, 1], color="#94A3B8", lw=0.8, ls=":")
-    style_axes(ax)
-    ax.set_xlabel("False-alarm rate")
-    ax.set_ylabel("Closure recall")
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.set_aspect("equal", adjustable="box")
-    ax.legend(frameon=False, loc="lower right", fontsize=7.0)
-    ax.set_title("(a)  Held-out ROC, first rounds in 2012–2013", loc="left", fontsize=9.5, pad=8)
-
-    ax = axes[1]
-    for name in order:
-        series = profiles["systems"][name]
-        xs = [100 * item["rate"] for item in series]
-        ys = [item["precision"] for item in series]
-        issued = name == "Gradient boosting"
-        ax.plot(
-            xs,
-            ys,
-            color=COLORS[name],
-            lw=2.3 if issued else 1.25,
-            ls="--" if name == "Stacked fusion" else "-",
-            marker="o",
-            markersize=3.4 if issued else 2.6,
-            label=name,
-            zorder=3 if issued else 2,
-        )
-    ax.axhline(profiles["base_rate"], color="#64748B", lw=0.9, ls=":", label=f"Base rate  {profiles['base_rate']:.3f}")
-    style_axes(ax)
-    ax.set_xlabel("Review budget (% of test ventures)")
-    ax.set_ylabel("Precision among reviewed ventures")
-    ax.set_xlim(8, 52)
-    ax.set_ylim(0.45, 0.95)
-    ax.legend(frameon=False, fontsize=7.0, loc="upper right")
-    ax.set_title("(b)  Precision at a fixed review budget", loc="left", fontsize=9.5, pad=8)
-    fig.tight_layout(pad=0.6)
-    fig.savefig(path, dpi=400, facecolor="white")
-    plt.close(fig)
-
-
 def json_ready(value):
     if isinstance(value, dict):
         return {k: json_ready(v) for k, v in value.items()}
@@ -1005,8 +861,6 @@ def main() -> None:
     )
     OUT.mkdir(parents=True, exist_ok=True)
     cards = write_warning_cards(parts["test"], fitted, OUT / "warning_cards.csv")
-    draw_architecture(OUT / "fig1_architecture.png")
-    draw_performance(OUT / "fig2_performance.png", fitted, rows, profiles)
     payload = {
         "data": {
             "source": "Crunchbase Data Export, 4 December 2015",

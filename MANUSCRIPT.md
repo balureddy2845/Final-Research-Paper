@@ -88,15 +88,15 @@ Output: for each test venture, a closure probability and the retained rules that
 
 8: Evaluate precision and recall inside pre-set review budgets of 20% and 30%. Do not choose the budget on the test labels.
 
-Algorithm 1 summarizes this procedure. An initial knowledge base is revised on the training years, the statistical scores are fit only on those years, and 2011 is used only to calibrate probabilities and to estimate Eq. (4). On the later cohort the program writes one warning card per venture. The two fields a reviewer would see are the calibrated closure probability and the retained rules whose strength reached 0.5. Ranking those probabilities and reviewing the highest-scoring 30% is the action. Section 4 tests that action, and it tests the alternative in which the certainty factor is allowed to change the probability. The system is the program `kbews.py`. For each of the 737 ventures first funded in 2012–2013 it writes one row of `outputs/warning_cards.csv`. The file stores the later closure beside the card so the action can be checked. That label is not an input, and it would not be on the card at the first round.
+Algorithm 1 summarizes this procedure. An initial knowledge base is revised on the training years, the statistical scores are fit only on those years, and 2011 is used only to calibrate probabilities and to estimate Eq. (4). On the later cohort the program writes one warning card per venture. The two fields a reviewer would see are the calibrated closure probability and the retained rules whose strength reached 0.5. Ranking those probabilities and reviewing the highest-scoring 30% is the action. Table 1 and Table 2 test that action, and they test the alternative in which the certainty factor is allowed to change the probability. The system is the program `kbews.py`. For each of the 737 ventures first funded in 2012–2013 it writes one row of `outputs/warning_cards.csv`. The file stores the later closure beside the card so the action can be checked. That label is not an input, and it would not be on the card at the first round.
 
 ## 3. Experimental Design
 
-The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository. Fixed seeds ensure that the cohort, the retention decision, the five scores, and both figures can be regenerated from the provided code.
+The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository. Fixed seeds ensure that the cohort, the retention decision, the five scores, and both tables can be regenerated from the provided code.
 
 Of 66,368 companies and 114,949 rounds, 53,583 have a priced first round and 28,482 also match the lexicon. Dates and the ten-year window leave 21,407 ventures; 4,290 of them had a resolved status. The analysis sample is the 3,150 resolved ventures first funded in 2006–2013: 1,901 for training (closure share 0.426), 512 for 2011 (0.525), and 737 for test (0.510, of which 376 closed). Median first-round size is $1.65 million in training and $750,000 on the test years.
 
-Five systems were evaluated on those same 737 test ventures: the retained knowledge base, logistic regression, a depth-limited decision tree, the pre-specified depth-3 gradient booster, and the stacked fusion of booster and certainty factor. Uncertainty for a single system is a 1,000-draw bootstrap interval. Paired differences use 2,000 matched draws. The two-sided p-value is twice the smaller tail around zero. If no draw changes sign, p is reported as <0.001. The seed is 7. The 30% budget reviews the 221 highest scores. Figure 1 is the decision path. Figure 2 is the held-out ranking and the precision of a review budget from 10% to 50%.
+Five systems were evaluated on those same 737 test ventures: the retained knowledge base, logistic regression, a depth-limited decision tree, the pre-specified depth-3 gradient booster, and the stacked fusion of booster and certainty factor. Uncertainty for a single system is a 1,000-draw bootstrap interval. Paired differences use 2,000 matched draws. The two-sided p-value is twice the smaller tail around zero. If no draw changes sign, p is reported as <0.001. The seed is 7. The 30% budget reviews the 221 highest scores.
 
 Table 1. Held-out comparison on 737 ventures first funded in 2012–2013.
 
@@ -110,15 +110,9 @@ Table 1. Held-out comparison on 737 ventures first funded in 2012–2013.
 
 Intervals are 95% bootstrap percentiles. Lower Brier is better. Higher ROC-AUC, PR-AUC, precision, and recall are better.
 
-## 4. Results and Discussion
-
 Table 1 shows that the pre-specified depth-3 booster reached a ROC area of 0.740 (0.704–0.776) and precision 0.760 (0.706–0.824) when the highest-scoring 30% were reviewed. The booster’s top 30% contains 168 of 376 closures. Precision 0.760 is 1.49 times the test base rate of 0.510. Logistic regression reached 0.735 and precision 0.751. The tree reached 0.729 and the same precision, 0.751. The retained rules alone reached 0.618 and precision 0.633. Stacked fusion reached 0.736 and precision 0.769.
 
-That concentration is a usable screen. It is not evidence that the booster beats a linear model. Table 2 puts the ROC gap against logistic regression at 0.005 (p = 0.61) and the precision gap at 0.009 (p = 0.55). The tree is likewise inside the noise (p = 0.28 and p = 0.61). Most of the separable signal is linear in the early signals. The depth-3 booster remains the pre-specified score because that choice was made before the test year was read.
-
-![Figure 1. Decision path of the early-warning card](outputs/fig1_architecture.png)
-
-Figure 1. KB-EWS at the first priced round. The issued probability is the depth-3 booster calibrated on 2011. Retained certainty-factor rules are attached when their strength reaches 0.5. Stacking the two into one probability is estimated and then tested; this section shows that it does not improve the held-out rank.
+That concentration is a usable screen. It is not evidence that the booster beats a linear model. Table 2 puts the ROC gap against logistic regression at 0.005 (p = 0.61) and the precision gap at 0.009 (p = 0.55). The tree is likewise inside the noise (p = 0.28 and p = 0.61). Most of the separable signal is linear in the early signals. The depth-3 booster remains the pre-specified score because that choice was made before the test year was read. At a 10% review budget, logistic precision is 0.892 and the booster’s is 0.865. At 30% the two have met. At 50% the four statistical scores sit near 0.69–0.70, still above the base rate of 0.510 and above the rule base.
 
 Table 2. Paired significance tests for the depth-3 booster versus the named alternative, on the same 737 ventures.
 
@@ -141,19 +135,15 @@ The class-balanced training regression shows why conjunctions and main effects a
 
 Stacked fusion estimates β1 = 1.034 on the booster logit and β2 = −0.233 on the certainty factor (intercept −0.128). Once the booster is known, a higher failure certainty factor slightly lowers the stacked probability. The ROC area falls by 0.004 (p = 0.045). Precision at 30% moves from 0.760 to 0.769, and that difference is compatible with noise (p = 0.76). The rules stay on the warning card. They do not enter the issued probability.
 
-![Figure 2. Held-out ranking and review-budget precision](outputs/fig2_performance.png)
-
-Figure 2. Test ventures first funded in 2012–2013 (n = 737). (a) ROC curves. The solid navy curve is the pre-specified score. (b) Precision when a fixed share of ventures is reviewed. The dotted line is the test base rate, 0.510. At a 10% budget the logistic regression is the sharpest screen (precision 0.892, against 0.865 for the booster); at 30% the two curves have met; by 50% all four statistical scores sit near 0.69–0.70, still above the base rate and above the rule base.
-
 The two fields on the card are the decision-support result. The statistical layer ranks ventures inside a human review budget. The knowledge layer names which retained mechanism crossed 0.5. Explainability is that fired rule and its certainty factor, not a post-hoc importance score. Stacking the rule into the probability does not improve the rank the reviewer would act on.
 
-## 5. Limitations
+## 4. Limitations
 
 The association is not an effect of a digital-transformation program. The export records categories, a first round, and a later status. It does not record a transformation project inside the firm. Operating ventures are omitted, so 0.510 is not a population failure rate. Some acquisitions are failures under another name. Categories can be edited after founding. Ecosystem counts rise across the decade, and the test years sit in denser regions than the training years (median peers 59, then 124, then 156). The score uses only the first round. A later warning could be sharper and would answer a different question.
 
 The booster was chosen as the primary score before the paired tests were read. Those tests then showed that logistic regression matches it. Reporting the booster as if it had won a significant comparison would overstate Table 2. The benchmark is one public extract with a December 2015 horizon. A second geography, a later extract, or a round-level file that supports a true survival time would be a different study. The retention margin of 0.02 was set as a small practical gap, and the sensitivity above is the check on that choice.
 
-## 6. Conclusion
+## 5. Conclusion
 
 This Short Communication presented KB-EWS, a knowledge-based early-warning system for the first priced round of a digital venture. It returns a calibrated closure probability and the retained certainty-factor rules that fired, and a fixed budget turns that probability into a review queue.
 
@@ -163,7 +153,7 @@ The system supports a human screening decision with an inspectable rule layer an
 
 ## Data Availability
 
-Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, Table 2, and both figures from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
+Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, and Table 2 from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
 
 ## Declaration of Competing Interest
 
@@ -171,7 +161,7 @@ The author declares that there are no known competing financial interests or per
 
 ## Declaration of Generative AI and AI-Assisted Technologies
 
-During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and manuscript formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data, tables, and figures were generated from executable code.
+During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and manuscript formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data and tables were generated from executable code.
 
 ## Funding
 
