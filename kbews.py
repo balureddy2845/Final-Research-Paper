@@ -17,6 +17,10 @@ import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import HistGradientBoostingClassifier
@@ -25,6 +29,7 @@ from sklearn.metrics import (
     average_precision_score,
     brier_score_loss,
     roc_auc_score,
+    roc_curve,
 )
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
@@ -106,6 +111,14 @@ class Rule:
     cf: float
     mechanism: str
 
+
+COLORS = {
+    "Knowledge base": "#6B4C9A",
+    "Logistic regression": "#1B9E77",
+    "Decision tree": "#7570B3",
+    "Gradient boosting": "#1F4E79",
+    "Stacked fusion": "#B45309",
+}
 
 RULES = (
     Rule("R1", "Resource strain", ("thin_seed", "slow_funding"), 0.55, "Scaling a digital model without slack"),
@@ -828,6 +841,73 @@ def rule_firing(labels: np.ndarray, strength: pd.DataFrame, retained: list[str])
     return rows
 
 
+def style_axes(ax: plt.Axes) -> None:
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.tick_params(labelsize=8)
+
+
+def draw_performance(path: Path, fitted: dict, rows: list[dict], profiles: dict) -> None:
+    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8.5, "axes.linewidth": 0.8})
+    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.15))
+    y = fitted["y"]["test"]
+    order = ["Knowledge base", "Decision tree", "Logistic regression", "Stacked fusion", "Gradient boosting"]
+    by_name = {row["system"]: row for row in rows}
+
+    ax = axes[0]
+    for name in order:
+        scores = fitted["calibrated"][name]["test"]
+        fpr, tpr, _ = roc_curve(y, scores)
+        issued = name == "Gradient boosting"
+        ax.plot(
+            fpr,
+            tpr,
+            color=COLORS[name],
+            lw=2.3 if issued else 1.25,
+            ls="--" if name == "Stacked fusion" else "-",
+            label=f"{name}  {by_name[name]['roc_auc']:.3f}",
+            zorder=3 if issued else 2,
+        )
+    ax.plot([0, 1], [0, 1], color="#94A3B8", lw=0.8, ls=":")
+    style_axes(ax)
+    ax.set_xlabel("False-alarm rate")
+    ax.set_ylabel("Closure recall")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_aspect("equal", adjustable="box")
+    ax.legend(frameon=False, loc="lower right", fontsize=7.0)
+    ax.set_title("(a)  Held-out ROC, first rounds in 2012–2013", loc="left", fontsize=9.5, pad=8)
+
+    ax = axes[1]
+    for name in order:
+        series = profiles["systems"][name]
+        xs = [100 * item["rate"] for item in series]
+        ys = [item["precision"] for item in series]
+        issued = name == "Gradient boosting"
+        ax.plot(
+            xs,
+            ys,
+            color=COLORS[name],
+            lw=2.3 if issued else 1.25,
+            ls="--" if name == "Stacked fusion" else "-",
+            marker="o",
+            markersize=3.4 if issued else 2.6,
+            label=name,
+            zorder=3 if issued else 2,
+        )
+    ax.axhline(profiles["base_rate"], color="#64748B", lw=0.9, ls=":", label=f"Base rate  {profiles['base_rate']:.3f}")
+    style_axes(ax)
+    ax.set_xlabel("Review budget (% of test ventures)")
+    ax.set_ylabel("Precision among reviewed ventures")
+    ax.set_xlim(8, 52)
+    ax.set_ylim(0.45, 0.95)
+    ax.legend(frameon=False, fontsize=7.0, loc="upper right")
+    ax.set_title("(b)  Precision at a fixed review budget", loc="left", fontsize=9.5, pad=8)
+    fig.tight_layout(pad=0.6)
+    fig.savefig(path, dpi=400, facecolor="white")
+    plt.close(fig)
+
+
 def json_ready(value):
     if isinstance(value, dict):
         return {k: json_ready(v) for k, v in value.items()}
@@ -861,6 +941,7 @@ def main() -> None:
     )
     OUT.mkdir(parents=True, exist_ok=True)
     cards = write_warning_cards(parts["test"], fitted, OUT / "warning_cards.csv")
+    draw_performance(OUT / "fig1_performance.png", fitted, rows, profiles)
     payload = {
         "data": {
             "source": "Crunchbase Data Export, 4 December 2015",

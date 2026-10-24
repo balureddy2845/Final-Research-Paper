@@ -92,7 +92,7 @@ Algorithm 1 summarizes this procedure. An initial knowledge base is revised on t
 
 ## 3. Experimental Design
 
-The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository. Fixed seeds ensure that the cohort, the retention decision, the five scores, and both tables can be regenerated from the provided code.
+The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository. Fixed seeds ensure that the cohort, the retention decision, the five scores, both tables, and Figure 1 can be regenerated from the provided code.
 
 Of 66,368 companies and 114,949 rounds, 53,583 have a priced first round and 28,482 also match the lexicon. Dates and the ten-year window leave 21,407 ventures; 4,290 of them had a resolved status. The analysis sample is the 3,150 resolved ventures first funded in 2006–2013: 1,901 for training (closure share 0.426), 512 for 2011 (0.525), and 737 for test (0.510, of which 376 closed). Median first-round size is $1.65 million in training and $750,000 on the test years.
 
@@ -113,6 +113,10 @@ Intervals are 95% bootstrap percentiles. Lower Brier is better. Higher ROC-AUC, 
 Table 1 shows that the pre-specified depth-3 booster reached a ROC area of 0.740 (0.704–0.776) and precision 0.760 (0.706–0.824) when the highest-scoring 30% were reviewed. The booster’s top 30% contains 168 of 376 closures. Precision 0.760 is 1.49 times the test base rate of 0.510. Logistic regression reached 0.735 and precision 0.751. The tree reached 0.729 and the same precision, 0.751. The retained rules alone reached 0.618 and precision 0.633. Stacked fusion reached 0.736 and precision 0.769.
 
 That concentration is a usable screen. It is not evidence that the booster beats a linear model. Table 2 puts the ROC gap against logistic regression at 0.005 (p = 0.61) and the precision gap at 0.009 (p = 0.55). The tree is likewise inside the noise (p = 0.28 and p = 0.61). Most of the separable signal is linear in the early signals. The depth-3 booster remains the pre-specified score because that choice was made before the test year was read. At a 10% review budget, logistic precision is 0.892 and the booster’s is 0.865. At 30% the two have met. At 50% the four statistical scores sit near 0.69–0.70, still above the base rate of 0.510 and above the rule base.
+
+![Figure 1. Held-out ranking and review-budget precision](outputs/fig1_performance.png)
+
+Figure 1. Test ventures first funded in 2012–2013 (n = 737). (a) ROC curves. The solid navy curve is the pre-specified score. (b) Precision when a fixed share of ventures is reviewed. The dotted line is the test base rate, 0.510. At a 10% budget the logistic regression is the sharpest screen; at 30% it meets the booster.
 
 Table 2. Paired significance tests for the depth-3 booster versus the named alternative, on the same 737 ventures.
 
@@ -153,7 +157,7 @@ The system supports a human screening decision with an inspectable rule layer an
 
 ## Data Availability
 
-Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, and Table 2 from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
+Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, Table 2, and Figure 1 from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
 
 ## Declaration of Competing Interest
 
@@ -161,7 +165,7 @@ The author declares that there are no known competing financial interests or per
 
 ## Declaration of Generative AI and AI-Assisted Technologies
 
-During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and manuscript formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data and tables were generated from executable code.
+During preparation of this manuscript, AI-assisted tools were used for language drafting, editing, organization, and manuscript formatting support. The author reviewed and edited the content and takes full responsibility for the final manuscript. The experimental data, tables, and figure were generated from executable code.
 
 ## Funding
 
