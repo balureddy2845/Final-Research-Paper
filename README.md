@@ -16,6 +16,7 @@ The script downloads two Crunchbase CSV files into `.cache/` (about 30 MB), fits
 - `outputs/fig1_architecture.png`
 - `outputs/fig2_performance.png`
 - `outputs/metrics.json`
+- `outputs/warning_cards.csv` — one card per 2012–2013 venture, with the calibrated closure probability, the retained rules whose strength reached 0.5, and a flag for the top 30% review queue. `later_closed` is the held-out outcome used to audit that queue. It is not a model input.
 
 Every number in Table 2 of the manuscript is copied from `metrics.json`. The random seed is 7. A full run takes about half a minute after the download.
 

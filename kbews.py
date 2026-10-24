@@ -761,6 +761,63 @@ def sample_block(parts: dict[str, pd.DataFrame]) -> dict:
     return block
 
 
+def write_warning_cards(test: pd.DataFrame, fitted: dict, path: Path) -> dict:
+    """One card per held-out venture: issued probability, fired rules, review flag.
+
+    later_closed is the outcome used to audit the queue. It is not a model input
+    and would not be known when the card is issued.
+    """
+    frame = test.reset_index(drop=True)
+    strength = fitted["strength_test"].reset_index(drop=True)
+    prob = np.asarray(fitted["calibrated"]["Gradient boosting"]["test"], dtype=float)
+    labels = np.asarray(fitted["y"]["test"])
+    if not (len(frame) == len(strength) == len(prob) == len(labels)):
+        raise SystemExit("Warning-card rows are not aligned with the test cohort.")
+    retained = [rule for rule in RULES if rule.code in set(fitted["retained_codes"])]
+    n_alert = max(1, int(round(0.30 * len(frame))))
+    chosen = np.argpartition(prob, -n_alert)[-n_alert:]
+    in_queue = np.zeros(len(frame), dtype=bool)
+    in_queue[chosen] = True
+    order = np.lexsort((frame["permalink"].astype(str).to_numpy(), -prob))
+    rank = np.empty(len(frame), dtype=int)
+    rank[order] = np.arange(1, len(frame) + 1)
+    fired_text = []
+    for i in range(len(frame)):
+        parts_fired = []
+        for rule in retained:
+            value = float(strength.at[i, rule.code])
+            if value >= 0.5:
+                parts_fired.append(f"{rule.code} {rule.name} ({value:.2f})")
+        fired_text.append("; ".join(parts_fired))
+    cards = pd.DataFrame(
+        {
+            "permalink": frame["permalink"].astype(str),
+            "name": frame["name"].astype(str),
+            "first_year": frame["first_year"].astype(int),
+            "closure_probability": np.round(prob, 6),
+            "queue_rank": rank,
+            "in_review_queue": in_queue.astype(int),
+            "fired_rules": fired_text,
+            "later_closed": labels.astype(int),
+        }
+    )
+    cards = cards.sort_values(["queue_rank", "permalink"], kind="mergesort").reset_index(drop=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    cards.to_csv(path, index=False)
+    queue = cards[cards["in_review_queue"] == 1]
+    issued = topk_capture(labels, prob, 0.30)
+    summary = {
+        "file": "outputs/warning_cards.csv",
+        "n_cards": int(len(cards)),
+        "n_review": int(len(queue)),
+        "queue_precision": float(queue["later_closed"].mean()) if len(queue) else None,
+        "cards_with_a_fired_rule": int((cards["fired_rules"] != "").sum()),
+    }
+    if summary["n_review"] != int(issued["n_alert"]) or abs(summary["queue_precision"] - issued["precision"]) > 1e-12:
+        raise SystemExit("Warning-card queue does not match the 30% budget used in Table 1.")
+    return summary
+
+
 def rule_firing(labels: np.ndarray, strength: pd.DataFrame, retained: list[str]) -> list[dict]:
     rows = []
     failed = labels == 1
@@ -947,6 +1004,7 @@ def main() -> None:
         fitted["calibrated"]["Gradient boosting"]["test"],
     )
     OUT.mkdir(parents=True, exist_ok=True)
+    cards = write_warning_cards(parts["test"], fitted, OUT / "warning_cards.csv")
     draw_architecture(OUT / "fig1_architecture.png")
     draw_performance(OUT / "fig2_performance.png", fitted, rows, profiles)
     payload = {
@@ -976,6 +1034,7 @@ def main() -> None:
             "retention_margin_sensitivity": sensitivity,
         },
         "rules": firing,
+        "warning_cards": cards,
         "performance": rows,
         "paired_tests": contrasts,
         "budget_profiles": profiles,

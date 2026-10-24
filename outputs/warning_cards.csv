@@ -1,0 +1,738 @@
+permalink,name,first_year,closure_probability,queue_rank,in_review_queue,fired_rules,later_closed
+/organization/found-3,Foundshopping.com,2012,0.826715,1,1,R3 Shallow digital base (0.75),1
+/organization/agiftidea-com,Agiftidea.com,2012,0.823048,2,1,R3 Shallow digital base (0.75),1
+/organization/easiest-credit-card-to-get-approved-for,Easiest Credit Card To Get Approved For,2012,0.821444,3,1,R3 Shallow digital base (0.75),1
+/organization/tuta-co,tuta.co,2012,0.819596,4,1,R3 Shallow digital base (0.75),1
+/organization/pombai,Pombai,2012,0.818296,5,1,R2 Unfunded scope (1.00),1
+/organization/avtozaper,Avtozaper,2012,0.817009,6,1,R3 Shallow digital base (0.75),1
+/organization/urgift,UrGift,2012,0.815598,7,1,R2 Unfunded scope (1.00),1
+/organization/filecubed,Filecubed,2012,0.809639,8,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/balalikea,BALALIKEA,2013,0.807433,9,1,,1
+/organization/t-art,t-Art,2012,0.806971,10,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/vtago,VtagO,2012,0.80119,11,1,R3 Shallow digital base (0.75),1
+/organization/wireless-fitness,Wireless Fitness,2012,0.800767,12,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/codetag,codetag,2012,0.799551,13,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/thefanleague,TheFanLeague,2013,0.798504,14,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/rasyonel-r-d,Rasyonel R&D,2013,0.795364,15,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/seatninja,SeatNinja,2012,0.793586,16,1,,1
+/organization/shhmooze,Shhmooze,2012,0.788559,17,1,R1 Resource strain (0.83); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/yellloh,Yellloh,2013,0.788226,18,1,R2 Unfunded scope (0.50),1
+/organization/deseandolo-com,Deseandolo.com,2013,0.784918,19,1,,1
+/organization/speek,Speek,2012,0.784012,20,1,,0
+/organization/wote,Wote,2013,0.783717,21,1,,1
+/organization/prosbee-inc,Prosbee Inc.,2012,0.78332,22,1,,1
+/organization/vegibox-com,TheVegibox.com,2012,0.782428,23,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/soshowise,Soshowise,2012,0.781887,24,1,,1
+/organization/youlike,YouLike,2012,0.780353,25,1,R2 Unfunded scope (0.50),1
+/organization/tuee,Tuee,2013,0.780202,26,1,,0
+/organization/rush-points-llc,Rush Points,2012,0.779387,27,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/backup-circle,Backup Circle,2012,0.779146,28,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/eventsneaker,EventSneaker,2013,0.779122,29,1,R3 Shallow digital base (0.75),0
+/organization/userevents,UserEvents,2012,0.778684,30,1,R2 Unfunded scope (1.00),0
+/organization/visualnest,Visualnest,2012,0.77862,31,1,R3 Shallow digital base (0.75),1
+/organization/spiffy-society,Spiffy Society,2012,0.777696,32,1,R2 Unfunded scope (0.50); R3 Shallow digital base (0.97),1
+/organization/broadcast-mobi,Broadcast.mobi,2012,0.777243,33,1,,1
+/organization/outline-app,Outline App,2012,0.776897,34,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/ei-technologies,ei Technologies,2013,0.776826,35,1,,1
+/organization/elepago,Elepago,2013,0.775063,36,1,R2 Unfunded scope (0.50),1
+/organization/modulus,Modulus,2012,0.774377,37,1,R2 Unfunded scope (1.00),0
+/organization/lionexpo,Lionexpo,2013,0.774224,38,1,R1 Resource strain (0.86); R2 Unfunded scope (0.50),1
+/organization/nebo,Nebo,2012,0.773293,39,1,,1
+/organization/my-apps,My-Apps,2012,0.772878,40,1,R2 Unfunded scope (0.50),1
+/organization/one-step-solutions,One Step Solutions,2012,0.772867,41,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/use-it-better,Use It Better,2012,0.772652,42,1,R1 Resource strain (0.91); R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/appercode,Appercode,2013,0.771199,43,1,,1
+/organization/clipclock,ClipClock,2012,0.770712,44,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/battlepro,Battlepro,2013,0.770512,45,1,R3 Shallow digital base (0.75),1
+/organization/jinggamall-com,JinggaMall.com,2012,0.770099,46,1,,1
+/organization/synference,Synference,2013,0.770037,47,1,R2 Unfunded scope (0.50),0
+/organization/thryve,Thryve,2012,0.769776,48,1,,1
+/organization/pocket-bounty,RallyCause,2013,0.769019,49,1,,1
+/organization/et3arraf,Et3arraf,2012,0.768586,50,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/friendsignia,Friendsignia,2012,0.768224,51,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/eduora,Eduora,2012,0.767749,52,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/geekmaister-com,GEEKmaister.com,2013,0.766854,53,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/shoppilot,Shoppilot,2013,0.765346,54,1,,1
+/organization/sunnybump,SunnyBump,2012,0.764185,55,1,R3 Shallow digital base (0.75),1
+/organization/presstler,Presstler,2012,0.763227,56,1,,1
+/organization/langhar,Langhar,2013,0.762891,57,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/envia-l,Envia Lá,2012,0.76204,58,1,,1
+/organization/hazelmail,HazelMail,2012,0.761908,59,1,,1
+/organization/playcez,Playcez,2012,0.76069,60,1,R1 Resource strain (0.96),1
+/organization/traffic-labs,Traffic Labs,2012,0.75751,61,1,R3 Shallow digital base (0.75),1
+/organization/meetcute,MeetCute,2012,0.757495,62,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/kwikpik,Kwikpik,2012,0.757238,63,1,,1
+/organization/shopliment,Shopliment,2013,0.756304,64,1,,1
+/organization/lawpath,LawPath,2013,0.756134,65,1,R2 Unfunded scope (1.00),1
+/organization/sport-telegram,Sport Telegram,2012,0.755513,66,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/salonmeister-gmbh,Salonmeister,2013,0.754564,67,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/global-sports-affinity-marketing,Global Sports Affinity Marketing,2012,0.754149,68,1,,1
+/organization/shareyourcart,ShareYourCart,2013,0.754061,69,1,R1 Resource strain (0.54); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/slidejar,SlideJar,2013,0.7533,70,1,,1
+/organization/duel,Duel,2012,0.751809,71,1,R2 Unfunded scope (1.00),1
+/organization/play-with-pictures,Play With Pictures / HangPic,2012,0.751041,72,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/assemblage,Assemblage,2013,0.750777,73,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/cimple-anyware,Cimple Anyware,2013,0.749954,74,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/iplshop-brasil,IPLSHOP Brasil,2013,0.748647,75,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/achiever,Achiever,2013,0.748016,76,1,R3 Shallow digital base (0.75),1
+/organization/kupoya,Kupoya,2012,0.747202,77,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/emergent-one,Emergent One,2012,0.745098,78,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),1
+/organization/abzorba-games,AbZorba Games,2012,0.742556,79,1,R2 Unfunded scope (1.00),0
+/organization/appetas,Appetas,2012,0.741459,80,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/sinimanes,Sinimanes,2012,0.740897,81,1,,0
+/organization/cocollage,CoCollage,2012,0.740683,82,1,R1 Resource strain (0.90),1
+/organization/vessix,Vessix,2012,0.739856,83,1,R1 Resource strain (0.55),1
+/organization/kiind-me,Kiind.me,2012,0.739451,84,1,R3 Shallow digital base (0.75),1
+/organization/datatracker,datatracker,2012,0.738873,85,1,,1
+/organization/donde,Dónde,2013,0.737954,86,1,R2 Unfunded scope (1.00),0
+/organization/zeropaper,ZeroPaper S/A,2012,0.736363,87,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/dittit,Dittit,2012,0.734747,88,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/futubra,Futubra,2012,0.734318,89,1,R2 Unfunded scope (0.50); R3 Shallow digital base (0.97),1
+/organization/flying-pig-digital,Flying Pig Digital,2012,0.732639,90,1,R1 Resource strain (0.77),1
+/organization/gather-md,Gather.md,2012,0.732182,91,1,R3 Shallow digital base (0.75),1
+/organization/cofounderslab,CoFoundersLab,2012,0.732152,92,1,R2 Unfunded scope (0.50),0
+/organization/letsdecco,Letsdecco,2013,0.731806,93,1,R2 Unfunded scope (0.50),1
+/organization/geogames,GeoGames,2012,0.731399,94,1,,1
+/organization/brandme-crowdmarketing,BrandMe crowdmarketing,2013,0.73136,95,1,R1 Resource strain (0.90); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/tagapet,TagaPet,2013,0.730872,96,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/stand-offer,Stand Offer,2012,0.730727,97,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/coupons-near-me,Coupons Near Me,2013,0.73014,98,1,R2 Unfunded scope (0.50),1
+/organization/apogeeinvent,ApogeeInvent,2012,0.728326,99,1,R1 Resource strain (1.00); R2 Unfunded scope (1.00),1
+/organization/postcron,Postcron,2012,0.727364,100,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/giftme,GiftMe,2012,0.726036,101,1,R3 Shallow digital base (0.75),1
+/organization/promiseup,PromiseUP,2012,0.724988,102,1,,1
+/organization/kera,Kera,2012,0.724265,103,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/cleanapp,CleanApp,2013,0.723719,104,1,R3 Shallow digital base (0.75),1
+/organization/nalace-corporation,Nalace Corporation,2012,0.722987,105,1,R3 Shallow digital base (0.75),1
+/organization/bizerra-ru,Bizerra.ru,2013,0.721276,106,1,R1 Resource strain (0.64),1
+/organization/bidstalk,Bidstalk,2013,0.721258,107,1,R2 Unfunded scope (0.97); R3 Shallow digital base (0.75),0
+/organization/fretbay,FRETBAY,2013,0.720412,108,1,R1 Resource strain (0.91); R3 Shallow digital base (0.75),1
+/organization/admify,Admify,2013,0.720219,109,1,R3 Shallow digital base (0.75),1
+/organization/vidmaker,Vidmaker,2012,0.719711,110,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/skyeng,Skyeng,2012,0.719002,111,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/restomesto,RestoMesto,2012,0.718429,112,1,R3 Shallow digital base (0.75),1
+/organization/bright-box,bright box,2012,0.717941,113,1,R3 Shallow digital base (0.75),1
+/organization/raidarrr,Raidarrr,2012,0.717672,114,1,R2 Unfunded scope (0.50),1
+/organization/hashtip,HashTip,2012,0.716302,115,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),1
+/organization/flipter,Flipter,2012,0.714994,116,1,R1 Resource strain (0.73); R2 Unfunded scope (1.00),0
+/organization/skyphrase,SkyPhrase,2012,0.712617,117,1,,0
+/organization/fanarchy-limited,Fanarchy Limited,2012,0.711603,118,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/likez,Likez,2012,0.709641,119,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/surface-tension,Surface Tension,2013,0.709364,120,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/shopcliq,Shopcliq,2012,0.708732,121,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/red-innova,RED INNOVA,2013,0.70865,122,1,R1 Resource strain (1.00); R2 Unfunded scope (0.50),1
+/organization/kommerstate-ru,Kommerstate.ru,2012,0.707762,123,1,,1
+/organization/seniorsource,SeniorSource,2013,0.707095,124,1,,1
+/organization/medgrc,MedGRC,2013,0.70706,125,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/spogo-inc,Spogo Inc.,2012,0.707015,126,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.61),0
+/organization/youshipped-com,Youshipped.com,2013,0.706538,127,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/pollvaultr,PollVaultr,2012,0.70557,128,1,,1
+/organization/parametric-dining,Parametric Dining,2012,0.704038,129,1,,1
+/organization/otterology,Otterology,2013,0.703737,130,1,R1 Resource strain (0.57),0
+/organization/steel-steed-studio,Steel Steed Studio,2012,0.703737,131,1,R1 Resource strain (0.53),1
+/organization/alpha-smart-systems,Alpha Smart Systems,2012,0.702925,132,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/naymit,Naymit,2013,0.702051,133,1,R1 Resource strain (0.94); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/fanitics,Fanitics,2013,0.700862,134,1,R1 Resource strain (0.88),1
+/organization/cleantie,CleanTie,2012,0.700844,135,1,,1
+/organization/sputnik8,Sputnik8,2013,0.699303,136,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/waddapp-com,Waddapp.com,2012,0.699141,137,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/m-dot,M.dot,2012,0.699124,138,1,R2 Unfunded scope (0.50),0
+/organization/reality-crowd-tv-media-corporation,Reality Crowd TV Media Corporation,2013,0.698603,139,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/vouchedfor,VouchedFor,2013,0.697299,140,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/yakify,Yakify,2012,0.696347,141,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/revolv,Revolv,2012,0.695732,142,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/picklify,Picklify,2012,0.693505,143,1,R2 Unfunded scope (1.00),1
+/organization/xfield-paintball,XField Paintball,2013,0.691814,144,1,R3 Shallow digital base (0.75),1
+/organization/sentab-ltd,Sentab Ltd,2013,0.691194,145,1,R3 Shallow digital base (0.75),1
+/organization/acquaintable,Acquaintable,2013,0.691171,146,1,,0
+/organization/mobilespan,MobileSpan,2012,0.691171,147,1,,0
+/organization/ombu,Ombu,2012,0.691171,148,1,,1
+/organization/sellplex,Sellplex,2013,0.689976,149,1,,1
+/organization/marlytics-llc,"MarLytics, LLC",2012,0.68969,150,1,,1
+/organization/connected-benefits,Connected Benefits,2013,0.688961,151,1,R2 Unfunded scope (0.50); R3 Shallow digital base (0.74),1
+/organization/tapdog,TapDog,2013,0.688799,152,1,,0
+/organization/uruut,Uruut,2013,0.688433,153,1,,0
+/organization/jotky,Jotky,2012,0.688177,154,1,R1 Resource strain (0.70); R3 Shallow digital base (0.75),1
+/organization/eventmag-ru,Eventmag.ru,2012,0.686351,155,1,,1
+/organization/appoxee,Appoxee,2013,0.686304,156,1,R6 Resourced focus (0.75),0
+/organization/citibuddies,citibuddies,2013,0.68623,157,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/bookitnow,BookitNow!,2012,0.684777,158,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/handle-my-health,Handle My Health,2012,0.684546,159,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/adbuddy,AdBuddy Inc,2012,0.683985,160,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/good-works-now,Good Works Now,2012,0.683553,161,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/user1st,User1st,2012,0.682847,162,1,,1
+/organization/integralreach,IntegralReach,2012,0.679999,163,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),0
+/organization/etech-money,eTech Money,2012,0.679606,164,1,R1 Resource strain (0.80),1
+/organization/ivilka,iVilka,2013,0.678588,165,1,R1 Resource strain (0.77); R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/zummzumm,ZummZumm,2012,0.676596,166,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.57),1
+/organization/xbyme,XbyMe,2013,0.675135,167,1,R2 Unfunded scope (0.50),1
+/organization/mobivita,MobiVita,2012,0.674694,168,1,R2 Unfunded scope (0.50),1
+/organization/neon-concierge,NEON Concierge,2013,0.673991,169,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/fangdd-2,FangDD,2012,0.673958,170,1,R2 Unfunded scope (0.50); R3 Shallow digital base (0.58),1
+/organization/flatora,Flatora,2012,0.673586,171,1,,1
+/organization/seemedia,SeeMedia,2012,0.673258,172,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/plix,Plix,2012,0.672511,173,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/now-computing-2,Now Computing,2012,0.671261,174,1,R2 Unfunded scope (0.50),1
+/organization/epunchit,Epunchit,2012,0.669597,175,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/harmonia,Harmonia,2013,0.668927,176,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/starbates,Starbates,2012,0.668637,177,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/isengua,MOBi-LEARN,2012,0.668501,178,1,R1 Resource strain (0.89),1
+/organization/optyn,Optyn,2013,0.667909,179,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/local-food-systems,LFS (Local Food Systems Inc),2012,0.667903,180,1,R1 Resource strain (0.64); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/invibox,Invibox,2013,0.667089,181,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/sportymob,Sportymob,2013,0.667089,182,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/city-grade,City Grade,2012,0.667047,183,1,R2 Unfunded scope (0.50),1
+/organization/openera,Openera,2012,0.666812,184,1,R1 Resource strain (0.65); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/itsdapper,itsDapper,2013,0.665928,185,1,,1
+/organization/99dresses,99dresses,2012,0.665878,186,1,R1 Resource strain (0.77); R3 Shallow digital base (0.75),1
+/organization/ibabybox,ibabybox,2013,0.663915,187,1,,1
+/organization/optimenga777,Optimenga777,2013,0.66386,188,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/2100b-com-llc,2100b Sausalito LLC.,2013,0.663475,189,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/kiwapp,Kiwapp,2012,0.662457,190,1,R2 Unfunded scope (0.50),1
+/organization/hassle-com,Hassle.com,2012,0.66168,191,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/tripeese,Tripeese,2013,0.661411,192,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/uberlabs,Gazemetrix,2012,0.66101,193,1,R2 Unfunded scope (0.50),0
+/organization/selligy,Selligy,2012,0.657657,194,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/pumodo,Pumodo,2013,0.65655,195,1,,1
+/organization/shahiya,Shahiya,2012,0.654384,196,1,R1 Resource strain (0.83); R2 Unfunded scope (0.97); R3 Shallow digital base (0.97),0
+/organization/crowdhall,CrowdHall,2012,0.654047,197,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/live-shuttle,Live Shuttle,2012,0.65379,198,1,R3 Shallow digital base (0.75),1
+/organization/pictorious-photo,Pictorious,2012,0.652452,199,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/909c,909c,2013,0.649982,200,1,,1
+/organization/sonoma,Sonoma,2012,0.64774,201,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/weathermob,Weathermob,2012,0.646814,202,1,R3 Shallow digital base (0.75),0
+/organization/mindwork-labs,Mindwork Labs,2012,0.645995,203,1,R3 Shallow digital base (0.72),0
+/organization/fanappz,Fan Appz,2013,0.645224,204,1,R1 Resource strain (1.00); R2 Unfunded scope (1.00),1
+/organization/nebel-tv,Nebel.TV,2013,0.643493,205,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),1
+/organization/geckocap,Gecko Health Innovations Inc. (formerly GeckoCap),2012,0.643452,206,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/cloudvolumes,CloudVolumes,2012,0.641213,207,1,R6 Resourced focus (0.89),0
+/organization/votertide,VoterTide,2012,0.64105,208,1,R2 Unfunded scope (0.97),0
+/organization/doormen,Doormen.,2012,0.641016,209,1,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/dreamsha-re,dreamsha.re,2013,0.640179,210,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/frontleaf,Frontleaf,2013,0.639515,211,1,R2 Unfunded scope (0.50),0
+/organization/admazely,Admazely,2012,0.638437,212,1,R3 Shallow digital base (0.75),1
+/organization/bizpora,Bizpora,2013,0.638416,213,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/melon-power,Melon Power,2012,0.636291,214,1,R3 Shallow digital base (0.75),0
+/organization/luxola,Luxola,2012,0.635422,215,1,,0
+/organization/tipsy-elves,Tipsy Elves,2013,0.635288,216,1,R1 Resource strain (0.97); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/push-io,Push IO,2013,0.634432,217,1,R1 Resource strain (1.00),0
+/organization/gonway,Gonway,2012,0.633646,218,1,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/relationship-analytics,Relationship Analytics,2013,0.633235,219,1,R3 Shallow digital base (0.75),1
+/organization/onthego-platforms,ONtheGO Platforms,2013,0.631274,220,1,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/community-informatics,Community Informatics,2013,0.629574,221,1,,1
+/organization/vendly,Vendly,2013,0.629393,222,0,,1
+/organization/symcircle,Symcircle,2013,0.628229,223,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/engagio,Engagio (old),2012,0.627679,224,0,,1
+/organization/tastemaker-labs,Tastemaker Labs,2012,0.626545,225,0,,1
+/organization/fashionspace,Fashionspace,2012,0.626221,226,0,R1 Resource strain (1.00); R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/pylba,Pylba,2013,0.626002,227,0,R6 Resourced focus (0.72),1
+/organization/social-market-analytics,Social Market Analytics,2013,0.625332,228,0,,1
+/organization/smart-living-studios,Smart Living Studios,2012,0.623554,229,0,R1 Resource strain (1.00),1
+/organization/travelatus,Travelatus,2013,0.622124,230,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/concurix-corporation,Concurix Corporation,2012,0.618147,231,0,,1
+/organization/koaladeal,KoalaDeal,2012,0.61789,232,0,R3 Shallow digital base (0.75),1
+/organization/behavio,Behavio,2012,0.617018,233,0,,0
+/organization/rumgr,Rumgr,2012,0.616732,234,0,R2 Unfunded scope (0.97),0
+/organization/autoref-com,AutoRef.com,2012,0.61666,235,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/appifier,Appifier,2012,0.615598,236,0,R2 Unfunded scope (1.00),0
+/organization/moveablecode-inc,"MoveableCode, Inc.",2012,0.613413,237,0,R1 Resource strain (0.77); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/shnergle,Shnergle,2013,0.61324,238,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/localbonus,LocalBonus,2012,0.612432,239,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/kites,Kites,2013,0.61189,240,0,R3 Shallow digital base (0.75),1
+/organization/moy-univer,Moy Univer,2012,0.611356,241,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/mob-science,Mob Science,2012,0.611172,242,0,R1 Resource strain (0.97),0
+/organization/odyssey-mobile-interaction,Odyssey Mobile Interaction,2013,0.606347,243,0,R1 Resource strain (0.96); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/energie-etiche,Energie Etiche,2012,0.60537,244,0,R1 Resource strain (0.71); R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/client24,Client24,2013,0.604365,245,0,,1
+/organization/darby-smart,Darby Smart,2013,0.603361,246,0,,1
+/organization/puentes-company,Puentes Company,2013,0.602476,247,0,,1
+/organization/blockbeacon,BlockBeacon,2012,0.601114,248,0,,0
+/organization/qlika,Qlika,2013,0.599714,249,0,,0
+/organization/bex-io,Bex,2013,0.599438,250,0,R1 Resource strain (0.97),1
+/organization/cloud-logistics,Cloud Logistics,2012,0.59831,251,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/vá-de-táxi,Vá de Táxi,2013,0.597425,252,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.95),1
+/organization/buyosphere,Buyosphere,2012,0.597208,253,0,R1 Resource strain (0.68); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/socialdial,SocialDial,2012,0.596364,254,0,,1
+/organization/mosaic-storage-systems,Mosaic Storage Systems,2012,0.595864,255,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/meetmetix,MeetMeTix,2012,0.593679,256,0,,0
+/organization/taptica,Taptica,2012,0.592585,257,0,R2 Unfunded scope (0.87),0
+/organization/the-daily-hundred,The Daily Hundred,2012,0.589894,258,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/pushpay,Pushpay,2013,0.58754,259,0,R3 Shallow digital base (0.75),0
+/organization/akimbo-financial,Akimbo Financial,2013,0.582294,260,0,R1 Resource strain (0.67); R2 Unfunded scope (0.67); R3 Shallow digital base (0.50),0
+/organization/livrada,Livrada,2012,0.581278,261,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/eventifier,Eventifier,2013,0.580017,262,0,R1 Resource strain (0.65),0
+/organization/orangescape,OrangeScape,2012,0.578789,263,0,R1 Resource strain (0.58); R2 Unfunded scope (0.50),1
+/organization/cucumbertown,Cucumbertown,2012,0.57772,264,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/paddle-mobile-payments,Paddle (Mobile Payments),2012,0.575742,265,0,R2 Unfunded scope (0.50),1
+/organization/carnet-de-mode,Carnet de Mode,2012,0.574773,266,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),1
+/organization/stadius,Stadius,2013,0.573446,267,0,,1
+/organization/spirit-navigation,SPIRIT Navigation,2012,0.573071,268,0,R3 Shallow digital base (0.59),1
+/organization/tiny-review,Tiny Post,2012,0.571578,269,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/ripple-commerce,Ripple Commerce,2012,0.570743,270,0,,1
+/organization/zensoon,ZenSoon,2013,0.570697,271,0,R1 Resource strain (0.53); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/glad-to-have-you,Glad to Have You,2012,0.570261,272,0,,0
+/organization/divshot,Divshot,2012,0.569422,273,0,R2 Unfunded scope (1.00),1
+/organization/kinderpedia-by-ota,Kinderpedia,2013,0.568361,274,0,R1 Resource strain (1.00); R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),1
+/organization/ohlalapps,Ohlalapps,2013,0.567832,275,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/certain-communications,Certain Communications,2012,0.566433,276,0,R1 Resource strain (1.00),1
+/organization/seek-adore,Seek & Adore,2013,0.564789,277,0,R1 Resource strain (0.98),1
+/organization/pruffi,Pruffi,2012,0.56398,278,0,R1 Resource strain (0.91); R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/employinsight,EmployInsight,2012,0.561975,279,0,,0
+/organization/lifecake,Lifecake,2012,0.560224,280,0,,0
+/organization/everconnect,EverConnect,2012,0.559839,281,0,R2 Unfunded scope (0.50),1
+/organization/gidsy,Gidsy,2012,0.557831,282,0,,0
+/organization/socialthreader,SocialThreader,2012,0.557761,283,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/niio,Niio,2013,0.557399,284,0,R2 Unfunded scope (0.67); R3 Shallow digital base (0.67),1
+/organization/mycirqle,mycirQle,2012,0.556873,285,0,,1
+/organization/13th-lab,13th Lab,2012,0.556082,286,0,R1 Resource strain (0.78); R2 Unfunded scope (0.78); R3 Shallow digital base (0.78),0
+/organization/op3nvoice,OP3Nvoice,2013,0.554747,287,0,R1 Resource strain (0.86); R2 Unfunded scope (1.00),1
+/organization/content-savvy,Content Savvy,2013,0.554179,288,0,R1 Resource strain (0.58); R3 Shallow digital base (0.58),0
+/organization/monthlys,Monthlys,2012,0.550766,289,0,,1
+/organization/boxcar,Boxcar,2012,0.550764,290,0,R1 Resource strain (0.93); R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),0
+/organization/scaffold,Scaffold,2012,0.550532,291,0,R2 Unfunded scope (0.50),1
+/organization/protoexchange,ProtoExchange,2013,0.550411,292,0,R3 Shallow digital base (0.75),1
+/organization/mopowered,mporium,2012,0.548979,293,0,,0
+/organization/proberry,Proberry,2013,0.547313,294,0,R1 Resource strain (1.00); R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/nexdentist,NexDentist,2013,0.546803,295,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.59),1
+/organization/ubooly,Smart Toy,2012,0.54427,296,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/shoplocket,ShopLocket,2012,0.543406,297,0,,1
+/organization/blacksumac,Blacksumac,2013,0.540263,298,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/fab-bag,FAB BAG,2013,0.539818,299,0,R2 Unfunded scope (0.97); R3 Shallow digital base (0.97),1
+/organization/gyft,Gyft,2012,0.539107,300,0,,0
+/organization/knox-media-hub,Knox Media Hub,2013,0.538305,301,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/rentcolumn-communications,RentColumn Communications,2013,0.537779,302,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/apptive,Apptive,2013,0.537082,303,0,R2 Unfunded scope (1.00),0
+/organization/matcha,Matcha,2012,0.536452,304,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/my-social-cloud,MySocialCloud.com,2012,0.534515,305,0,,0
+/organization/vicino,Vicino,2013,0.530756,306,0,,1
+/organization/virtual-race-bags,Virtual Event Bags,2012,0.530199,307,0,R2 Unfunded scope (0.50),1
+/organization/unamia,unamia,2012,0.528389,308,0,R6 Resourced focus (0.52),1
+/organization/22seeds,22seeds,2013,0.527825,309,0,R1 Resource strain (1.00); R2 Unfunded scope (1.00); R3 Shallow digital base (0.61),1
+/organization/uppidy,Uppidy,2013,0.527489,310,0,R1 Resource strain (0.76),0
+/organization/merku,Merku,2013,0.524428,311,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/equaleyes,EqualEyes,2012,0.524373,312,0,R2 Unfunded scope (0.50),1
+/organization/moxie-jean,Moxie Jean,2012,0.523581,313,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/map2app,"map2app, Inc.",2012,0.522793,314,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),0
+/organization/travelknowledge,TravelKnowledge,2012,0.522793,315,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/cubikal,Cubikal,2012,0.522478,316,0,,1
+/organization/modabound,Modabound,2013,0.522472,317,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/ringadoc,Ringadoc,2012,0.521986,318,0,R1 Resource strain (0.74),0
+/organization/kingfish-labs,Kingfish Labs,2012,0.521045,319,0,,0
+/organization/epy-io,Epy.io,2013,0.519652,320,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/adept-cloud,Adept Cloud,2012,0.518619,321,0,,0
+/organization/adwired,AdWired,2013,0.518041,322,0,R1 Resource strain (1.00); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/timbre,Timbre,2013,0.515213,323,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/cpa-exchange,CPA Exchange,2013,0.515131,324,0,R2 Unfunded scope (0.97); R3 Shallow digital base (0.50),1
+/organization/subtledata,SubtleData,2012,0.515131,325,0,R2 Unfunded scope (0.50),1
+/organization/gradient-x,Gradient X,2012,0.51457,326,0,R6 Resourced focus (1.00),0
+/organization/flxone,FLXone,2012,0.513059,327,0,,0
+/organization/the-niche-project-inc,Niche,2013,0.512247,328,0,R2 Unfunded scope (0.50),0
+/organization/rentelligence,Rentelligence,2012,0.510591,329,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/gunosy,Gunosy,2013,0.510354,330,0,,0
+/organization/highground,HighGround,2012,0.509599,331,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/charitybuzz,Charitybuzz,2012,0.5094,332,0,R6 Resourced focus (1.00),0
+/organization/sociogramics,Sociogramics,2012,0.507705,333,0,R3 Shallow digital base (0.75),1
+/organization/appthwack,AppThwack,2012,0.506634,334,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),0
+/organization/etherios-consulting,Etherios,2012,0.505945,335,0,R1 Resource strain (0.74),1
+/organization/tapshield,TapShield,2013,0.504995,336,0,R2 Unfunded scope (0.74); R3 Shallow digital base (0.74),1
+/organization/lucky-sort,Lucky Sort,2012,0.504597,337,0,R2 Unfunded scope (0.97); R3 Shallow digital base (0.75),0
+/organization/payorpass,PayOrPass,2012,0.503582,338,0,,1
+/organization/tindie,Tindie,2012,0.502875,339,0,,0
+/organization/liibook,Liibook,2012,0.501446,340,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/glider,Glider,2012,0.500968,341,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/topmall,Topmall,2013,0.500853,342,0,R6 Resourced focus (1.00),1
+/organization/m5-labs,Listn,2013,0.500246,343,0,R2 Unfunded scope (0.97); R3 Shallow digital base (0.50),0
+/organization/stamp-it,Stamp.it,2013,0.499812,344,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/buystand,BUYSTAND,2012,0.499387,345,0,R2 Unfunded scope (0.50),1
+/organization/wellnessliving-systems-inc,WellnessLiving Systems Inc.,2013,0.499341,346,0,,1
+/organization/sharingforce,Sharingforce,2012,0.499338,347,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/nimbuz,Odysee,2013,0.499052,348,0,R1 Resource strain (0.73),0
+/organization/socialsamba,SocialSamba,2012,0.498992,349,0,R1 Resource strain (0.75); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/benefitter,Benefitter,2012,0.498136,350,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),0
+/organization/m-labs,MdotLabs,2013,0.496973,351,0,,0
+/organization/buyt-in,Buyt.In,2013,0.496703,352,0,,0
+/organization/unbuythat,UnBuyThat,2012,0.496495,353,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.50),1
+/organization/zapitano,ZAPITANO,2012,0.496427,354,0,,1
+/organization/littlecast,Littlecast,2013,0.493781,355,0,,1
+/organization/sunrise,Sunrise,2013,0.493781,356,0,,0
+/organization/incentivyze,Incentivyze,2013,0.493543,357,0,,1
+/organization/flowpay,FlowPay,2012,0.493229,358,0,,0
+/organization/spotdock,spotdock,2012,0.493095,359,0,,1
+/organization/vidaao,Vidaao,2012,0.492452,360,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/3gear-systems,Nimble VR,2012,0.492114,361,0,,0
+/organization/sothree,Umano,2013,0.489694,362,0,,0
+/organization/tweettv,tweetTV,2012,0.489596,363,0,R2 Unfunded scope (0.74); R3 Shallow digital base (0.74),0
+/organization/heybubble,HeyBubble,2012,0.489147,364,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/quickcue,Quickcue,2012,0.489021,365,0,R6 Resourced focus (0.75),0
+/organization/housefix,HouseFix,2012,0.48856,366,0,R1 Resource strain (0.59); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/reesio,Reesio,2013,0.487598,367,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/carhound,CarHound,2012,0.487516,368,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/appthegame,ApptheGame - Swoopt Daily Fantasy Sports,2013,0.48689,369,0,R1 Resource strain (0.75); R3 Shallow digital base (0.75),0
+/organization/plasmyd,Plasmyd,2013,0.486751,370,0,R1 Resource strain (0.75); R3 Shallow digital base (0.75),0
+/organization/exelis,Exelis,2013,0.486214,371,0,R6 Resourced focus (0.81),0
+/organization/npulse-technologies,nPulse Technologies,2013,0.486214,372,0,R6 Resourced focus (0.80),0
+/organization/social-moov,Social Moov,2012,0.484123,373,0,R2 Unfunded scope (0.61); R3 Shallow digital base (0.61),0
+/organization/awesomeness-tv,AwesomenessTV,2012,0.483508,374,0,R6 Resourced focus (1.00),0
+/organization/stackdriver,Stackdriver,2012,0.483508,375,0,R6 Resourced focus (1.00),0
+/organization/eurobox,EUROBOX,2013,0.483472,376,0,R6 Resourced focus (0.65),1
+/organization/scott-snibbe-studio,Snibbe Studio,2013,0.482795,377,0,R1 Resource strain (0.68); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/avansci-bio,AvanSci Bio,2013,0.48191,378,0,R1 Resource strain (0.71),1
+/organization/rewind-me,Rewind Me,2012,0.478575,379,0,R3 Shallow digital base (0.71),1
+/organization/cover-lockscreen,Cover Lockscreen,2013,0.478462,380,0,,0
+/organization/ovivo-mobile-communications,OVIVO Mobile Communications,2013,0.477772,381,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/path-to,Path.To,2012,0.477589,382,0,R6 Resourced focus (0.65),1
+/organization/visitrend,VisiTrend,2013,0.477338,383,0,,0
+/organization/bitdeli,Bitdeli,2012,0.476651,384,0,R2 Unfunded scope (1.00),0
+/organization/shoutly,Shoutly,2012,0.476611,385,0,,1
+/organization/bubblegab,BubbleGab,2013,0.47613,386,0,,1
+/organization/ressq-technologies,RessQ Technologies,2013,0.47409,387,0,R1 Resource strain (0.66),1
+/organization/skilledwizard,SkilledWizard,2013,0.473339,388,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/oneassist-consumer-solutions,OneAssist,2012,0.471084,389,0,,1
+/organization/lema21,Lema21,2012,0.470753,390,0,R6 Resourced focus (0.68),0
+/organization/mine,Mine,2012,0.469869,391,0,R1 Resource strain (0.57),1
+/organization/continuityx-solutions,ContinuityX Solutions,2012,0.469477,392,0,R1 Resource strain (0.51),1
+/organization/machine-perception-technologies,Machine Perception Technologies,2012,0.468522,393,0,R6 Resourced focus (0.81),1
+/organization/mozaik-media,Mozaik Media,2012,0.468394,394,0,R2 Unfunded scope (0.97); R3 Shallow digital base (0.97),1
+/organization/fosbury,Fosbury,2013,0.468226,395,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/eltechs,Eltechs,2012,0.466879,396,0,R2 Unfunded scope (0.50),1
+/organization/bufferbox,BufferBox,2012,0.465999,397,0,,0
+/organization/tradehill,Tradehill,2013,0.465413,398,0,R1 Resource strain (0.68); R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/flayvr,MyRoll,2012,0.464872,399,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/stunable,Stunable,2012,0.464393,400,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/nanapi,Nanapi,2013,0.463882,401,0,R6 Resourced focus (0.50),0
+/organization/global-cio,Global CIO,2013,0.463321,402,0,,1
+/organization/protogeo,ProtoGeo,2013,0.462254,403,0,R6 Resourced focus (0.68),0
+/organization/torando-labs,Torando Labs,2013,0.461639,404,0,,0
+/organization/mortar-data,Mortar Data,2012,0.459987,405,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.57),0
+/organization/disruption-corporation-2,Disruption Corporation,2013,0.459401,406,0,R2 Unfunded scope (0.74); R3 Shallow digital base (0.74),0
+/organization/findit,FindIt,2013,0.459395,407,0,R2 Unfunded scope (0.50),1
+/organization/fypio,fypio,2013,0.456361,408,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/carritus,Carritus,2013,0.455334,409,0,R1 Resource strain (0.53),1
+/organization/setem-technologies,Setem Technologies,2012,0.454873,410,0,R6 Resourced focus (0.61),1
+/organization/divante,Divante,2013,0.453404,411,0,R1 Resource strain (0.67); R2 Unfunded scope (0.50),1
+/organization/teamo-ru,Teamo.ru,2012,0.453127,412,0,R6 Resourced focus (0.89),1
+/organization/billaway,Billaway,2013,0.452619,413,0,,1
+/organization/human-demand,Human Demand,2012,0.45248,414,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),0
+/organization/lettuce,Lettuce,2012,0.451916,415,0,,0
+/organization/hoppit,Hoppit,2012,0.451697,416,0,R2 Unfunded scope (0.97); R3 Shallow digital base (0.75),0
+/organization/data-and-email-marketing,DataEmail Group,2013,0.450725,417,0,,1
+/organization/fetchnotes,Fetchnotes,2012,0.450395,418,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/knok,Knok,2012,0.450022,419,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/bytelight,ByteLight,2012,0.449498,420,0,R6 Resourced focus (0.55),0
+/organization/9slides,9SLIDES,2013,0.449302,421,0,R1 Resource strain (0.97); R2 Unfunded scope (0.97); R3 Shallow digital base (0.97),0
+/organization/apphero,AppHero,2012,0.448893,422,0,R6 Resourced focus (0.75),0
+/organization/scan,Scan,2012,0.448893,423,0,R6 Resourced focus (0.72),0
+/organization/postrocket,PostRocket,2012,0.448885,424,0,,1
+/organization/ratify,Ratify,2012,0.447589,425,0,R6 Resourced focus (0.81),1
+/organization/athomestars,atHomestars,2013,0.446889,426,0,R1 Resource strain (0.71); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/notice-kiosk,Notice Kiosk,2012,0.446889,427,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/particle,Particle,2012,0.446785,428,0,R1 Resource strain (0.64),0
+/organization/starboard-storage-systems,Starboard Storage Systems,2012,0.444546,429,0,,1
+/organization/sindelantal-mx,SinDelantal.Mx,2013,0.444158,430,0,,0
+/organization/dishcrawl,Dishcrawl,2013,0.4434,431,0,R1 Resource strain (1.00); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/wantering,Wantering,2012,0.439528,432,0,R2 Unfunded scope (0.92); R3 Shallow digital base (0.50),0
+/organization/aurality,Aurality,2012,0.438997,433,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/userfox,userfox,2012,0.438615,434,0,R2 Unfunded scope (0.78); R3 Shallow digital base (0.78),0
+/organization/pops,Pops,2012,0.437241,435,0,,1
+/organization/stakeforce,Stakeforce,2012,0.436178,436,0,R1 Resource strain (0.77); R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/playdemic,Playdemic,2012,0.434284,437,0,R6 Resourced focus (1.00),0
+/organization/outline,Outline,2012,0.433989,438,0,R2 Unfunded scope (0.50); R3 Shallow digital base (1.00),1
+/organization/zao-com,Zao.com,2012,0.433217,439,0,,0
+/organization/spotlight,Spotlight,2012,0.432972,440,0,,0
+/organization/merchant-exchange,Merchant Exchange,2013,0.432311,441,0,R1 Resource strain (0.58),1
+/organization/fullscreen,Fullscreen,2013,0.431941,442,0,,0
+/organization/ouya,OUYA,2012,0.431033,443,0,R6 Resourced focus (1.00),0
+/organization/kitlocate,KitLocate,2013,0.431004,444,0,R2 Unfunded scope (0.74); R3 Shallow digital base (0.57),0
+/organization/boxer,Boxer,2013,0.430237,445,0,R6 Resourced focus (1.00),0
+/organization/yatango,Yatango,2012,0.428925,446,0,R2 Unfunded scope (0.50),1
+/organization/muse-co,Muse & Co,2013,0.427335,447,0,R6 Resourced focus (1.00),0
+/organization/reduce-data,Reduce Data,2013,0.427078,448,0,R2 Unfunded scope (0.97),0
+/organization/talkto,TalkTo,2012,0.426239,449,0,R6 Resourced focus (1.00),0
+/organization/personalized-media,Asterisk,2012,0.425617,450,0,R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),1
+/organization/digistrive,Digistrive,2012,0.424516,451,0,R6 Resourced focus (1.00),0
+/organization/keepskor,Keepskor,2013,0.423817,452,0,R1 Resource strain (0.73); R2 Unfunded scope (1.00),1
+/organization/shoprunner,ShopRunner,2013,0.422961,453,0,R6 Resourced focus (1.00),0
+/organization/kuboo,KUBOO,2013,0.422785,454,0,R6 Resourced focus (0.84),0
+/organization/lamppost,Lamppost,2012,0.421336,455,0,R2 Unfunded scope (1.00); R3 Shallow digital base (0.75),1
+/organization/ducksboard,Ducksboard,2012,0.421237,456,0,R2 Unfunded scope (0.74),0
+/organization/blink-booking,Blink Booking,2012,0.420629,457,0,,0
+/organization/shop-points,Shop Points,2012,0.420181,458,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.74),1
+/organization/21vianet,21viaNet,2013,0.42008,459,0,R6 Resourced focus (1.00),0
+/organization/glassesoff,GlassesOff,2013,0.419393,460,0,,0
+/organization/mezeo-software,Mezeo Software,2012,0.418474,461,0,R6 Resourced focus (1.00),0
+/organization/bazaar-corner,"Bazaar Corner, Inc.",2013,0.418204,462,0,R6 Resourced focus (0.50),1
+/organization/salad-labs,Salad Labs,2013,0.416202,463,0,R1 Resource strain (0.69); R2 Unfunded scope (0.69); R3 Shallow digital base (0.69),1
+/organization/delivery-club,Delivery Club,2012,0.415521,464,0,R6 Resourced focus (1.00),1
+/organization/sina-weibo,Sina Weibo,2013,0.413417,465,0,R6 Resourced focus (1.00),0
+/organization/bigtwist,BigTwist,2012,0.412035,466,0,R2 Unfunded scope (0.85); R3 Shallow digital base (0.50),1
+/organization/poptip,Poptip,2012,0.412035,467,0,R2 Unfunded scope (0.83); R3 Shallow digital base (0.83),0
+/organization/snipsnap-app,SnipSnap,2012,0.411794,468,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/apiphany,Apiphany,2012,0.411586,469,0,,0
+/organization/okdj-fm,OKDJ.fm,2013,0.411059,470,0,R1 Resource strain (0.81); R2 Unfunded scope (0.92); R3 Shallow digital base (0.92),1
+/organization/semetric,Semetric,2013,0.409918,471,0,R6 Resourced focus (1.00),0
+/organization/sverhmarket,Sverhmarket,2013,0.409246,472,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.58),1
+/organization/nonstop-games,Nonstop Games,2013,0.40922,473,0,,0
+/organization/nodefly,NodeFly,2012,0.408281,474,0,R1 Resource strain (0.62); R2 Unfunded scope (0.71),0
+/organization/flutter-io,Flutter,2012,0.407524,475,0,R6 Resourced focus (0.61),0
+/organization/spotsetter,Spotsetter,2013,0.407524,476,0,R6 Resourced focus (0.57),0
+/organization/newsle,Newsle,2012,0.406352,477,0,R2 Unfunded scope (0.50),0
+/organization/speakap,Speakap,2013,0.406169,478,0,R6 Resourced focus (0.50),1
+/organization/flexiant,Flexiant,2012,0.405244,479,0,R6 Resourced focus (1.00),0
+/organization/meggatel,Meggatel,2013,0.40477,480,0,R6 Resourced focus (0.87),1
+/organization/yellowsmith,Yellowsmith,2012,0.404711,481,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.67),0
+/organization/orchestrate-io,Orchestrate,2013,0.401665,482,0,,0
+/organization/theaudience,theAudience,2012,0.401566,483,0,R6 Resourced focus (1.00),0
+/organization/tapcommerce,TapCommerce,2013,0.401156,484,0,R6 Resourced focus (0.52),0
+/organization/golfmds-inc,"GolfMDs, Inc.",2013,0.400669,485,0,R2 Unfunded scope (0.50),1
+/organization/pintics,Pintics,2012,0.397197,486,0,,1
+/organization/score-media,"theScore, Inc.",2013,0.396856,487,0,,0
+/organization/nextprinciples,NextPrinciples,2012,0.396483,488,0,R6 Resourced focus (0.52),0
+/organization/careinsync,CareinSync,2012,0.395689,489,0,R6 Resourced focus (0.68),0
+/organization/buttercoin,Buttercoin,2013,0.395261,490,0,,1
+/organization/dinamundo,Dinamundo,2012,0.394862,491,0,R2 Unfunded scope (0.92); R3 Shallow digital base (0.92),1
+/organization/zerovm,ZeroVM,2013,0.394208,492,0,,0
+/organization/gopogo,gopogo,2012,0.393938,493,0,,1
+/organization/deal-decor,Deal Decor,2012,0.393704,494,0,,1
+/organization/walkby,walkby,2013,0.393179,495,0,R2 Unfunded scope (0.82); R3 Shallow digital base (0.82),1
+/organization/mobiledevhq,MobileDevHQ,2012,0.391793,496,0,R1 Resource strain (0.82); R2 Unfunded scope (0.50); R3 Shallow digital base (0.82),0
+/organization/meetyl,Meetyl,2013,0.391574,497,0,R2 Unfunded scope (0.71); R3 Shallow digital base (0.71),0
+/organization/branch,Branch,2012,0.391117,498,0,R6 Resourced focus (0.81),0
+/organization/advizzer,Advizzer,2012,0.389857,499,0,R1 Resource strain (0.58),1
+/organization/mitro,Mitro,2012,0.389793,500,0,R6 Resourced focus (0.52),0
+/organization/temnos,Temnos,2013,0.387402,501,0,R6 Resourced focus (0.65),1
+/organization/leo-app,Leo,2013,0.384666,502,0,R6 Resourced focus (0.65),0
+/organization/secret,Secret,2013,0.384666,503,0,R6 Resourced focus (0.62),1
+/organization/vitasoft,Vitasoft,2012,0.384394,504,0,R1 Resource strain (0.87),1
+/organization/resonant-inc,Resonant Inc,2013,0.382234,505,0,R6 Resourced focus (1.00),0
+/organization/workingpoint,WorkingPoint,2012,0.381876,506,0,R1 Resource strain (1.00); R2 Unfunded scope (1.00); R3 Shallow digital base (1.00),0
+/organization/tastykhana,TastyKhana,2013,0.378436,507,0,R6 Resourced focus (1.00),0
+/organization/coterie-inc,"Coterie, Inc.",2012,0.377863,508,0,R6 Resourced focus (0.65),1
+/organization/consmr,Consumr,2012,0.376948,509,0,R1 Resource strain (0.65); R2 Unfunded scope (0.90); R3 Shallow digital base (0.90),0
+/organization/circa,Circa,2012,0.376222,510,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.64),1
+/organization/wauwaa,Wauwaa,2013,0.375663,511,0,R2 Unfunded scope (0.91); R3 Shallow digital base (0.91),1
+/organization/amiato,Amiato,2013,0.375633,512,0,R6 Resourced focus (0.81),0
+/organization/compass-quality-insights,Compass Quality Insight Inc.,2013,0.375633,513,0,R6 Resourced focus (0.81),1
+/organization/club-domains,.Club Domains,2013,0.375392,514,0,R6 Resourced focus (1.00),1
+/organization/frontback,Frontback,2012,0.372996,515,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.63),1
+/organization/swapbox,Swapbox,2013,0.372996,516,0,R1 Resource strain (0.61); R2 Unfunded scope (0.50); R3 Shallow digital base (0.71),1
+/organization/versa-media,Versa,2013,0.372959,517,0,,0
+/organization/g2mobility,G2MOBILITY,2013,0.37266,518,0,,1
+/organization/worlddesk,WorldDesk,2013,0.370232,519,0,,0
+/organization/fabkids,Fabkids,2012,0.368747,520,0,R6 Resourced focus (0.96),0
+/organization/alephcloud-systems,AlephCloud Systems,2012,0.367267,521,0,R6 Resourced focus (0.81),1
+/organization/quik-io,Quik.io,2012,0.367267,522,0,R6 Resourced focus (0.56),0
+/organization/metaresolver,Metaresolver,2012,0.366875,523,0,,0
+/organization/healthpocket,HealthPocket,2012,0.366111,524,0,,0
+/organization/tastebud,Tastebud,2012,0.365514,525,0,R2 Unfunded scope (0.58),0
+/organization/aviate,Aviate,2013,0.364641,526,0,,0
+/organization/faceshift,faceshift,2013,0.363498,527,0,R1 Resource strain (0.56); R2 Unfunded scope (0.78); R3 Shallow digital base (0.78),0
+/organization/namo-media,Namo Media,2013,0.360673,528,0,R6 Resourced focus (0.77),0
+/organization/talentbin,TalentBin,2013,0.35967,529,0,,0
+/organization/monogram,Monogram,2012,0.358057,530,0,R2 Unfunded scope (0.68); R3 Shallow digital base (0.68),1
+/organization/looppay,LoopPay,2013,0.356054,531,0,,0
+/organization/inside-social,Inside Social,2013,0.353155,532,0,,0
+/organization/logentries,Logentries,2012,0.353155,533,0,R1 Resource strain (0.53); R2 Unfunded scope (0.53); R3 Shallow digital base (0.53),0
+/organization/narr8,Narr8,2012,0.353079,534,0,R6 Resourced focus (0.50),1
+/organization/one-jackson,One Jackson,2012,0.351669,535,0,R6 Resourced focus (0.81),0
+/organization/tomfoolery,Tomfoolery,2013,0.351669,536,0,R6 Resourced focus (0.72),1
+/organization/oculus-vr,Oculus VR,2012,0.350948,537,0,,0
+/organization/wallaby-financial,Wallaby Financial,2012,0.350631,538,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.53),0
+/organization/vigill,Converser,2013,0.350466,539,0,,0
+/organization/wantful,Wantful,2012,0.349893,540,0,R6 Resourced focus (1.00),1
+/organization/slyce,Slyce,2013,0.347048,541,0,,0
+/organization/canopy-labs,Canopy Labs,2012,0.344837,542,0,,1
+/organization/intercloud-systems,Intercloud Systems,2013,0.343041,543,0,R6 Resourced focus (1.00),0
+/organization/traxpay,Traxpay,2012,0.341768,544,0,,0
+/organization/union-bay-networks,Union Bay Networks,2013,0.341421,545,0,,0
+/organization/textpride,Swyft Media,2013,0.340557,546,0,R1 Resource strain (0.56); R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/blackstone-digital-agency,Blackstone Digital Agency,2013,0.340451,547,0,,1
+/organization/cmge,CMGE,2013,0.340125,548,0,R6 Resourced focus (1.00),0
+/organization/mebelrama-ru,Mebelrama,2012,0.338262,549,0,,1
+/organization/nextpeer,Nextpeer,2013,0.336465,550,0,,0
+/organization/pricematch,PriceMatch,2013,0.336465,551,0,,0
+/organization/space-monkey,Space Monkey,2012,0.336465,552,0,,0
+/organization/creditcardsonline,CreditCardsOnline,2013,0.336249,553,0,,1
+/organization/mieple,Mieple,2013,0.335179,554,0,R6 Resourced focus (0.61),1
+/organization/level,Level,2013,0.334742,555,0,R6 Resourced focus (1.00),0
+/organization/grow-mobile,Grow Mobile,2012,0.334372,556,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/main-street-genome,Main Street Genome,2013,0.334056,557,0,,0
+/organization/wander,Wander,2012,0.333236,558,0,,0
+/organization/plug-dj,Plug.dj,2013,0.332455,559,0,,1
+/organization/urturn,urturn,2013,0.331477,560,0,,1
+/organization/twentyfeet,TwentyFeet,2013,0.330706,561,0,,0
+/organization/lagoa,Lagoa,2013,0.330269,562,0,,0
+/organization/oculus360,Oculus360,2013,0.330269,563,0,R6 Resourced focus (0.50),1
+/organization/prestiamoci,Prestiamoci,2013,0.33023,564,0,R1 Resource strain (0.78); R2 Unfunded scope (0.50); R3 Shallow digital base (0.78),0
+/organization/davidstea,DAVIDsTEA,2012,0.328896,565,0,R6 Resourced focus (1.00),0
+/organization/newzulu-limited,Newzulu Limited,2013,0.328297,566,0,,0
+/organization/choose-digital,Choose Digital,2012,0.328065,567,0,,0
+/organization/loku,Loku,2012,0.326842,568,0,,1
+/organization/refer-ly,Referly,2012,0.326575,569,0,R2 Unfunded scope (0.50),1
+/organization/tapcrowd,TapCrowd,2012,0.326225,570,0,,0
+/organization/wittlebee,Wittlebee,2012,0.324569,571,0,,0
+/organization/sphereup,SphereUp,2012,0.324561,572,0,R6 Resourced focus (1.00),0
+/organization/fugen-solutions,FuGen Solutions,2012,0.324431,573,0,R1 Resource strain (0.62),0
+/organization/rocketmiles,Rocketmiles,2013,0.323893,574,0,,0
+/organization/chalkable,Chalkable,2012,0.323627,575,0,,0
+/organization/cakestyle,CakeStyle,2012,0.323125,576,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),1
+/organization/skyera,Skyera,2013,0.3224,577,0,R6 Resourced focus (1.00),0
+/organization/strongloop,StrongLoop,2013,0.322334,578,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/doctrackr,docTrackr,2012,0.322125,579,0,,0
+/organization/mykonos-software,Mykonos Software,2012,0.322025,580,0,R6 Resourced focus (1.00),0
+/organization/hukkster,Hukkster,2012,0.32202,581,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),1
+/organization/inktank,Inktank,2012,0.321655,582,0,R2 Unfunded scope (0.58),0
+/organization/swarm-mobile,Swarm Mobile,2012,0.320734,583,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/pickie,Pickie,2012,0.320722,584,0,R1 Resource strain (0.58); R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/esky,ESKY,2012,0.31974,585,0,R6 Resourced focus (1.00),1
+/organization/cappture-2,CAPPTURE,2012,0.318857,586,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),1
+/organization/shake,Shake,2012,0.318857,587,0,R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/ansible,Ansible,2013,0.316904,588,0,,0
+/organization/tinymob-games,TinyMob Games,2013,0.3169,589,0,,1
+/organization/thislife,ThisLife,2012,0.316871,590,0,,0
+/organization/liveminutes,LiveMinutes,2013,0.316651,591,0,,0
+/organization/the-one-page-company,1-Page,2012,0.316134,592,0,,0
+/organization/rangespan,Rangespan,2012,0.312166,593,0,,0
+/organization/wedding-party,Wedding Party,2013,0.311997,594,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.58),0
+/organization/hint,hint,2012,0.311658,595,0,R6 Resourced focus (1.00),1
+/organization/flexis,Flexis,2013,0.31153,596,0,R6 Resourced focus (1.00),1
+/organization/meldium,Meldium,2013,0.310745,597,0,R2 Unfunded scope (0.50); R3 Shallow digital base (0.58),0
+/organization/eventioz,Eventioz,2013,0.310687,598,0,,0
+/organization/mattersight-corp,Mattersight,2012,0.310572,599,0,R6 Resourced focus (1.00),0
+/organization/backupagent,BackupAgent,2013,0.310009,600,0,,0
+/organization/kidozen,KidoZen,2013,0.309502,601,0,,0
+/organization/urthecast,UrtheCast,2012,0.309323,602,0,,0
+/organization/emu-chat,Emu Messenger,2013,0.308392,603,0,,0
+/organization/mobilespaces,MobileSpaces,2012,0.307944,604,0,,0
+/organization/toopher,Toopher,2013,0.307944,605,0,,0
+/organization/blue-box-group,Blue Box,2012,0.306905,606,0,,0
+/organization/propeller,Propeller,2013,0.306549,607,0,R6 Resourced focus (0.50),1
+/organization/snappytv,SnappyTV,2012,0.306192,608,0,,0
+/organization/luvocracy,Luvocracy,2013,0.306154,609,0,R6 Resourced focus (1.00),0
+/organization/extreme-startups,Extreme Startups,2012,0.306031,610,0,,1
+/organization/volometrix,VoloMetrix,2012,0.304924,611,0,,0
+/organization/opsmatic,Opsmatic,2013,0.304149,612,0,R6 Resourced focus (1.00),0
+/organization/capptain,Capptain,2012,0.303773,613,0,,0
+/organization/artisan-mobile,Artisan Mobile,2012,0.303534,614,0,,0
+/organization/prior-knowledge,Prior Knowledge,2012,0.303292,615,0,,0
+/organization/colormodules,ColorModules,2012,0.303209,616,0,,1
+/organization/green-throttle-games,Green Throttle Games,2012,0.300412,617,0,R6 Resourced focus (1.00),0
+/organization/endurance-lending-network,Endurance Lending Network,2012,0.300344,618,0,,0
+/organization/addfleet,AddFleet,2012,0.3002,619,0,,1
+/organization/firebase,Firebase,2012,0.299891,620,0,,0
+/organization/parastructure,Parastructure,2013,0.299891,621,0,,0
+/organization/passwordbox,PasswordBox,2012,0.299891,622,0,,0
+/organization/doctorbase,DoctorBase,2013,0.29928,623,0,R1 Resource strain (0.58); R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/app55,App55 Ltd,2012,0.299264,624,0,,1
+/organization/messageme,MessageMe,2013,0.298697,625,0,,0
+/organization/pict,Pict,2013,0.298697,626,0,,0
+/organization/red-hot-labs,Toro,2013,0.298697,627,0,,0
+/organization/engagor,Engagor,2013,0.298684,628,0,,0
+/organization/proximal-data,Proximal Data,2012,0.298437,629,0,,0
+/organization/the-old-reader,The Old Reader,2013,0.298437,630,0,,1
+/organization/wipit,Wipit,2013,0.297642,631,0,R1 Resource strain (0.58); R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),0
+/organization/distill,Distill,2013,0.296984,632,0,,0
+/organization/sunglass,Sunglass,2012,0.296984,633,0,,1
+/organization/shareholder-insite,Shareholder InSite,2012,0.2967,634,0,,0
+/organization/zipments,Zipments,2013,0.295854,635,0,,0
+/organization/koality,Koality,2013,0.295805,636,0,,0
+/organization/mind-pirate-inc,"Mind Pirate, Inc.",2013,0.295805,637,0,,1
+/organization/ridejoy,Ridejoy,2012,0.295805,638,0,,1
+/organization/spindle,Spindle,2012,0.295532,639,0,,0
+/organization/local-motion,Local Motion,2013,0.295017,640,0,,0
+/organization/bestylish-com,beStylish.com,2012,0.294456,641,0,,1
+/organization/thecomplete-me,LikeIt.com,2012,0.293187,642,0,,1
+/organization/poachit,PoachIt,2013,0.292938,643,0,R1 Resource strain (0.58); R2 Unfunded scope (0.58); R3 Shallow digital base (0.58),1
+/organization/phd-virtual-technologies,PHD Virtual Technologies,2013,0.292475,644,0,R6 Resourced focus (0.81),0
+/organization/heartthis,HeartThis,2013,0.291128,645,0,,0
+/organization/caviar,Caviar,2013,0.290694,646,0,,0
+/organization/appurify,Appurify,2012,0.289184,647,0,,0
+/organization/concept-io,Concept.io,2012,0.289184,648,0,,0
+/organization/datapad-inc,DataPad,2013,0.289184,649,0,,0
+/organization/snupi-technologies,SNUPI Technologies,2012,0.287926,650,0,,0
+/organization/adaptivio,Adaptiv.io,2013,0.287857,651,0,R6 Resourced focus (1.00),0
+/organization/fabrika-online,Fabrika Online,2013,0.287857,652,0,R6 Resourced focus (1.00),1
+/organization/astrid,Astrid,2012,0.287307,653,0,,0
+/organization/waywire,#waywire,2012,0.286854,654,0,,0
+/organization/hitpost,Hitpost,2012,0.286818,655,0,,0
+/organization/frankly-inc,Frankly Inc,2013,0.286206,656,0,R6 Resourced focus (1.00),0
+/organization/moment-me,Moment.me,2012,0.284235,657,0,,0
+/organization/tinypass,Tinypass,2013,0.283313,658,0,,1
+/organization/think-big-analytics,Think Big Analytics,2012,0.28258,659,0,,0
+/organization/yub,Yub,2013,0.28127,660,0,R6 Resourced focus (1.00),0
+/organization/tastemakerx,TastemakerX,2012,0.280208,661,0,,0
+/organization/refresh-io,Refresh.io,2013,0.280174,662,0,R6 Resourced focus (1.00),0
+/organization/relateiq,RelateIQ,2013,0.280174,663,0,R6 Resourced focus (1.00),0
+/organization/revel-touch,Revel Touch,2012,0.280174,664,0,R6 Resourced focus (1.00),0
+/organization/scaleio,ScaleIO,2012,0.280174,665,0,R6 Resourced focus (1.00),0
+/organization/lemon,Lemon,2012,0.279319,666,0,,0
+/organization/peerindex,PeerIndex,2012,0.278464,667,0,,0
+/organization/smartthings,SmartThings,2012,0.277622,668,0,,0
+/organization/porticor-cloud-security,Porticor Cloud Security,2013,0.277554,669,0,,0
+/organization/nationalfield,NationalField,2012,0.275697,670,0,,0
+/organization/passbox,Passbox,2012,0.274677,671,0,,1
+/organization/cartavi,Cartavi,2012,0.274362,672,0,,0
+/organization/screenhero,Screenhero,2013,0.274101,673,0,,0
+/organization/geoop,GeoOp,2013,0.273566,674,0,,0
+/organization/armor5,Armor5,2013,0.273309,675,0,,0
+/organization/modewalk,ModeWalk,2012,0.271819,676,0,,0
+/organization/cozi-inc,Cozi,2013,0.27085,677,0,,0
+/organization/oink-2,Oink,2012,0.270484,678,0,,0
+/organization/gutenberg-technology,Gutenberg Technology,2013,0.269493,679,0,,1
+/organization/conscious-box,Conscious Box,2013,0.268745,680,0,,0
+/organization/moneytree,Moneytree,2013,0.268745,681,0,,1
+/organization/mir-vracha,Mir Vracha,2012,0.268144,682,0,,1
+/organization/fuze,Fuze,2012,0.267752,683,0,,0
+/organization/e96,E96,2013,0.267414,684,0,R6 Resourced focus (1.00),1
+/organization/broadcastr,Broadcastr,2012,0.265818,685,0,,1
+/organization/metacloud,Metacloud,2013,0.264518,686,0,,0
+/organization/meteor-entertainment,Meteor Entertainment,2012,0.264518,687,0,,1
+/organization/zirtual,Zirtual,2013,0.264084,688,0,,0
+/organization/5barz-international,5BARz International,2013,0.26286,689,0,,0
+/organization/windeln-de,Windeln.de,2013,0.262307,690,0,,0
+/organization/nomi,Nomi,2013,0.262075,691,0,,0
+/organization/rawdata,RawData,2012,0.260466,692,0,,1
+/organization/dragonplay,Dragonplay,2012,0.259193,693,0,,0
+/organization/maxta,Maxta,2013,0.258279,694,0,R6 Resourced focus (1.00),1
+/organization/beats-music,Beats Music,2013,0.258259,695,0,,1
+/organization/taking-point,Taking Point,2012,0.258051,696,0,,1
+/organization/kout,Kout,2013,0.256994,697,0,,1
+/organization/parstream,ParStream,2012,0.256685,698,0,,0
+/organization/lacoon-security,Lacoon Mobile Security,2013,0.25481,699,0,R6 Resourced focus (1.00),0
+/organization/mytek-network-solutions,MYTEK Network Solutions,2012,0.254278,700,0,R1 Resource strain (0.71); R2 Unfunded scope (0.50); R3 Shallow digital base (0.71),1
+/organization/acompli-inc,Acompli,2013,0.250414,701,0,,0
+/organization/endorse,Endorse,2012,0.248932,702,0,,0
+/organization/sportstream,SportStream,2012,0.248527,703,0,,0
+/organization/hammerkit,HammerKit,2012,0.248322,704,0,,1
+/organization/appinions,Appinions,2012,0.247466,705,0,,0
+/organization/adallom,Adallom,2012,0.244977,706,0,,0
+/organization/intelligent-apps-mytaxi,Intelligent Apps (mytaxi),2012,0.243028,707,0,,0
+/organization/true-office,True Office,2013,0.23513,708,0,,0
+/organization/net-element,Net Element,2012,0.232301,709,0,,0
+/organization/gravitant,Gravitant,2012,0.231327,710,0,R6 Resourced focus (0.50),0
+/organization/cloupia,Cloupia,2012,0.231236,711,0,,0
+/organization/contact-at-once,Contact At Once!,2012,0.229912,712,0,,0
+/organization/mojave-networks,Mojave Networks,2013,0.22965,713,0,,0
+/organization/bright-com,Bright.com,2012,0.228737,714,0,,0
+/organization/kigo,Kigo,2013,0.22684,715,0,,0
+/organization/kitara-merdia,Kitara Media,2013,0.226187,716,0,R6 Resourced focus (1.00),0
+/organization/feedhenry,FeedHenry,2013,0.225511,717,0,,0
+/organization/paperkarma,PaperKarma,2013,0.225511,718,0,,0
+/organization/epresence,Captual,2012,0.221535,719,0,,0
+/organization/cs-networks,CS Networks,2013,0.216798,720,0,,1
+/organization/alchemyapi,AlchemyAPI,2013,0.210821,721,0,,0
+/organization/engrade,Engrade,2012,0.20448,722,0,,0
+/organization/sotmarket,Sotmarket,2012,0.20415,723,0,R6 Resourced focus (1.00),1
+/organization/unruly,Unruly,2012,0.198457,724,0,,0
+/organization/mobile-accord,Mobile Accord,2013,0.197651,725,0,R6 Resourced focus (1.00),0
+/organization/nscaled,nScaled,2012,0.196128,726,0,,0
+/organization/gridiron-systems,GridIron Systems,2012,0.193172,727,0,,0
+/organization/textura,Textura,2013,0.192199,728,0,R6 Resourced focus (1.00),0
+/organization/twitch,Twitch,2012,0.190593,729,0,,0
+/organization/nivio,nivio,2012,0.188262,730,0,,1
+/organization/behance,Behance,2012,0.182415,731,0,,0
+/organization/wandisco,WANdisco,2012,0.168684,732,0,,0
+/organization/starmount,Starmount,2013,0.168375,733,0,,1
+/organization/q2ebanking,Q2ebanking,2013,0.163408,734,0,,0
+/organization/myfitnesspal,MyFitnessPal,2013,0.162679,735,0,,0
+/organization/nqmobile,NQ Mobile Inc.,2013,0.15995,736,0,,0
+/organization/mobivity,Mobivity,2013,0.155573,737,0,,0

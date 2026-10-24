@@ -7,9 +7,9 @@ Doctor of Business Administration candidate
 
 ## Abstract
 
-Screening a digital venture at its first priced round is a different problem from explaining, after the fact, how much capital it raised. Totals, later rounds, and the date of the last round keep moving until the firm closes, so a model that uses them partly rediscovers the outcome. This Short Communication presents KB-EWS, a knowledge-based early-warning system that scores closure from signals available at that first round and attaches the certainty-factor rules that fired. Seven rules were written before estimation. A rule is kept only when, on ventures first funded in 2006–2010, its mean strength is at least 0.02 higher in the class it was written to support. Four rules survive. On 737 digitally oriented ventures first funded in 2012–2013, the pre-specified depth-3 gradient booster reached a ROC area of 0.740 (95% bootstrap interval 0.704–0.776). Reviewing the highest-scoring 30% gave precision 0.760 (0.706–0.824) against a base rate of 0.510 and recovered 44.7% of later closures. Paired tests do not separate the booster from logistic regression (ROC-area difference 0.005, p = 0.61). The retained rules alone reached 0.618. Stacking their certainty factor onto the booster lowered the ROC area by 0.004 (p = 0.045). The claim is limited to a leakage-safe decision time, an auditable rule trail, and a calibrated score. No causal effect of a digital-transformation program is claimed.
+Screening a digital venture at its first priced round is a different problem from explaining, after the fact, how much capital it raised. Totals, later rounds, and the date of the last round keep moving until the firm closes, so a model that uses them partly rediscovers the outcome. This Short Communication presents KB-EWS, a knowledge-based early-warning system that scores closure from signals available at that first round and attaches the certainty-factor rules that fired. Seven rules were written before estimation. A rule is kept only when, on ventures first funded in 2006–2010, its mean strength is at least 0.02 higher in the class it was written to support. Four rules survive. On 737 digitally oriented ventures first funded in 2012–2013, the pre-specified depth-3 gradient booster reached a ROC area of 0.740 (95% bootstrap interval 0.704–0.776). Reviewing the highest-scoring 30% gave precision 0.760 (0.706–0.824) against a base rate of 0.510 and recovered 44.7% of later closures. Paired tests do not separate the booster from logistic regression (ROC-area difference 0.005, p = 0.61). The retained rules alone reached 0.618. Stacking their certainty factor onto the booster lowered the ROC area by 0.004 (p = 0.045). KB-EWS is the implemented warning tool. Under a fixed review budget it returns a closure probability and the rules whose strength reached 0.5, so a person can both rank the queue and see the mechanism. That is the decision-support claim. It is not a causal estimate of a digital-transformation program, and the rules do not replace the statistical rank.
 
-Keywords: knowledge-based systems; artificial intelligence; data-driven prediction; digital transformation; innovation; entrepreneurship; early warning; certainty factors
+Keywords: knowledge-based systems; intelligent decision support; prediction and warning systems; knowledge engineering; artificial intelligence; data-driven prediction; digital transformation; entrepreneurship; certainty factors
 
 ## 1. Introduction
 
@@ -19,7 +19,9 @@ Credit scoring has a long early-warning tradition that uses only what is known w
 
 Reviewers also speak in rules. A thin first round together with a broad category list is a different statement from a one-unit change in log capital. Certainty factors were built so a short rule base could accumulate graded evidence and stay readable [7]. KB-EWS places that rule base beside a statistical score and then tests, on a later year, whether merging the two improves ranking.
 
-The contribution is threefold: (i) a decision-time formulation that admits only first-round signals and refuses lifetime funding fields in code; (ii) a seven-rule certainty-factor layer whose retention test withdraws any rule that points against its own mechanism on the training years; and (iii) a year-split benchmark with baselines, a fixed review budget, paired bootstrap tests, and a stacking test that is allowed to fail. The last item is part of the result. A knowledge-based warning system has to show when the rules should stay on the card and out of the probability.
+The contribution is threefold: (i) a decision-time formulation that admits only first-round signals and refuses lifetime funding fields in code; (ii) a seven-rule certainty-factor layer whose retention test withdraws any rule that points against its own mechanism on the training years; and (iii) a year-split benchmark with baselines, a fixed review budget, paired bootstrap tests, and a stacking test that is allowed to fail. The last item is part of the result. A warning system has to show when the rules should stay on the card and out of the probability.
+
+The human decision is which first-round ventures to review. KB-EWS supports that prediction with two computed fields: a calibrated probability that ranks a fixed share of the cohort, and the retained production rules whose strength reached 0.5. Knowledge engineering is the retention step. The business setting is the first priced round. The machine-learning layer supplies the rank. The experiment decides which layer is allowed to move the decision.
 
 ## 2. Proposed KB-EWS framework
 
@@ -77,6 +79,10 @@ Output: for each test venture, a closure probability and the retained rules that
 7: On 2012–2013, issue the calibrated booster probability and every retained rule with strength at least 0.5.
 8: Evaluate precision and recall inside pre-set review budgets of 20% and 30%. Do not choose the budget on the test labels.
 
+### 2.4 What the reviewer receives
+
+The system is the program `kbews.py`. For each of the 737 ventures first funded in 2012–2013 it writes one row of `outputs/warning_cards.csv`. The two fields a reviewer would see are the calibrated closure probability and the retained rules whose strength reached 0.5. Ranking those probabilities and reviewing the highest-scoring 30% is the action. Section 4 tests that action. It also tests the alternative in which the certainty factor is allowed to change the probability. That alternative is rejected for ranking. The card still shows the rules, because the reviewer’s question is which mechanism fired as well as where the venture sits in the queue. The file stores the later closure beside the card so the action can be checked. That label is not an input, and it would not be on the card at the first round.
+
 ## 3. Experimental design
 
 The source is the Crunchbase export of 4 December 2015, redistributed as CSV by Tripp (notpeter/crunchbase-data, commit be8711fd) under CC BY-NC 4.0. Commercial use of the extract requires a Crunchbase licence. The code downloads the files when it runs and does not store them in the repository.
@@ -118,7 +124,7 @@ The class-balanced training regression shows why conjunctions and main effects a
 
 Stacked fusion estimates β1 = 1.034 on the booster logit and β2 = −0.233 on the certainty factor (intercept −0.128). Once the booster is known, a higher failure certainty factor slightly lowers the stacked probability. The ROC area falls by 0.004 (p = 0.045). Precision at 30% moves from 0.760 to 0.769, and that difference is compatible with noise (p = 0.76). The rules stay on the warning card. They do not enter the issued probability.
 
-The result belongs in a knowledge-based system because the route from a rule to a decision is inspectable, and because the experiment says where that route stops. Explainability here is the fired rule and its certainty factor, not a post-hoc importance score. The statistical layer chooses the rank. The knowledge layer says which of the four retained mechanisms crossed 0.5.
+The two fields on the card are the decision-support result. The statistical layer ranks ventures inside a human review budget. The knowledge layer names which retained mechanism crossed 0.5. Explainability is that fired rule and its certainty factor. Stacking the rule into the probability does not improve the rank the reviewer would act on.
 
 ## 5. Limitations
 
@@ -128,13 +134,13 @@ The booster was chosen as the primary score before the paired tests were read. T
 
 ## 6. Conclusion
 
-KB-EWS screens a digital venture at the first priced round. It returns a calibrated closure probability and the retained certainty-factor rules that fired. On ventures first funded in 2012–2013, the top 30% of booster scores concentrate later closures from a base rate of 0.510 to a precision of 0.760. A logistic regression reaches the same standard. The rule base documents four mechanisms and does not match that rank. Stacking the rules into the probability does not improve it.
+KB-EWS is a warning system for the first priced round. It returns a calibrated closure probability and the retained certainty-factor rules that fired, and a fixed budget turns that probability into a review queue. On ventures first funded in 2012–2013, the top 30% of booster scores concentrate later closures from a base rate of 0.510 to a precision of 0.760. A logistic regression reaches the same standard, so either score can drive the queue. The rule base documents four mechanisms and does not match that rank. Stacking the rules into the probability does not improve the queue.
 
-The system is a decision-time layer for a reviewer, not a causal model of digital transformation and not a substitute for information that arrives after the first round.
+The system supports a human screening decision with an inspectable rule layer and a tested statistical rank. It is not a causal model of digital transformation, and it is not a substitute for information that arrives after the first round.
 
 ## Data availability
 
-Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, Table 1, Table 2, and both figures from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
+Running `python kbews.py` rebuilds the cohort, the retention decision, the five scores, the warning cards, Table 1, Table 2, and both figures from the public export and a fixed seed. The numeric source for the tables is `outputs/metrics.json`. The per-venture cards are `outputs/warning_cards.csv`. The raw Crunchbase files are downloaded into a local cache and are not part of the repository.
 
 ## Declaration of competing interest
 

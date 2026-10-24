@@ -369,6 +369,13 @@
       "mean_strength_exit": 0.4980375353501345
     }
   ],
+  "warning_cards": {
+    "file": "outputs/warning_cards.csv",
+    "n_cards": 737,
+    "n_review": 221,
+    "queue_precision": 0.7601809954751131,
+    "cards_with_a_fired_rule": 460
+  },
   "performance": [
     {
       "system": "Knowledge base",
